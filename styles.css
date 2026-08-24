@@ -535,6 +535,108 @@ main, .site-header, .site-footer, .chapter-rail, .progress { position: relative;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ---------- the map ---------- */
+.map-lede {
+  max-width: 680px;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  margin: -30px 0 44px;
+}
+.map-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  -webkit-overflow-scrolling: touch;
+}
+.tm {
+  display: block;
+  width: 100%;
+  min-width: 760px;
+  height: auto;
+  font-family: var(--font-body);
+}
+
+.tm-spokes line {
+  stroke: var(--hairline);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 6;
+}
+.tm-flows path {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1.8;
+  opacity: .65;
+}
+.tm-arrowhead { fill: var(--brass); }
+@media (prefers-reduced-motion: no-preference) {
+  .tm-flows path {
+    stroke-dasharray: 5 7;
+    animation: tm-flow 2.6s linear infinite;
+  }
+}
+@keyframes tm-flow { to { stroke-dashoffset: -48; } }
+
+.tm-center rect {
+  fill: var(--ink);
+  transition: fill .5s var(--ease-out);
+}
+.tm-center-title {
+  font-family: var(--font-mono); font-size: 17px; font-weight: 700;
+  letter-spacing: .18em;
+  fill: var(--paper);
+}
+.tm-center-sub {
+  font-family: var(--font-mono); font-size: 10.5px;
+  letter-spacing: .06em;
+  fill: color-mix(in srgb, var(--paper) 65%, transparent);
+}
+
+.tm-card {
+  fill: var(--paper);
+  stroke: var(--hairline);
+  stroke-width: 1.2;
+}
+.tm-cluster {
+  transition: transform .35s var(--ease-out);
+  transform-box: fill-box;
+}
+.tm-cluster:hover { transform: translateY(-4px); }
+.tm-cluster:hover .tm-card { stroke: var(--tm-accent); stroke-width: 1.6; }
+.tm-stage {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: .22em;
+  fill: var(--tm-accent);
+}
+.tm-domain {
+  font-family: var(--font-mono); font-size: 13.5px; font-weight: 700;
+  letter-spacing: .06em;
+  fill: var(--ink);
+}
+.tm-rows text {
+  font-size: 13.5px;
+  fill: var(--ink-soft);
+}
+.tm-proof {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .08em;
+  fill: var(--tm-accent);
+}
+.tm-legend text {
+  font-family: var(--font-mono); font-size: 11.5px;
+  letter-spacing: .08em;
+  fill: var(--ink-soft);
+}
+
+.st-proven { fill: #5B8C5A; }
+.st-building { fill: #C98A1B; }
+.st-next {
+  fill: transparent;
+  stroke: var(--ink-soft);
+  stroke-width: 1.5;
+}
+
 /* ---------- stack ---------- */
 .stack-grid {
   display: grid;

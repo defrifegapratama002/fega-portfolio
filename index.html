@@ -31,6 +31,7 @@
     <nav class="site-nav" aria-label="Main">
       <a href="#about" data-i18n="nav.about">Character</a>
       <a href="#works" data-i18n="nav.works">Works</a>
+      <a href="#map" data-i18n="nav.map">Map</a>
       <a href="#stack" data-i18n="nav.stack">Stack</a>
       <a href="#principles" data-i18n="nav.principles">Principles</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -50,6 +51,7 @@
     <a href="#top"       data-chapter="hero"       aria-label="Intro"><i></i></a>
     <a href="#about"     data-chapter="about"      aria-label="Character"><i></i></a>
     <a href="#works"     data-chapter="works"      aria-label="Works"><i></i></a>
+    <a href="#map"       data-chapter="map"        aria-label="Map"><i></i></a>
     <a href="#stack"     data-chapter="stack"      aria-label="Stack"><i></i></a>
     <a href="#principles" data-chapter="principles" aria-label="Principles"><i></i></a>
     <a href="#contact"   data-chapter="contact"    aria-label="Contact"><i></i></a>
@@ -360,10 +362,134 @@
       </article>
     </section>
 
-    <!-- ================= 03 STACK ================= -->
-    <section id="stack" class="section chapter" data-chapter-id="stack">
+    <!-- ================= 03 THE MAP ================= -->
+    <section id="map" class="section chapter" data-chapter-id="map">
       <header class="section-head reveal">
         <span class="section-num">03</span>
+        <p class="eyebrow"><span class="rule"></span><span data-i18n="map.eyebrow">The map</span></p>
+        <h2 data-i18n="map.title">How technology builds a business.</h2>
+      </header>
+      <p class="map-lede reveal" data-i18n="map.lede">
+        This is the flywheel I'm building my career around: sense the market with AI and data,
+        build on the right platform, sell through brand experience, operate on business
+        intelligence, and learn from the data flowing back. Every node is labeled honestly —
+        proven by a shipped project, in progress, or the next target.
+      </p>
+
+      <div class="map-scroll reveal">
+        <svg class="tm" viewBox="0 0 1200 960" role="img" aria-label="Technology flywheel map: Sense, Build, Sell, Operate, Learn around a central Business node">
+          <defs>
+            <marker id="tm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" class="tm-arrowhead"/>
+            </marker>
+          </defs>
+
+          <!-- spokes -->
+          <g class="tm-spokes">
+            <line x1="600" y1="450" x2="600" y2="215"/>
+            <line x1="600" y1="450" x2="1000" y2="345"/>
+            <line x1="600" y1="450" x2="830" y2="700"/>
+            <line x1="600" y1="450" x2="370" y2="700"/>
+            <line x1="600" y1="450" x2="200" y2="345"/>
+          </g>
+
+          <!-- flow arrows (clockwise) -->
+          <g class="tm-flows">
+            <path d="M 745 95 Q 940 120 1005 240" marker-end="url(#tm-arrow)"/>
+            <path d="M 1015 445 Q 1010 570 900 650" marker-end="url(#tm-arrow)"/>
+            <path d="M 690 770 Q 600 800 510 770" marker-end="url(#tm-arrow)"/>
+            <path d="M 300 650 Q 190 570 185 445" marker-end="url(#tm-arrow)"/>
+            <path d="M 195 240 Q 260 120 455 95" marker-end="url(#tm-arrow)"/>
+          </g>
+
+          <!-- center -->
+          <g class="tm-center">
+            <rect x="510" y="415" width="180" height="70" rx="16"/>
+            <text x="600" y="445" text-anchor="middle" class="tm-center-title">BUSINESS</text>
+            <text x="600" y="467" text-anchor="middle" class="tm-center-sub" data-i18n="map.center">value for customers</text>
+          </g>
+
+          <!-- SENSE — AI -->
+          <g class="tm-cluster" style="--tm-accent:#8B5E3C">
+            <rect class="tm-card" x="470" y="40" width="260" height="180" rx="16"/>
+            <text x="490" y="68" class="tm-stage">01 · SENSE</text>
+            <text x="490" y="90" class="tm-domain">AI &amp; INTELLIGENCE</text>
+            <g class="tm-rows">
+              <circle cx="497" cy="110" r="5" class="st-proven"/><text x="510" y="115" data-i18n="map.n1a">AI-assisted workflow</text>
+              <circle cx="497" cy="132" r="5" class="st-building"/><text x="510" y="137">LLM &amp; Agents</text>
+              <circle cx="497" cy="154" r="5" class="st-building"/><text x="510" y="159" data-i18n="map.n1b">Automation</text>
+              <circle cx="497" cy="176" r="5" class="st-next"/><text x="510" y="181">Computer Vision</text>
+            </g>
+            <text x="490" y="206" class="tm-proof">AGEN-AI · ITSFR · ZONZON media</text>
+          </g>
+
+          <!-- BUILD — Development & Platforms -->
+          <g class="tm-cluster" style="--tm-accent:#A8432A">
+            <rect class="tm-card" x="870" y="258" width="260" height="180" rx="16"/>
+            <text x="890" y="286" class="tm-stage">02 · BUILD</text>
+            <text x="890" y="308" class="tm-domain" data-i18n="map.d2">DEVELOPMENT &amp; PLATFORMS</text>
+            <g class="tm-rows">
+              <circle cx="897" cy="328" r="5" class="st-proven"/><text x="910" y="333">Web</text>
+              <circle cx="897" cy="350" r="5" class="st-proven"/><text x="910" y="355">Testing · CI/CD</text>
+              <circle cx="897" cy="372" r="5" class="st-building"/><text x="910" y="377">Mobile</text>
+              <circle cx="897" cy="394" r="5" class="st-next"/><text x="910" y="399" data-i18n="map.n2a">Desktop apps</text>
+            </g>
+            <text x="890" y="424" class="tm-proof" data-i18n="map.p2">all five projects</text>
+          </g>
+
+          <!-- SELL — Brand Experience -->
+          <g class="tm-cluster" style="--tm-accent:#66806B">
+            <rect class="tm-card" x="700" y="658" width="260" height="180" rx="16"/>
+            <text x="720" y="686" class="tm-stage">03 · SELL</text>
+            <text x="720" y="708" class="tm-domain">BRAND EXPERIENCE</text>
+            <g class="tm-rows">
+              <circle cx="727" cy="728" r="5" class="st-proven"/><text x="740" y="733" data-i18n="map.n3a">Cinematic sites</text>
+              <circle cx="727" cy="750" r="5" class="st-proven"/><text x="740" y="755" data-i18n="map.n3b">Configurators &amp; commerce</text>
+              <circle cx="727" cy="772" r="5" class="st-proven"/><text x="740" y="777" data-i18n="map.n3c">Multilingual copy (ID/EN/JP)</text>
+            </g>
+            <text x="720" y="824" class="tm-proof">ZONZON · zonzon.shop · RYO · JSF</text>
+          </g>
+
+          <!-- OPERATE — BI -->
+          <g class="tm-cluster" style="--tm-accent:#9C6B34">
+            <rect class="tm-card" x="240" y="658" width="260" height="180" rx="16"/>
+            <text x="260" y="686" class="tm-stage">04 · OPERATE</text>
+            <text x="260" y="708" class="tm-domain">BUSINESS INTELLIGENCE</text>
+            <g class="tm-rows">
+              <circle cx="267" cy="728" r="5" class="st-proven"/><text x="280" y="733">CRM / ERP</text>
+              <circle cx="267" cy="750" r="5" class="st-proven"/><text x="280" y="755">Customer 360 · pipeline</text>
+              <circle cx="267" cy="772" r="5" class="st-proven"/><text x="280" y="777" data-i18n="map.n4a">Warehouse &amp; production</text>
+            </g>
+            <text x="260" y="824" class="tm-proof" data-i18n="map.p4">ITSFR Platform — in production</text>
+          </g>
+
+          <!-- LEARN — Data -->
+          <g class="tm-cluster" style="--tm-accent:#C98A1B">
+            <rect class="tm-card" x="70" y="258" width="260" height="180" rx="16"/>
+            <text x="90" y="286" class="tm-stage">05 · LEARN</text>
+            <text x="90" y="308" class="tm-domain">DATA</text>
+            <g class="tm-rows">
+              <circle cx="97" cy="328" r="5" class="st-proven"/><text x="110" y="333" data-i18n="map.n5a">Pipelines &amp; import</text>
+              <circle cx="97" cy="350" r="5" class="st-proven"/><text x="110" y="355" data-i18n="map.n5b">Analytics dashboards</text>
+              <circle cx="97" cy="372" r="5" class="st-next"/><text x="110" y="377" data-i18n="map.n5c">Predictive ML</text>
+            </g>
+            <text x="90" y="424" class="tm-proof">ITSFR · July Sunflowers</text>
+          </g>
+
+          <!-- legend -->
+          <g class="tm-legend">
+            <circle cx="260" cy="920" r="5" class="st-proven"/><text x="273" y="925" data-i18n="map.l1">Proven — shipped project</text>
+            <circle cx="580" cy="920" r="5" class="st-building"/><text x="593" y="925" data-i18n="map.l2">Building</text>
+            <circle cx="790" cy="920" r="5" class="st-next"/><text x="803" y="925" data-i18n="map.l3">Next target</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ================= 04 STACK ================= -->
+    <section id="stack" class="section chapter" data-chapter-id="stack">
+      <header class="section-head reveal">
+        <span class="section-num">04</span>
         <p class="eyebrow"><span class="rule"></span><span data-i18n="stack.eyebrow">Stack &amp; capabilities</span></p>
         <h2 data-i18n="stack.title">Tools chosen per problem, not per habit.</h2>
       </header>
@@ -396,7 +522,7 @@
     <!-- ================= 04 PRINCIPLES ================= -->
     <section id="principles" class="section chapter" data-chapter-id="principles">
       <header class="section-head reveal">
-        <span class="section-num">04</span>
+        <span class="section-num">05</span>
         <p class="eyebrow"><span class="rule"></span><span data-i18n="pr.eyebrow">Principles</span></p>
         <h2 data-i18n="pr.title">How I decide.</h2>
       </header>
@@ -427,7 +553,7 @@
     <!-- ================= 05 CONTACT ================= -->
     <section id="contact" class="section section-contact chapter" data-chapter-id="contact">
       <header class="section-head reveal">
-        <span class="section-num">05</span>
+        <span class="section-num">06</span>
         <p class="eyebrow"><span class="rule"></span><span data-i18n="ct.eyebrow">Contact</span></p>
         <h2 data-i18n="ct.title">Let's build something that lasts.</h2>
       </header>
