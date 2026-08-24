@@ -32,7 +32,7 @@
 
     "hero.eyebrow": "Portofolio — Batam, Indonesia · UTC+7",
     "hero.sub":
-      "Saya membangun dua jenis software yang jarang lahir dari tangan yang sama: <strong>dunia brand sinematik</strong> di browser, dan <strong>sistem bisnis kelas pabrik</strong> yang menjalankan operasional nyata.",
+      "Bisnis datang membawa masalah; saya datang membawa teknologi apa pun yang menyelesaikannya: <strong>AI &amp; machine learning</strong>, <strong>produk web &amp; mobile</strong>, <strong>data &amp; analitik</strong>, serta <strong>sistem bisnis</strong> yang menjalankan operasional harian nyata.",
     "hero.cta1": "Lihat karya pilihan",
     "hero.cta2": "Hubungi saya",
     "hero.scroll": "gulir",
@@ -43,19 +43,22 @@
     "stats.loc": "baris, tanpa dependency",
 
     "about.eyebrow": "Karakter",
-    "about.title": "Satu orang, dua disiplin.",
+    "about.title": "Banyak sisi, satu tujuan: menyelesaikan masalah.",
     "about.a.label": "— Sisi brand",
     "about.a.body":
       "Situs film scroll-driven, produk 3D prosedural, motion yang hadir hanya untuk menjelaskan. Saya merancang dan membangun kehadiran web lengkap untuk brand aroma D2C pasar Jepang — dari riset pasar dan copywriting yang patuh 薬機法, sampai engine scroll-scrub video yang ditulis dari nol tanpa library animasi sama sekali.",
     "about.b.label": "— Sisi sistem",
     "about.b.body":
       "Sebuah pabrik ekspor di Batam menjalankan CRM, penjualan, produksi, dan gudangnya di platform yang saya bangun: Laravel + Filament, 44 migrasi, 47 file feature test. Keputusan pemodelan domain seperti harga yang tidak pernah disimpan dan inventori yang selalu diturunkan melindungi bisnis di lapisan data, bukan cuma di UI.",
-    "about.c.label": "— Benang merah di antara keduanya",
+    "about.d.label": "— Sisi AI & data",
+    "about.d.body":
+      "Tutor suara Android yang dijual langsung ke pengguna, berjalan di atas rantai routing 8 provider LLM yang saya rekayasa agar tanpa biaya. CNN skripsi untuk deteksi penyakit tanaman, dilatih di Keras dan dideploy sebagai web app live. Agent yang diatur guardrails tertulis. AI di sini adalah alat yang benar-benar dikirim — bukan kata kunci kosong.",
+    "about.c.label": "— Benang merah di semuanya",
     "about.c.body":
       "Kejujuran. Tidak ada demo palsu, tidak ada dashboard bohongan: checkout yang belum tersambung berkata jujur, halaman roadmap menampilkan rencana alih-alih pura-pura live, dan setiap estimasi dilabeli \"indikatif\". Saya lebih suka berbuat banyak dengan sedikit — salah satu project di bawah adalah configurator B2B lengkap dalam tiga file HTML mandiri tanpa dependency.",
 
     "works.eyebrow": "Karya pilihan",
-    "works.title": "Lima sistem, lima dunia.",
+    "works.title": "Delapan sistem, delapan dunia.",
 
     "w1.kind": "Situs brand D2C — pasar Jepang",
     "w1.desc":
@@ -99,9 +102,11 @@
     "map.center": "nilai untuk pelanggan",
     "map.n1a": "Workflow berbantuan AI",
     "map.n1b": "Otomasi",
+    "map.n1c": "Aplikasi LLM & agent",
     "map.d2": "DEVELOPMENT & PLATFORM",
     "map.n2a": "Aplikasi desktop",
-    "map.p2": "kelima project",
+    "map.n2b": "Backend & database",
+    "map.p2": "sembilan project rampung",
     "map.n3a": "Situs sinematik",
     "map.n3b": "Configurator & commerce",
     "map.n3c": "Copy multi-bahasa (ID/EN/JP)",
@@ -109,10 +114,39 @@
     "map.p4": "ITSFR Platform — dipakai produksi",
     "map.n5a": "Pipeline & import data",
     "map.n5b": "Dashboard analitik",
-    "map.n5c": "ML prediktif",
+    "map.n5c": "ML terapan (CNN)",
+    "map.p5": "ITSFR · CNN skripsi — live",
     "map.l1": "Terbukti — project sudah jadi",
     "map.l2": "Sedang dibangun",
     "map.l3": "Target berikutnya",
+
+    "w6.kind": "Aplikasi Android — rilis & dijual",
+    "w6.desc":
+      "Aplikasi Android komersial untuk latihan bahasa Inggris lisan bersama tutor AI: bicara saja, dan loop berjalan tanpa sentuhan — speech-to-text, LLM, balasan bersuara, mikrofon terbuka lagi. Berjalan sepenuhnya di tier LLM gratis berkat rantai routing 8 provider dengan failover otomatis dan rotasi kunci, dibungkus lisensi terikat perangkat, dan dijual langsung ke pengguna sebagai release ter-sign.",
+    "w6.h1": "8 provider LLM di balik satu interface — streaming SSE, fallback otomatis saat kuota habis, kunci terenkripsi",
+    "w6.h2": "Koreksi grammar terstruktur: ditandai model, dirender sebagai kartu, sengaja tidak pernah diucapkan",
+    "w6.h3": "Lapisan anti-bajak: fingerprint perangkat + aktivasi HMAC, tamper guard, backend lisensi Supabase",
+
+    "w7.kind": "Aplikasi Flutter — offline-first",
+    "w7.desc":
+      "Aplikasi Android offline-first untuk supplier daging segar: katalog, inventori batch FEFO untuk barang mudah rusak, POS, pembelian, piutang, struk thermal, laporan PDF/CSV, dan backup zip — ~34,5 ribu baris Dart tanpa dependensi jaringan sama sekali. Uang disimpan sebagai rupiah bulat, berat sebagai gram bulat; float tak pernah menyentuh pembukuan.",
+    "w7.h1": "17 tabel Drift; satu penjualan mencatat keluar stok + piutang + audit dalam satu transaksi",
+    "w7.h2": "Cetak struk thermal Bluetooth ESC/POS (58/80mm) dan invoice PDF langsung dari HP",
+    "w7.h3": "Design system tertulis — token master + 26 spesifikasi per halaman; test; release split-ABI ter-sign",
+
+    "w8.kind": "PWA full-stack — backend Postgres",
+    "w8.desc":
+      "PWA manajemen depot air galon dengan empat portal — admin, kasir, kurir, pelanggan. Backend-nya Postgres yang bekerja sungguhan: ~30 kebijakan row-level-security, penjaga kolom via trigger, buku besar deposit galon append-only, kalkulasi ulang poin loyalitas yang idempoten, dan bukti antar terverifikasi GPS.",
+    "w8.h1": "Otorisasi tingkat kolom di trigger — kurir hanya boleh menyentuh kolom status/GPS, pelanggan hanya konfirmasi",
+    "w8.h2": "Anti-kecurangan antar: cek jarak haversine menandai penyelesaian >300m dari pin pelanggan",
+    "w8.h3": "Papan pesanan realtime via Postgres changes; matriks harga bisa diedit admin tanpa ubah kode",
+
+    "mw.label": "— Juga dibangun",
+    "mw.1": "tutor bahasa bersuara (EN/JP) di Node.js + Claude Agent SDK, streaming TTS per kalimat, memori progres Leitner",
+    "mw.2": "manajemen dokumen enterprise untuk klien: Express + Prisma + Postgres, JWT/RBAC, versioning, log audit",
+    "mw.3t": "CNN penyakit daun (skripsi)",
+    "mw.3": "classifier TensorFlow/Keras untuk penyakit tanaman karet, dideploy sebagai aplikasi Flask live di Vercel",
+    "mw.4": "MVP yang lahir duluan: latihan suara dwibahasa dengan renderer furigana custom — post-mortem-nya membentuk SpeakEnglish",
 
     "stack.eyebrow": "Teknologi & kapabilitas",
     "stack.title": "Alat dipilih per masalah, bukan per kebiasaan.",
@@ -127,11 +161,12 @@
     "stack.c3a": "pemodelan derived-state",
     "stack.c3b": "Generasi PDF, RBAC, log audit",
     "stack.c3c": "Arsitektur static-export",
-    "stack.c4": "— Alur kerja ber-AI dengan tata kelola",
+    "stack.c4": "— AI & machine learning",
     "stack.c4a": "Arsitektur agent human-in-the-loop",
-    "stack.c4b": "Gerbang proposal — agent mengusulkan, manusia menyetujui",
-    "stack.c4c": "Guardrails tertulis: tanpa scraping, tanpa data karangan",
-    "stack.c4d": "Setiap klaim membawa sumber + tingkat keyakinan",
+    "stack.c4c": "Guardrails tertulis: tanpa data karangan",
+    "stack.c4e": "Routing LLM multi-provider & failover",
+    "stack.c4f": "Pipeline suara: STT · LLM · TTS streaming",
+    "stack.c3b2": "Test Flutter",
 
     "pr.eyebrow": "Prinsip",
     "pr.title": "Cara saya mengambil keputusan.",
