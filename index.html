@@ -1,551 +1,354 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Defri Fega Pratama — Technology Problem-Solver</title>
-  <meta name="description" content="Defri Fega Pratama (Fega) — technology problem-solver from Batam, Indonesia. AI & machine learning, web & mobile products, data & analytics, and business systems that run real operations." />
-  <meta property="og:title" content="Defri Fega Pratama — Technology Problem-Solver" />
-  <meta property="og:description" content="Businesses bring problems; I bring whatever technology solves them. Batam, Indonesia → anywhere." />
-  <meta property="og:type" content="website" />
+  <title>FEGA — Problem In. System Out.</title>
+  <meta name="description" content="Defri Fega Pratama (Fega) — technology problem-solver from Batam, Indonesia. AI & machine learning, web & mobile products, data, and business systems that run real operations." />
+  <meta property="og:title" content="FEGA — Problem In. System Out." />
+  <meta property="og:description" content="Businesses bring problems. I ship the system that solves them. Batam, Indonesia → anywhere." />
+  <meta name="theme-color" content="#0D0B08" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#works" data-i18n="skip">Skip to works</a>
-
-  <!-- ambient background -->
-  <canvas id="wisp-canvas" aria-hidden="true"></canvas>
   <div class="grain" aria-hidden="true"></div>
-
-  <!-- scroll progress -->
+  <div class="tungsten" aria-hidden="true"></div>
   <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
-  <header class="site-header">
-    <a class="wordmark" href="#top" aria-label="Fega — home">
-      <span class="wordmark-mark" aria-hidden="true"></span>FEGA<span class="wordmark-dot">.</span>
-    </a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="#about" data-i18n="nav.about">Character</a>
-      <a href="#works" data-i18n="nav.works">Works</a>
-      <a href="#map" data-i18n="nav.map">Map</a>
-      <a href="#stack" data-i18n="nav.stack">Stack</a>
-      <a href="#principles" data-i18n="nav.principles">Principles</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
-    </nav>
-    <div class="header-controls">
-      <button id="lang-toggle" class="ctrl-btn" type="button" aria-label="Switch language">
-        <span data-lang-label>ID</span>
-      </button>
-      <button id="theme-toggle" class="ctrl-btn" type="button" aria-label="Switch theme">
-        <span class="theme-icon" aria-hidden="true"></span>
-      </button>
-    </div>
+  <header class="bar">
+    <span class="bar-name">DEFRI FEGA PRATAMA</span>
+    <span class="bar-loc" data-i18n="bar.loc">BATAM, ID · 1.13°N 104.05°E · UTC+7</span>
+    <button id="lang-toggle" class="bar-lang" type="button" aria-label="Switch language">
+      <span data-lang-label>ID</span>
+    </button>
   </header>
 
-  <!-- chapter rail -->
-  <nav class="chapter-rail" aria-label="Chapters">
-    <a href="#top"       data-chapter="hero"       aria-label="Intro"><i></i></a>
-    <a href="#about"     data-chapter="about"      aria-label="Character"><i></i></a>
-    <a href="#works"     data-chapter="works"      aria-label="Works"><i></i></a>
-    <a href="#map"       data-chapter="map"        aria-label="Map"><i></i></a>
-    <a href="#stack"     data-chapter="stack"      aria-label="Stack"><i></i></a>
-    <a href="#principles" data-chapter="principles" aria-label="Principles"><i></i></a>
-    <a href="#contact"   data-chapter="contact"    aria-label="Contact"><i></i></a>
-  </nav>
+  <main>
 
-  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <h1 class="giant">
+        <span data-i18n="hero.in">PROBLEM</span> <em data-i18n="hero.in2">IN.</em>
+      </h1>
 
-    <!-- ================= HERO ================= -->
-    <section class="hero chapter" data-chapter-id="hero">
-      <div class="hero-inner">
-        <p class="eyebrow reveal"><span class="rule"></span><span data-i18n="hero.eyebrow">Portfolio — Batam, Indonesia · UTC+7</span></p>
-        <h1 class="hero-title">
-          <span class="line reveal">Defri Fega</span>
-          <span class="line reveal"><em>Pratama</em></span>
-        </h1>
-        <p class="hero-sub reveal" data-i18n="hero.sub">
-          Businesses bring me problems; I bring whatever technology solves them:
-          <strong>AI &amp; machine learning</strong>, <strong>web &amp; mobile products</strong>,
-          <strong>data &amp; analytics</strong>, and <strong>business systems</strong> that run
-          real daily operations.
-        </p>
-        <div class="hero-cta reveal">
-          <a class="btn btn-primary magnetic" href="#works"><span data-i18n="hero.cta1">View selected works</span><span class="btn-arrow" aria-hidden="true">↓</span></a>
-          <a class="btn btn-ghost magnetic" href="#contact" data-i18n="hero.cta2">Get in touch</a>
-        </div>
-
-        <dl class="hero-stats reveal" aria-label="Quick facts">
-          <div><dt data-i18n="stats.k1">Shipped systems</dt><dd data-count="9">0</dd></div>
-          <div><dt data-i18n="stats.k2">Market languages</dt><dd data-count="3">0</dd></div>
-          <div><dt data-i18n="stats.k3">ERP feature tests</dt><dd data-count="47">0</dd></div>
-          <div><dt data-i18n="stats.k4">Custom scroll engine</dt><dd><span data-count="755">0</span> <small data-i18n="stats.loc">lines, zero deps</small></dd></div>
-        </dl>
-      </div>
-      <div class="scroll-hint" aria-hidden="true"><span data-i18n="hero.scroll">scroll</span><i></i></div>
-    </section>
-
-    <!-- ================= 01 CHARACTER ================= -->
-    <section id="about" class="section chapter" data-chapter-id="about">
-      <header class="section-head reveal">
-        <span class="section-num">01</span>
-        <p class="eyebrow"><span class="rule"></span><span data-i18n="about.eyebrow">Character</span></p>
-        <h2 data-i18n="about.title">Many fronts, one goal: solving the problem.</h2>
-      </header>
-      <div class="about-grid">
-        <div class="about-col reveal">
-          <h3 class="mono-label" data-i18n="about.a.label">— The brand side</h3>
-          <p data-i18n="about.a.body">
-            Scroll-driven film sites, procedural 3D products, motion that exists only to explain.
-            I designed and built the full web presence for a Japanese D2C aroma brand — from market
-            research and 薬機法-compliant copywriting down to a custom scroll-scrub video engine
-            written from scratch, with no animation library at all.
-          </p>
-        </div>
-        <div class="about-col reveal">
-          <h3 class="mono-label" data-i18n="about.b.label">— The systems side</h3>
-          <p data-i18n="about.b.body">
-            An export factory in Batam runs its CRM, sales, production and warehouse on a platform
-            I built: Laravel + Filament, 44 migrations, 47 feature-test files. Domain-modeling
-            decisions like never-persisted pricing and derived-only inventory protect the business
-            at the data layer, not just the UI.
-          </p>
-        </div>
-        <div class="about-col reveal">
-          <h3 class="mono-label" data-i18n="about.d.label">— The AI &amp; data side</h3>
-          <p data-i18n="about.d.body">
-            An Android voice tutor sold directly to users, running on an 8-provider LLM routing
-            chain I engineered to cost nothing. A thesis CNN for crop-disease detection, trained
-            in Keras and deployed as a live web app. Agents governed by written guardrails.
-            AI here is a tool that ships — not a buzzword.
-          </p>
-        </div>
-        <div class="about-col about-wide reveal">
-          <h3 class="mono-label" data-i18n="about.c.label">— The thread through it all</h3>
-          <p data-i18n="about.c.body">
-            Honesty. No fake demos, no mock dashboards: a checkout that isn't wired says so, a
-            roadmap page shows what's planned instead of pretending it's live, and every estimate
-            ships labeled "indicative". I'd rather do a lot with a little — one of the projects
-            below is a full B2B product configurator in three standalone HTML files with zero
-            dependencies.
-          </p>
+      <div class="mq" aria-hidden="true">
+        <div class="mq-track">
+          <span class="mq-set">
+            <i data-i18n="mq.1">inventory is chaos</i><b>✕</b>
+            <i data-i18n="mq.2">sales go unrecorded</i><b>✕</b>
+            <i data-i18n="mq.3">data scattered across Excel</i><b>✕</b>
+            <i data-i18n="mq.4">prices leaking to competitors</i><b>✕</b>
+            <i data-i18n="mq.5">we need a POS app</i><b>✕</b>
+            <i data-i18n="mq.6">we want to sell to Japan</i><b>✕</b>
+            <i data-i18n="mq.7">nobody remembers the follow-up</i><b>✕</b>
+            <i data-i18n="mq.8">the warehouse doesn't know itself</i><b>✕</b>
+          </span>
+          <span class="mq-set" aria-hidden="true">
+            <i data-i18n="mq.1b">inventory is chaos</i><b>✕</b>
+            <i data-i18n="mq.2b">sales go unrecorded</i><b>✕</b>
+            <i data-i18n="mq.3b">data scattered across Excel</i><b>✕</b>
+            <i data-i18n="mq.4b">prices leaking to competitors</i><b>✕</b>
+            <i data-i18n="mq.5b">we need a POS app</i><b>✕</b>
+            <i data-i18n="mq.6b">we want to sell to Japan</i><b>✕</b>
+            <i data-i18n="mq.7b">nobody remembers the follow-up</i><b>✕</b>
+            <i data-i18n="mq.8b">the warehouse doesn't know itself</i><b>✕</b>
+          </span>
         </div>
       </div>
-    </section>
 
-    <!-- ================= 02 WORKS ================= -->
-    <section id="works" class="section chapter" data-chapter-id="works">
-      <header class="section-head reveal">
-        <span class="section-num">02</span>
-        <p class="eyebrow"><span class="rule"></span><span data-i18n="works.eyebrow">Selected works</span></p>
-        <h2 data-i18n="works.title">Eight systems, eight worlds.</h2>
-      </header>
+      <h1 class="giant giant-right">
+        <span data-i18n="hero.out">SYSTEM</span> <em class="hot" data-i18n="hero.out2">OUT.</em>
+      </h1>
 
-      <!-- ZONZON brand site -->
-      <article class="work reveal" style="--work-accent:#8B5E3C">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-zonzon" viewBox="0 0 420 300" role="img">
-            <defs>
-              <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#6E4A2E"/><stop offset=".5" stop-color="#8B5E3C"/><stop offset="1" stop-color="#5c3d26"/>
-              </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg"/>
-            <g class="vg-float">
-              <rect x="140" y="118" width="150" height="40" rx="20" fill="url(#wood)"/>
-              <rect x="282" y="126" width="46" height="24" rx="12" class="vg-metal"/>
-              <circle cx="150" cy="138" r="9" class="vg-core"/>
-            </g>
-            <path class="vg-wisp" d="M330 128 C 345 106, 322 92, 338 72 S 330 40, 346 24" fill="none"/>
-            <path class="vg-wisp vg-wisp2" d="M342 132 C 360 114, 342 98, 356 80 S 352 52, 366 38" fill="none"/>
-            <g class="vg-caption">
-              <rect x="26" y="228" width="120" height="10" rx="5"/>
-              <rect x="26" y="248" width="82" height="10" rx="5"/>
-            </g>
-            <text x="26" y="48" class="vg-kicker">KEEP THE RITUAL.</text>
-            <text x="26" y="70" class="vg-kicker">LEAVE THE SMOKE BEHIND.</text>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2026 · <span data-i18n="w1.kind">D2C brand site — Japan market</span></p>
-          <h3 class="work-title">ZONZON <span class="work-jp">— 煙のない、新しい一服</span></h3>
-          <p class="work-desc" data-i18n="w1.desc">
-            Full brand website for a wooden aroma inhaler aimed at Japanese smokers who want the
-            ritual without the smoke. Procedurally modeled Three.js product with runtime-generated
-            walnut grain, an Apple-style 113-frame scroll-scrubbed canvas hero, and a pinned GSAP
-            story that morphs a cigarette into the product — all written inside real 薬機法
-            advertising constraints.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w1.h1">Procedural 3D device — lathe profiles + canvas-painted wood grain, no GLTF</li>
-            <li data-i18n="w1.h2">14 static-export routes with full JSON-LD structured data</li>
-            <li data-i18n="w1.h3">Motion discipline: reduced-motion, noscript fallbacks, desktop/mobile choreography</li>
-          </ul>
-          <div class="chips">
-            <span>Next.js 15</span><span>React 19</span><span>TypeScript</span><span>Three.js / R3F</span><span>GSAP + ScrollTrigger</span><span>Tailwind v4</span><span>Vitest</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- zonzon.shop -->
-      <article class="work reveal" style="--work-accent:#66806B">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-film" viewBox="0 0 420 300" role="img">
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg vg-bg-dark"/>
-            <g class="vg-frames">
-              <rect x="34"  y="70" width="104" height="70" rx="8"/>
-              <rect x="158" y="70" width="104" height="70" rx="8" class="vg-frame-active"/>
-              <rect x="282" y="70" width="104" height="70" rx="8"/>
-              <rect x="34"  y="160" width="104" height="70" rx="8"/>
-              <rect x="158" y="160" width="104" height="70" rx="8"/>
-              <rect x="282" y="160" width="104" height="70" rx="8"/>
-            </g>
-            <text x="34" y="52" class="vg-kicker vg-kicker-light">SCROLL = ONE SLOW BREATH</text>
-            <g class="vg-scrub">
-              <rect x="34" y="256" width="352" height="4" rx="2" class="vg-track"/>
-              <rect x="34" y="256" width="120" height="4" rx="2" class="vg-thumb"/>
-            </g>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2026 · <span data-i18n="w2.kind">Cinematic shop — custom engine</span></p>
-          <h3 class="work-title">zonzon.shop <span class="work-jp">— nine chapters, one scroll</span></h3>
-          <p class="work-desc" data-i18n="w2.desc">
-            The commerce companion to ZONZON: one continuous scroll-driven film in nine chapters,
-            with an aroma configurator in the middle. The heart is a 755-line scroll-scrub video
-            engine I wrote with zero dependencies — blob-fetched clips for instant seeking, cubic
-            "linger" easing that never moves seam frames, separate mobile encodes, iOS-safe priming.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w2.h1">Custom scroll↔video engine: rAF loop, smoothstep + linger easing, AbortController lifecycle</li>
-            <li data-i18n="w2.h2">Aroma-reactive theming — the chosen flavor re-tints the whole stage</li>
-            <li data-i18n="w2.h3">Deployed on Cloudflare Workers with CI typecheck + build</li>
-          </ul>
-          <div class="chips">
-            <span>TanStack Start</span><span>React 19</span><span>TypeScript</span><span>Vite 7</span><span>Cloudflare Workers</span><span>Hand-written CSS</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ITSFR Platform -->
-      <article class="work reveal" style="--work-accent:#A8432A">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-erp" viewBox="0 0 420 300" role="img">
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg"/>
-            <g class="vg-panel">
-              <rect x="26" y="30" width="368" height="42" rx="8"/>
-              <circle cx="48" cy="51" r="8" class="vg-dot-accent"/>
-              <rect x="66" y="45" width="90" height="12" rx="6" class="vg-line"/>
-            </g>
-            <g class="vg-bars">
-              <rect x="40"  y="150" width="26" height="60"  rx="4"/>
-              <rect x="76"  y="120" width="26" height="90"  rx="4"/>
-              <rect x="112" y="170" width="26" height="40"  rx="4"/>
-              <rect x="148" y="100" width="26" height="110" rx="4"/>
-            </g>
-            <g class="vg-map">
-              <circle cx="250" cy="130" r="4"/><circle cx="286" cy="112" r="4"/>
-              <circle cx="322" cy="140" r="4"/><circle cx="300" cy="166" r="4"/>
-              <circle cx="356" cy="120" r="4"/><circle cx="270" cy="150" r="3"/>
-              <path d="M250 130 L286 112 L356 120 M286 112 L322 140 L300 166" class="vg-map-line"/>
-            </g>
-            <g class="vg-rows">
-              <rect x="40" y="234" width="340" height="10" rx="5"/>
-              <rect x="40" y="254" width="280" height="10" rx="5"/>
-            </g>
-            <text x="40" y="105" class="vg-kicker">1,229 COMPANIES · 117 COUNTRIES</text>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2026 · <span data-i18n="w3.kind">CRM/ERP — in production</span></p>
-          <h3 class="work-title">ITSFR Platform <span class="work-jp">— factory operating system</span></h3>
-          <p class="work-desc" data-i18n="w3.desc">
-            The operations platform for an Indonesian export filter-rod manufacturer, running daily
-            on the factory network: market intelligence → sales pipeline → production → warehouse.
-            13 admin resources, 16 custom pages, ~18k LOC, seeded with 1,229 real companies across
-            117 countries. Its sharpest ideas live in the data model.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w3.h1">Ephemeral pricing — quotes are typed at print time, never persisted; trade secrets stay out of the DB</li>
-            <li data-i18n="w3.h2">Inventory is computed, never typed: every unit derives from audited stock movements (FEFO lots, reorder points)</li>
-            <li data-i18n="w3.h3">Container &amp; MOQ math from packing dimensions; production backflush ties batches to materials</li>
-          </ul>
-          <div class="chips">
-            <span>Laravel 13</span><span>Filament v5</span><span>MySQL</span><span>PHPUnit — 47 test files</span><span>DomPDF</span><span>Tailwind v4</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- RYO Configurator -->
-      <article class="work reveal" style="--work-accent:#C25E3C">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-ryo" viewBox="0 0 420 300" role="img">
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg vg-bg-dark"/>
-            <g class="vg-chips-row">
-              <rect x="26" y="28" width="64" height="22" rx="11" class="vg-chip vg-chip-on"/>
-              <rect x="98" y="28" width="64" height="22" rx="11" class="vg-chip"/>
-              <rect x="170" y="28" width="64" height="22" rx="11" class="vg-chip"/>
-              <rect x="242" y="28" width="64" height="22" rx="11" class="vg-chip"/>
-            </g>
-            <ellipse cx="210" cy="235" rx="150" ry="16" class="vg-table-shadow"/>
-            <g class="vg-stage-obj vg-obj1">
-              <rect x="90" y="150" width="70" height="80" rx="8" class="vg-box"/>
-              <rect x="90" y="150" width="70" height="22" rx="8" class="vg-box-lid"/>
-            </g>
-            <g class="vg-stage-obj vg-obj2">
-              <rect x="185" y="185" width="90" height="14" rx="7" class="vg-rod"/>
-              <rect x="185" y="205" width="90" height="14" rx="7" class="vg-rod"/>
-              <rect x="185" y="165" width="90" height="14" rx="7" class="vg-rod"/>
-            </g>
-            <g class="vg-stage-obj vg-obj3">
-              <path d="M300 230 L306 160 Q330 150 354 160 L360 230 Q330 242 300 230 Z" class="vg-pouch"/>
-            </g>
-            <text x="26" y="85" class="vg-kicker vg-kicker-light">7 CONSTRUCTIONS · LIVE PREVIEW</text>
-            <text x="26" y="272" class="vg-json">{ "diameter_mm": 6.0, "aroma": "mint", … }</text>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2025–26 · <span data-i18n="w4.kind">B2B configurator — zero dependencies</span></p>
-          <h3 class="work-title">ITS RYO Configurator <span class="work-jp">— a lot with nothing</span></h3>
-          <p class="work-desc" data-i18n="w4.desc">
-            A full product configurator for roll-your-own filter tips — 7 constructions, custom
-            diameters, 8 aromas, packaging tiers — with a live three-object animated preview on a
-            studio-table stage. No framework, no build step, no npm: three standalone HTML files a
-            client can edit by changing one JS object.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w4.h1">Self-upgrading assets: photos probe a candidate chain and replace generated SVGs the moment a file exists</li>
-            <li data-i18n="w4.h2">Staggered cross-fade stage with signature-diffing so unchanged objects never re-animate</li>
-            <li data-i18n="w4.h3">"Integration payload" toggle exposes a CRM-ready JSON of the config — a gift to the next developer</li>
-          </ul>
-          <div class="chips">
-            <span>Vanilla ES6+</span><span>Inline SVG</span><span>CSS custom properties</span><span>IntersectionObserver</span><span>WhatsApp funnel</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- July Sunflowers -->
-      <article class="work reveal" style="--work-accent:#C98A1B">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-jsf" viewBox="0 0 420 300" role="img">
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg"/>
-            <circle cx="360" cy="52" r="60" class="vg-ring"/>
-            <circle cx="360" cy="52" r="42" class="vg-ring vg-ring2"/>
-            <g class="vg-grid">
-              <rect x="30"  y="96"  width="110" height="84" rx="10"/>
-              <rect x="155" y="96"  width="110" height="84" rx="10"/>
-              <rect x="280" y="96"  width="110" height="84" rx="10"/>
-              <rect x="30"  y="196" width="110" height="84" rx="10"/>
-              <rect x="155" y="196" width="110" height="84" rx="10"/>
-              <rect x="280" y="196" width="110" height="84" rx="10"/>
-            </g>
-            <g class="vg-badges">
-              <rect x="40" y="106" width="44" height="16" rx="8"/>
-              <rect x="165" y="106" width="44" height="16" rx="8"/>
-              <rect x="290" y="106" width="44" height="16" rx="8"/>
-            </g>
-            <text x="30" y="52" class="vg-kicker">186 SKUs · 17 CATEGORIES</text>
-            <text x="30" y="74" class="vg-kicker">CSV IS THE CMS</text>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2025 · <span data-i18n="w5.kind">Catalog storefront — brand refresh</span></p>
-          <h3 class="work-title">July Sunflowers <span class="work-jp">— a real brand world</span></h3>
-          <p class="work-desc" data-i18n="w5.desc">
-            Brand-refresh concept and quote-style storefront for a California foodservice supplier:
-            186 SKUs across 17 categories, driven entirely by one CSV file compiled at build time.
-            A "visual family" system groups size variants so one photo upgrades a whole product
-            family — with hand-drawn SVG illustrations standing in until it arrives.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w5.h1">CSV-as-CMS: editing products = editing a spreadsheet</li>
-            <li data-i18n="w5.h2">Quote cart generates numbered invoices (JSF-YYYYMMDD-NNN) with pluggable transport</li>
-            <li data-i18n="w5.h3">Deep-linkable product drawer with focus trap, keyboard nav, and per-product page titles</li>
-          </ul>
-          <div class="chips">
-            <span>Vue 3</span><span>Vite 7</span><span>Zero runtime deps</span><span>CSV pipeline</span><span>PWA assets</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- SpeakEnglish -->
-      <article class="work reveal" style="--work-accent:#4A6FA5">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-speak" viewBox="0 0 420 300" role="img">
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg vg-bg-dark"/>
-            <rect x="130" y="26" width="160" height="248" rx="20" class="vg-phone"/>
-            <rect x="146" y="52" width="94" height="26" rx="13" class="vg-bubble-ai"/>
-            <rect x="176" y="88" width="98" height="26" rx="13" class="vg-bubble-user"/>
-            <rect x="146" y="124" width="112" height="34" rx="10" class="vg-correct"/>
-            <text x="154" y="139" class="vg-json">##CORRECTION##</text>
-            <text x="154" y="152" class="vg-json">I went → I go ✓</text>
-            <g class="vg-wave">
-              <rect x="168" y="216" width="5" height="14" rx="2.5"/>
-              <rect x="180" y="208" width="5" height="30" rx="2.5"/>
-              <rect x="192" y="200" width="5" height="46" rx="2.5"/>
-              <rect x="204" y="210" width="5" height="26" rx="2.5"/>
-              <rect x="216" y="204" width="5" height="38" rx="2.5"/>
-              <rect x="228" y="212" width="5" height="22" rx="2.5"/>
-              <rect x="240" y="218" width="5" height="10" rx="2.5"/>
-            </g>
-            <text x="24" y="52" class="vg-kicker vg-kicker-light">SPEAK → STT → LLM</text>
-            <text x="24" y="74" class="vg-kicker vg-kicker-light">→ TTS → REPEAT</text>
-            <text x="24" y="272" class="vg-json">8 providers · auto-fallback</text>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2026 · <span data-i18n="w6.kind">Android app — shipped &amp; sold</span></p>
-          <h3 class="work-title">SpeakEnglish <span class="work-jp">— an AI voice tutor in your pocket</span></h3>
-          <p class="work-desc" data-i18n="w6.desc">
-            A commercial Android app for practicing spoken English with an AI tutor: speak, and the
-            loop runs hands-free — speech-to-text, LLM, spoken reply, mic reopens. It runs entirely
-            on free LLM tiers thanks to an 8-provider routing chain with automatic failover and key
-            rotation, wrapped in device-bound licensing and sold directly to users as a signed release.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w6.h1">8 LLM providers behind one interface — streaming SSE, auto-fallback on quota, encrypted keys</li>
-            <li data-i18n="w6.h2">Structured grammar correction: marked by the model, rendered as a card, deliberately never spoken</li>
-            <li data-i18n="w6.h3">Anti-piracy layers: device fingerprint + HMAC activation, tamper guard, Supabase license backend</li>
-          </ul>
-          <div class="chips">
-            <span>Kotlin</span><span>Jetpack Compose</span><span>Room</span><span>Supabase</span><span>STT / TTS</span><span>8× LLM APIs</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- SupplierDaging -->
-      <article class="work reveal" style="--work-accent:#8E3B3B">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-pos" viewBox="0 0 420 300" role="img">
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg"/>
-            <rect x="36" y="40" width="150" height="220" rx="8" class="vg-receipt"/>
-            <g class="vg-receipt-lines">
-              <rect x="52" y="60"  width="80" height="8" rx="4"/>
-              <rect x="52" y="80"  width="118" height="6" rx="3"/>
-              <rect x="52" y="96"  width="104" height="6" rx="3"/>
-              <rect x="52" y="112" width="118" height="6" rx="3"/>
-              <rect x="52" y="136" width="60" height="8" rx="4" class="vg-receipt-total"/>
-            </g>
-            <path d="M36 260 l12 10 12 -10 12 10 12 -10 12 10 12 -10 12 10 12 -10 12 10 12 -10 12 10 12 -10" class="vg-receipt-tear"/>
-            <g class="vg-keypad">
-              <rect x="230" y="70" width="44" height="36" rx="8"/><rect x="284" y="70" width="44" height="36" rx="8"/><rect x="338" y="70" width="44" height="36" rx="8"/>
-              <rect x="230" y="116" width="44" height="36" rx="8"/><rect x="284" y="116" width="44" height="36" rx="8"/><rect x="338" y="116" width="44" height="36" rx="8"/>
-              <rect x="230" y="162" width="98" height="36" rx="8"/><rect x="338" y="162" width="44" height="36" rx="8" class="vg-key-accent"/>
-            </g>
-            <text x="230" y="52" class="vg-kicker">POS · FEFO · OFFLINE-FIRST</text>
-            <text x="230" y="228" class="vg-json">int rupiah · int grams · 0 floats</text>
-            <text x="230" y="248" class="vg-json">17 tables · 34.5k LOC Dart</text>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2026 · <span data-i18n="w7.kind">Flutter app — offline-first</span></p>
-          <h3 class="work-title">SupplierDaging <span class="work-jp">— a meat business in one APK</span></h3>
-          <p class="work-desc" data-i18n="w7.desc">
-            Offline-first Android app for a fresh-meat supplier: catalog, FEFO batch inventory for
-            perishables, POS, purchasing, receivables, thermal receipts, PDF/CSV reports and zip
-            backup — ~34.5k lines of Dart with no network dependency at all. Money is stored as
-            integer rupiah, weight as integer grams; floats never touch the books.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w7.h1">17 Drift tables; a sale commits stock issue + receivable + audit in one transaction</li>
-            <li data-i18n="w7.h2">Bluetooth ESC/POS thermal printing (58/80mm) and PDF invoices from the phone</li>
-            <li data-i18n="w7.h3">A written design system — master tokens + 26 per-page specs; tests; signed split-ABI releases</li>
-          </ul>
-          <div class="chips">
-            <span>Flutter</span><span>Dart</span><span>Drift (SQLite)</span><span>Riverpod</span><span>Thermal printing</span><span>PDF / CSV</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- GalonHarmoni -->
-      <article class="work reveal" style="--work-accent:#3E7CA6">
-        <div class="work-visual" aria-hidden="true">
-          <svg class="vg vg-galon" viewBox="0 0 420 300" role="img">
-            <rect x="0" y="0" width="420" height="300" rx="18" class="vg-bg"/>
-            <g class="vg-map2">
-              <path d="M30 90 Q 120 60 210 96 T 390 90" />
-              <path d="M30 150 Q 120 120 210 156 T 390 150"/>
-              <path d="M30 210 Q 120 180 210 216 T 390 210"/>
-              <path d="M110 40 Q 140 130 120 260" />
-              <path d="M250 40 Q 280 130 260 260" />
-            </g>
-            <g class="vg-pin">
-              <path d="M210 118 c -14 0 -24 10 -24 23 c 0 16 24 39 24 39 s 24 -23 24 -39 c 0 -13 -10 -23 -24 -23 z"/>
-              <circle cx="210" cy="140" r="9" class="vg-pin-hole"/>
-            </g>
-            <circle cx="210" cy="150" r="52" class="vg-radius"/>
-            <text x="248" y="196" class="vg-json">&lt; 300 m ✓</text>
-            <g class="vg-roles">
-              <rect x="30" y="34" width="66" height="22" rx="11" class="vg-role"/>
-              <rect x="104" y="34" width="66" height="22" rx="11" class="vg-role"/>
-              <rect x="252" y="34" width="66" height="22" rx="11" class="vg-role vg-role-on"/>
-              <rect x="326" y="34" width="72" height="22" rx="11" class="vg-role"/>
-              <text x="42" y="49" class="vg-role-t">admin</text>
-              <text x="115" y="49" class="vg-role-t">kasir</text>
-              <text x="263" y="49" class="vg-role-t">kurir</text>
-              <text x="336" y="49" class="vg-role-t">pelanggan</text>
-            </g>
-            <text x="30" y="276" class="vg-kicker">30 RLS POLICIES · REALTIME · LEDGER</text>
-          </svg>
-        </div>
-        <div class="work-body">
-          <p class="work-meta mono-label">2026 · <span data-i18n="w8.kind">Full-stack PWA — Postgres backend</span></p>
-          <h3 class="work-title">GalonHarmoni <span class="work-jp">— four roles, one water depot</span></h3>
-          <p class="work-desc" data-i18n="w8.desc">
-            Management PWA for a water-gallon depot with four portals — admin, cashier, courier,
-            customer. The backend is Postgres doing real work: ~30 row-level-security policies,
-            column-level trigger guards, an append-only gallon-deposit ledger, idempotent
-            loyalty-point recalculation, and GPS-verified proof of delivery.
-          </p>
-          <ul class="work-highlights">
-            <li data-i18n="w8.h1">Column-level authorization in triggers — couriers may touch only status/GPS columns, customers only confirmations</li>
-            <li data-i18n="w8.h2">Anti-fraud delivery: haversine distance check flags completions &gt;300m from the customer's pin</li>
-            <li data-i18n="w8.h3">Realtime order board via Postgres changes; admin-editable price matrix without code changes</li>
-          </ul>
-          <div class="chips">
-            <span>Next.js 16</span><span>React 19</span><span>Supabase</span><span>Postgres RLS</span><span>Leaflet</span><span>PWA</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- also built -->
-      <div class="more-works reveal">
-        <h3 class="mono-label" data-i18n="mw.label">— Also built</h3>
-        <ul>
-          <li><strong>FegaTutor</strong> — <span data-i18n="mw.1">voice language tutor (EN/JP) on Node.js + Claude Agent SDK, per-sentence TTS streaming, Leitner progress memory</span></li>
-          <li><strong>Secure DMS</strong> — <span data-i18n="mw.2">enterprise document management built for a client: Express + Prisma + Postgres, JWT/RBAC, versioning, audit logs</span></li>
-          <li><strong data-i18n="mw.3t">Leaf-disease CNN (thesis)</strong> — <span data-i18n="mw.3">TensorFlow/Keras classifier for rubber-tree diseases, deployed as a live Flask app on Vercel</span></li>
-          <li><strong>SpeakJapanese</strong> — <span data-i18n="mw.4">the MVP that came first: bilingual voice practice with a custom furigana renderer — its post-mortem shaped SpeakEnglish</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ================= 03 THE MAP ================= -->
-    <section id="map" class="section chapter" data-chapter-id="map">
-      <header class="section-head reveal">
-        <span class="section-num">03</span>
-        <p class="eyebrow"><span class="rule"></span><span data-i18n="map.eyebrow">The map</span></p>
-        <h2 data-i18n="map.title">How technology builds a business.</h2>
-      </header>
-      <p class="map-lede reveal" data-i18n="map.lede">
-        This is the flywheel I'm building my career around: sense the market with AI and data,
-        build on the right platform, sell through brand experience, operate on business
-        intelligence, and learn from the data flowing back. Every node is labeled honestly —
-        proven by a shipped project, in progress, or the next target.
+      <p class="hero-line" data-i18n="hero.line">
+        Technology problem-solver. I build whatever the problem actually needs —
+        an AI that speaks, an app that sells, the data layer under it,
+        or the ERP that runs a factory floor.
       </p>
 
-      <div class="map-scroll reveal">
+      <p class="hero-foot mono" data-i18n="hero.foot">9 systems shipped · 3 market languages · scroll ↓</p>
+    </section>
+
+    <!-- ============ HOW I WORK ============ -->
+    <section id="how" class="block">
+      <p class="block-label mono" data-i18n="how.label">HOW I WORK</p>
+      <ol class="creed">
+        <li>
+          <span class="creed-num mono">01</span>
+          <p class="creed-line" data-i18n="how.1">I'd rather ship three honest files than a framework circus.</p>
+          <p class="creed-note mono" data-i18n="how.1n">a 7-variant B2B configurator lives in 3 dependency-free HTML files — RYO, below</p>
+        </li>
+        <li>
+          <span class="creed-num mono">02</span>
+          <p class="creed-line" data-i18n="how.2">The demo is never fake. If checkout isn't wired, the button says so.</p>
+          <p class="creed-note mono" data-i18n="how.2n">zonzon's cart is honestly labeled 準備中; the AI roadmap page shows the roadmap, not mock numbers</p>
+        </li>
+        <li>
+          <span class="creed-num mono">03</span>
+          <p class="creed-line" data-i18n="how.3">Law, trade secrets and factory floors are design inputs — not obstacles.</p>
+          <p class="creed-note mono" data-i18n="how.3n">薬機法-compliant copy for Japan; an ERP whose database physically cannot leak a price</p>
+        </li>
+        <li>
+          <span class="creed-num mono">04</span>
+          <p class="creed-line" data-i18n="how.4">A business is not a website. It's a loop: sense → build → sell → operate → learn.</p>
+          <p class="creed-note mono" data-i18n="how.4n">the flywheel is mapped at the end of this page — every claim tied to a shipped system</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ SCENES ============ -->
+    <section id="works" class="scenes">
+      <p class="block-label mono" data-i18n="sc.label">SELECTED SYSTEMS — 2025 → 2026</p>
+
+      <!-- 01 zonzon.shop -->
+      <article class="scene">
+        <span class="scene-num" data-plx aria-hidden="true">01</span>
+        <div class="scene-body">
+          <p class="scene-kicker mono">2026 · <span data-i18n="s1.kind">CINEMATIC COMMERCE — JAPAN</span></p>
+          <h3 class="scene-title">zonzon<span class="hot">.</span>shop</h3>
+          <p class="scene-logline" data-i18n="s1.log">Nine chapters, one scroll: the shop <em>is</em> the movie.</p>
+          <figure class="scene-stage" aria-hidden="true">
+            <svg viewBox="0 0 560 240" class="sg">
+              <g class="sg-frames">
+                <rect x="10"  y="60" width="120" height="80" rx="6"/>
+                <rect x="150" y="60" width="120" height="80" rx="6" class="sg-on"/>
+                <rect x="290" y="60" width="120" height="80" rx="6"/>
+                <rect x="430" y="60" width="120" height="80" rx="6"/>
+              </g>
+              <rect x="10" y="180" width="540" height="3" rx="1.5" class="sg-track"/>
+              <rect x="10" y="180" width="180" height="3" rx="1.5" class="sg-thumb"/>
+              <text x="10" y="36" class="sg-cap">SCROLL = ONE SLOW BREATH</text>
+              <text x="10" y="216" class="sg-cap sg-dim">ch.04 仕組み — 00:00:12:07</text>
+            </svg>
+          </figure>
+          <p class="scene-detail"><span class="mono hot" data-i18n="s1.dl">THE DETAIL —</span> <span data-i18n="s1.d">755 lines, zero libraries: a scroll-scrub video engine with blob-fetched instant seeking and a "linger" easing that slows a chapter's middle without ever moving a seam frame.</span></p>
+          <dl class="spec mono">
+            <div><dt>STACK</dt><dd>TanStack Start · React 19 · Cloudflare Workers</dd></div>
+            <div><dt>STATUS</dt><dd data-i18n="s1.st">feature-complete brand + shop, CI green</dd></div>
+            <div><dt data-i18n="spec.proof">PROOF</dt><dd data-i18n="s1.pf">9 scroll-scrubbed chapters · aroma-reactive theming · mobile encodes</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 02 ZONZON brand -->
+      <article class="scene">
+        <span class="scene-num" data-plx aria-hidden="true">02</span>
+        <div class="scene-body">
+          <p class="scene-kicker mono">2026 · <span data-i18n="s2.kind">D2C BRAND WORLD — JAPAN</span></p>
+          <h3 class="scene-title">ZONZON</h3>
+          <p class="scene-logline" data-i18n="s2.log">A wooden inhaler for Japan — sold by a website that explains it like a documentary.</p>
+          <figure class="scene-stage" aria-hidden="true">
+            <svg viewBox="0 0 560 240" class="sg">
+              <defs>
+                <linearGradient id="wood2" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#5c3d26"/><stop offset=".5" stop-color="#8B5E3C"/><stop offset="1" stop-color="#4a3120"/>
+                </linearGradient>
+              </defs>
+              <g class="sg-float">
+                <rect x="170" y="100" width="180" height="44" rx="22" fill="url(#wood2)"/>
+                <rect x="340" y="109" width="52" height="26" rx="13" class="sg-metal"/>
+                <circle cx="182" cy="122" r="10" class="sg-core"/>
+              </g>
+              <path class="sg-wisp" d="M395 108 C 412 84, 386 68, 404 46 S 396 12, 414 -6" fill="none"/>
+              <path class="sg-wisp sg-wisp2" d="M408 112 C 428 92, 408 74, 424 54 S 420 24, 436 8" fill="none"/>
+              <text x="10" y="36" class="sg-cap">KEEP THE RITUAL. LEAVE THE SMOKE BEHIND.</text>
+              <text x="10" y="216" class="sg-cap sg-dim">walnut · brass · 0 nicotine · 0 smoke</text>
+            </svg>
+          </figure>
+          <p class="scene-detail"><span class="mono hot" data-i18n="s2.dl">THE DETAIL —</span> <span data-i18n="s2.d">the 3D product is not a model file: it's lathe-profiled geometry traced from photos, with walnut grain painted by code onto a canvas at runtime — 260 bezier strokes, drag to rotate.</span></p>
+          <dl class="spec mono">
+            <div><dt>STACK</dt><dd>Next.js 15 · Three.js/R3F · GSAP · Tailwind 4</dd></div>
+            <div><dt>STATUS</dt><dd data-i18n="s2.st">pre-launch — checkout honestly stubbed</dd></div>
+            <div><dt data-i18n="spec.proof">PROOF</dt><dd data-i18n="s2.pf">14 routes · 113-frame canvas hero · 薬機法-compliant copy</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 03 ITSFR -->
+      <article class="scene">
+        <span class="scene-num" data-plx aria-hidden="true">03</span>
+        <div class="scene-body">
+          <p class="scene-kicker mono">2026 · <span data-i18n="s3.kind">CRM/ERP — RUNNING A FACTORY, DAILY</span></p>
+          <h3 class="scene-title">ITSFR<span class="hot"> Platform</span></h3>
+          <p class="scene-logline" data-i18n="s3.log">The operating system of an export filter-rod factory: leads in, containers out.</p>
+          <figure class="scene-stage" aria-hidden="true">
+            <svg viewBox="0 0 560 240" class="sg">
+              <g class="sg-bars">
+                <rect x="14"  y="130" width="30" height="70"  rx="3"/>
+                <rect x="54"  y="95"  width="30" height="105" rx="3"/>
+                <rect x="94"  y="150" width="30" height="50"  rx="3"/>
+                <rect x="134" y="70"  width="30" height="130" rx="3"/>
+              </g>
+              <g class="sg-map">
+                <circle cx="300" cy="110" r="4"/><circle cx="352" cy="86" r="4"/>
+                <circle cx="410" cy="120" r="4"/><circle cx="372" cy="150" r="4"/>
+                <circle cx="470" cy="96" r="4"/><circle cx="330" cy="140" r="3"/>
+                <path d="M300 110 L352 86 L470 96 M352 86 L410 120 L372 150" class="sg-mapline"/>
+              </g>
+              <text x="14" y="36" class="sg-cap">1,229 COMPANIES · 117 COUNTRIES · 47 TEST FILES</text>
+              <text x="14" y="226" class="sg-cap sg-dim">pipeline → production → warehouse → container</text>
+            </svg>
+          </figure>
+          <p class="scene-detail"><span class="mono hot" data-i18n="s3.dl">THE DETAIL —</span> <span data-i18n="s3.d">prices are typed at print time, stashed in session, attached only to the PDF — never persisted. The database cannot leak what it never stored. Inventory works the same way: computed from audited movements, never typed.</span></p>
+          <dl class="spec mono">
+            <div><dt>STACK</dt><dd>Laravel 13 · Filament v5 · MySQL</dd></div>
+            <div><dt>STATUS</dt><dd class="hot" data-i18n="s3.st">in production — used on the factory LAN every day</dd></div>
+            <div><dt data-i18n="spec.proof">PROOF</dt><dd data-i18n="s3.pf">13 resources · 16 custom pages · ~18k LOC · FEFO lots · container math</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 04 SpeakEnglish -->
+      <article class="scene">
+        <span class="scene-num" data-plx aria-hidden="true">04</span>
+        <div class="scene-body">
+          <p class="scene-kicker mono">2026 · <span data-i18n="s4.kind">ANDROID × AI — SIGNED, SHIPPED, SOLD</span></p>
+          <h3 class="scene-title">Speak<span class="hot">English</span></h3>
+          <p class="scene-logline" data-i18n="s4.log">An AI English tutor that talks back — sold by APK and activation code, straight to users.</p>
+          <figure class="scene-stage" aria-hidden="true">
+            <svg viewBox="0 0 560 240" class="sg">
+              <rect x="200" y="10" width="160" height="220" rx="18" class="sg-phone"/>
+              <rect x="216" y="34" width="90" height="24" rx="12" class="sg-bub"/>
+              <rect x="254" y="68" width="90" height="24" rx="12" class="sg-bub-user"/>
+              <rect x="216" y="102" width="116" height="32" rx="8" class="sg-correct"/>
+              <text x="224" y="115" class="sg-cap sg-tiny">##CORRECTION##</text>
+              <text x="224" y="128" class="sg-cap sg-tiny">I goed → I went ✓</text>
+              <g class="sg-wave">
+                <rect x="240" y="176" width="5" height="12" rx="2.5"/>
+                <rect x="252" y="168" width="5" height="28" rx="2.5"/>
+                <rect x="264" y="160" width="5" height="44" rx="2.5"/>
+                <rect x="276" y="170" width="5" height="24" rx="2.5"/>
+                <rect x="288" y="164" width="5" height="36" rx="2.5"/>
+                <rect x="300" y="172" width="5" height="20" rx="2.5"/>
+              </g>
+              <text x="10" y="36" class="sg-cap">SPEAK → STT → LLM → TTS → REPEAT</text>
+              <text x="10" y="226" class="sg-cap sg-dim">8 providers · auto-failover · $0 inference</text>
+            </svg>
+          </figure>
+          <p class="scene-detail"><span class="mono hot" data-i18n="s4.dl">THE DETAIL —</span> <span data-i18n="s4.d">eight free-tier LLM providers behind one interface with streaming, key rotation and automatic failover — when one runs dry mid-conversation, the next answers. Licensing is device-bound HMAC with a tamper guard and a Supabase backend.</span></p>
+          <dl class="spec mono">
+            <div><dt>STACK</dt><dd>Kotlin · Jetpack Compose · Room · Supabase</dd></div>
+            <div><dt>STATUS</dt><dd class="hot" data-i18n="s4.st">signed release — sold direct via WhatsApp</dd></div>
+            <div><dt data-i18n="spec.proof">PROOF</dt><dd data-i18n="s4.pf">structured grammar-correction protocol · 11 scenarios · barge-in voice loop</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 05 SupplierDaging -->
+      <article class="scene">
+        <span class="scene-num" data-plx aria-hidden="true">05</span>
+        <div class="scene-body">
+          <p class="scene-kicker mono">2026 · <span data-i18n="s5.kind">FLUTTER — OFFLINE-FIRST BACK OFFICE</span></p>
+          <h3 class="scene-title">Supplier<span class="hot">Daging</span></h3>
+          <p class="scene-logline" data-i18n="s5.log">A meat distributor's entire back office — POS to thermal receipts — offline, in one APK.</p>
+          <figure class="scene-stage" aria-hidden="true">
+            <svg viewBox="0 0 560 240" class="sg">
+              <rect x="40" y="20" width="150" height="190" rx="6" class="sg-receipt"/>
+              <g class="sg-rlines">
+                <rect x="56" y="40"  width="76" height="8" rx="4"/>
+                <rect x="56" y="60"  width="118" height="5" rx="2.5"/>
+                <rect x="56" y="74"  width="102" height="5" rx="2.5"/>
+                <rect x="56" y="88"  width="118" height="5" rx="2.5"/>
+                <rect x="56" y="110" width="58" height="8" rx="4" class="sg-rtotal"/>
+              </g>
+              <path d="M40 210 l10 9 10 -9 10 9 10 -9 10 9 10 -9 10 9 10 -9 10 9 10 -9 10 9 10 -9 10 9 10 -9 10 9" class="sg-tear"/>
+              <g class="sg-keys">
+                <rect x="250" y="40" width="52" height="40" rx="7"/><rect x="312" y="40" width="52" height="40" rx="7"/><rect x="374" y="40" width="52" height="40" rx="7"/>
+                <rect x="250" y="90" width="52" height="40" rx="7"/><rect x="312" y="90" width="52" height="40" rx="7"/><rect x="374" y="90" width="52" height="40" rx="7"/>
+                <rect x="250" y="140" width="114" height="40" rx="7"/><rect x="374" y="140" width="52" height="40" rx="7" class="sg-key-hot"/>
+              </g>
+              <text x="250" y="216" class="sg-cap sg-dim">17 tables · 34.5k LOC · FEFO</text>
+              <text x="450" y="36" class="sg-cap sg-tiny">58/80mm</text>
+            </svg>
+          </figure>
+          <p class="scene-detail"><span class="mono hot" data-i18n="s5.dl">THE DETAIL —</span> <span data-i18n="s5.d">money is integer rupiah, weight is integer grams — floats never touch the books. One sale commits stock issue, receivable and audit trail in a single database transaction; perishables leave the warehouse first-expired-first-out.</span></p>
+          <dl class="spec mono">
+            <div><dt>STACK</dt><dd>Flutter · Dart · Drift (SQLite) · Riverpod</dd></div>
+            <div><dt>STATUS</dt><dd data-i18n="s5.st">feature-complete MVP — signed split-ABI releases</dd></div>
+            <div><dt data-i18n="spec.proof">PROOF</dt><dd data-i18n="s5.pf">Bluetooth ESC/POS printing · PDF/CSV reports · a written 26-page design system</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 06 RYO -->
+      <article class="scene">
+        <span class="scene-num" data-plx aria-hidden="true">06</span>
+        <div class="scene-body">
+          <p class="scene-kicker mono">2025–26 · <span data-i18n="s6.kind">B2B CONFIGURATOR — ZERO DEPENDENCIES</span></p>
+          <h3 class="scene-title">ITS RYO<span class="hot"> Configurator</span></h3>
+          <p class="scene-logline" data-i18n="s6.log">A 7-variant product configurator in three HTML files. No framework. No build. No npm.</p>
+          <figure class="scene-stage" aria-hidden="true">
+            <svg viewBox="0 0 560 240" class="sg">
+              <g class="sg-chips">
+                <rect x="10" y="20" width="74" height="24" rx="12" class="sg-chip sg-chip-on"/>
+                <rect x="94" y="20" width="74" height="24" rx="12" class="sg-chip"/>
+                <rect x="178" y="20" width="74" height="24" rx="12" class="sg-chip"/>
+                <rect x="262" y="20" width="74" height="24" rx="12" class="sg-chip"/>
+              </g>
+              <ellipse cx="280" cy="196" rx="210" ry="14" class="sg-shadow"/>
+              <g class="sg-obj sg-obj1">
+                <rect x="120" y="110" width="84" height="86" rx="8" class="sg-box"/>
+                <rect x="120" y="110" width="84" height="24" rx="8" class="sg-boxlid"/>
+              </g>
+              <g class="sg-obj sg-obj2">
+                <rect x="238" y="176" width="104" height="14" rx="7" class="sg-rod"/>
+                <rect x="238" y="156" width="104" height="14" rx="7" class="sg-rod"/>
+                <rect x="238" y="136" width="104" height="14" rx="7" class="sg-rod"/>
+              </g>
+              <g class="sg-obj sg-obj3">
+                <path d="M382 194 L388 118 Q 414 106 440 118 L446 194 Q 414 208 382 194 Z" class="sg-pouch"/>
+              </g>
+              <text x="10" y="226" class="sg-cap sg-dim">{ "diameter_mm": 6.0, "aroma": "mint", … }</text>
+            </svg>
+          </figure>
+          <p class="scene-detail"><span class="mono hot" data-i18n="s6.dl">THE DETAIL —</span> <span data-i18n="s6.d">drop a photo with the right filename and the page upgrades itself: assets probe a most-specific-first candidate chain and replace the generated SVGs, no code edit. A hidden toggle prints the whole config as CRM-ready JSON — a gift to the next developer.</span></p>
+          <dl class="spec mono">
+            <div><dt>STACK</dt><dd>Vanilla ES6+ · inline SVG · CSS custom properties</dd></div>
+            <div><dt>STATUS</dt><dd data-i18n="s6.st">polished handoff mockup for itsfilterrod.com</dd></div>
+            <div><dt data-i18n="spec.proof">PROOF</dt><dd data-i18n="s6.pf">7 constructions · live 3-object stage · bilingual SEO pages · WhatsApp funnel</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- filmography -->
+      <div class="filmo">
+        <p class="block-label mono" data-i18n="fl.label">FULL FILMOGRAPHY</p>
+        <table class="filmo-table mono">
+          <thead>
+            <tr><th data-i18n="fl.h1">YEAR</th><th data-i18n="fl.h2">SYSTEM</th><th data-i18n="fl.h3">WHAT IT IS</th><th data-i18n="fl.h4">STACK</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2026</td><td>GalonHarmoni</td><td data-i18n="fl.r1">4-role water-depot PWA — 30 RLS policies, GPS delivery proof</td><td>Next.js 16 · Supabase</td></tr>
+            <tr><td>2026</td><td>FegaTutor</td><td data-i18n="fl.r2">voice language tutor server, per-sentence TTS streaming</td><td>Node · Claude Agent SDK</td></tr>
+            <tr><td>2026</td><td>Secure DMS</td><td data-i18n="fl.r3">client build — enterprise document management, RBAC, versioning</td><td>Express · Prisma · Postgres</td></tr>
+            <tr><td>2026</td><td>SpeakJapanese</td><td data-i18n="fl.r4">the MVP before SpeakEnglish — custom furigana renderer</td><td>Kotlin · Compose</td></tr>
+            <tr><td>2025</td><td>July Sunflowers</td><td data-i18n="fl.r5">186-SKU storefront where the CMS is a CSV file</td><td>Vue 3 · Vite</td></tr>
+            <tr><td data-i18n="fl.thesis">thesis</td><td data-i18n="fl.r6t">Leaf-disease CNN</td><td data-i18n="fl.r6">trained crop-disease classifier, deployed live as a web app</td><td>TensorFlow · Flask · Vercel</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ THE FLYWHEEL ============ -->
+    <section id="map" class="block">
+      <p class="block-label mono" data-i18n="map.label">THE FLYWHEEL — <span data-i18n="map.label2">WHY ALL OF IT EXISTS</span></p>
+      <p class="block-lede" data-i18n="map.lede">
+        None of these systems is a random skill demo. They're stations on one loop —
+        the loop that builds a business. Labels are honest: proven by a shipped system,
+        in progress, or the next target.
+      </p>
+
+      <div class="map-scroll">
         <svg class="tm" viewBox="0 0 1200 960" role="img" aria-label="Technology flywheel map: Sense, Build, Sell, Operate, Learn around a central Business node">
           <defs>
             <marker id="tm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" class="tm-arrowhead"/>
             </marker>
           </defs>
-
-          <!-- spokes -->
           <g class="tm-spokes">
             <line x1="600" y1="450" x2="600" y2="215"/>
             <line x1="600" y1="450" x2="1000" y2="345"/>
@@ -553,8 +356,6 @@
             <line x1="600" y1="450" x2="370" y2="700"/>
             <line x1="600" y1="450" x2="200" y2="345"/>
           </g>
-
-          <!-- flow arrows (clockwise) -->
           <g class="tm-flows">
             <path d="M 745 95 Q 940 120 1005 240" marker-end="url(#tm-arrow)"/>
             <path d="M 1015 445 Q 1010 570 900 650" marker-end="url(#tm-arrow)"/>
@@ -562,16 +363,12 @@
             <path d="M 300 650 Q 190 570 185 445" marker-end="url(#tm-arrow)"/>
             <path d="M 195 240 Q 260 120 455 95" marker-end="url(#tm-arrow)"/>
           </g>
-
-          <!-- center -->
           <g class="tm-center">
             <rect x="510" y="415" width="180" height="70" rx="16"/>
             <text x="600" y="445" text-anchor="middle" class="tm-center-title">BUSINESS</text>
             <text x="600" y="467" text-anchor="middle" class="tm-center-sub" data-i18n="map.center">value for customers</text>
           </g>
-
-          <!-- SENSE — AI -->
-          <g class="tm-cluster" style="--tm-accent:#8B5E3C">
+          <g class="tm-cluster" style="--tm-accent:#C08552">
             <rect class="tm-card" x="470" y="40" width="260" height="180" rx="16"/>
             <text x="490" y="68" class="tm-stage">01 · SENSE</text>
             <text x="490" y="90" class="tm-domain">AI &amp; INTELLIGENCE</text>
@@ -583,9 +380,7 @@
             </g>
             <text x="490" y="206" class="tm-proof">SpeakEnglish · FegaTutor · AGEN-AI</text>
           </g>
-
-          <!-- BUILD — Development & Platforms -->
-          <g class="tm-cluster" style="--tm-accent:#A8432A">
+          <g class="tm-cluster" style="--tm-accent:#D4552B">
             <rect class="tm-card" x="870" y="258" width="260" height="180" rx="16"/>
             <text x="890" y="286" class="tm-stage">02 · BUILD</text>
             <text x="890" y="308" class="tm-domain" data-i18n="map.d2">DEVELOPMENT &amp; PLATFORMS</text>
@@ -597,9 +392,7 @@
             </g>
             <text x="890" y="424" class="tm-proof" data-i18n="map.p2">nine shipped projects</text>
           </g>
-
-          <!-- SELL — Brand Experience -->
-          <g class="tm-cluster" style="--tm-accent:#66806B">
+          <g class="tm-cluster" style="--tm-accent:#7E9B7A">
             <rect class="tm-card" x="700" y="658" width="260" height="180" rx="16"/>
             <text x="720" y="686" class="tm-stage">03 · SELL</text>
             <text x="720" y="708" class="tm-domain">BRAND EXPERIENCE</text>
@@ -610,9 +403,7 @@
             </g>
             <text x="720" y="824" class="tm-proof">ZONZON · zonzon.shop · RYO · JSF</text>
           </g>
-
-          <!-- OPERATE — BI -->
-          <g class="tm-cluster" style="--tm-accent:#9C6B34">
+          <g class="tm-cluster" style="--tm-accent:#C99B3F">
             <rect class="tm-card" x="240" y="658" width="260" height="180" rx="16"/>
             <text x="260" y="686" class="tm-stage">04 · OPERATE</text>
             <text x="260" y="708" class="tm-domain">BUSINESS INTELLIGENCE</text>
@@ -623,9 +414,7 @@
             </g>
             <text x="260" y="824" class="tm-proof" data-i18n="map.p4">ITSFR Platform — in production</text>
           </g>
-
-          <!-- LEARN — Data -->
-          <g class="tm-cluster" style="--tm-accent:#C98A1B">
+          <g class="tm-cluster" style="--tm-accent:#B48EAD">
             <rect class="tm-card" x="70" y="258" width="260" height="180" rx="16"/>
             <text x="90" y="286" class="tm-stage">05 · LEARN</text>
             <text x="90" y="308" class="tm-domain">DATA</text>
@@ -636,10 +425,8 @@
             </g>
             <text x="90" y="424" class="tm-proof" data-i18n="map.p5">ITSFR · thesis CNN — deployed</text>
           </g>
-
-          <!-- legend -->
           <g class="tm-legend">
-            <circle cx="260" cy="920" r="5" class="st-proven"/><text x="273" y="925" data-i18n="map.l1">Proven — shipped project</text>
+            <circle cx="260" cy="920" r="5" class="st-proven"/><text x="273" y="925" data-i18n="map.l1">Proven — shipped system</text>
             <circle cx="580" cy="920" r="5" class="st-building"/><text x="593" y="925" data-i18n="map.l2">Building</text>
             <circle cx="790" cy="920" r="5" class="st-next"/><text x="803" y="925" data-i18n="map.l3">Next target</text>
           </g>
@@ -647,96 +434,24 @@
       </div>
     </section>
 
-    <!-- ================= 04 STACK ================= -->
-    <section id="stack" class="section chapter" data-chapter-id="stack">
-      <header class="section-head reveal">
-        <span class="section-num">04</span>
-        <p class="eyebrow"><span class="rule"></span><span data-i18n="stack.eyebrow">Stack &amp; capabilities</span></p>
-        <h2 data-i18n="stack.title">Tools chosen per problem, not per habit.</h2>
-      </header>
-      <div class="stack-grid">
-        <div class="stack-col reveal">
-          <h3 class="mono-label" data-i18n="stack.c1">— Frontend</h3>
-          <ul><li>React 19 · Next.js</li><li>Vue 3 · Vite</li><li>Kotlin · Jetpack Compose</li><li>Flutter · Dart</li><li>TypeScript · Tailwind v4</li><li>Vanilla ES6+ <span class="dim" data-i18n="stack.c1n">(when zero deps wins)</span></li></ul>
-        </div>
-        <div class="stack-col reveal">
-          <h3 class="mono-label" data-i18n="stack.c2">— Motion &amp; 3D</h3>
-          <ul><li>GSAP · ScrollTrigger · Lenis</li><li>Three.js · React Three Fiber</li><li data-i18n="stack.c2a">Custom scroll-video engines</li><li data-i18n="stack.c2b">Canvas image sequences</li><li data-i18n="stack.c2c">Procedural geometry &amp; textures</li><li>prefers-reduced-motion, <span data-i18n="stack.c2d">always</span></li></ul>
-        </div>
-        <div class="stack-col reveal">
-          <h3 class="mono-label" data-i18n="stack.c3">— Systems</h3>
-          <ul><li>Laravel · Filament</li><li>Supabase · Postgres <span class="dim">(RLS, triggers)</span></li><li>Express · Prisma · Node.js</li><li>MySQL · SQLite · <span data-i18n="stack.c3a">derived-state modeling</span></li><li>PHPUnit · Vitest · <span data-i18n="stack.c3b2">Flutter tests</span></li><li>Cloudflare Workers · Vercel · GitHub Actions</li></ul>
-        </div>
-        <div class="stack-col reveal">
-          <h3 class="mono-label" data-i18n="stack.c4">— AI &amp; machine learning</h3>
-          <ul>
-            <li data-i18n="stack.c4e">Multi-provider LLM routing &amp; failover</li>
-            <li data-i18n="stack.c4f">Voice pipelines: STT · LLM · streaming TTS</li>
-            <li>TensorFlow / Keras <span class="dim">(CNN, deployed)</span></li>
-            <li>Claude Agent SDK · Anthropic API</li>
-            <li data-i18n="stack.c4a">Human-in-the-loop agent architecture</li>
-            <li data-i18n="stack.c4c">Written guardrails: no invented data</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 04 PRINCIPLES ================= -->
-    <section id="principles" class="section chapter" data-chapter-id="principles">
-      <header class="section-head reveal">
-        <span class="section-num">05</span>
-        <p class="eyebrow"><span class="rule"></span><span data-i18n="pr.eyebrow">Principles</span></p>
-        <h2 data-i18n="pr.title">How I decide.</h2>
-      </header>
-      <div class="principles-grid">
-        <article class="principle reveal">
-          <span class="principle-num">P1</span>
-          <h3 data-i18n="pr.1t">Motion only to explain</h3>
-          <p data-i18n="pr.1b">Animation is diegetic or it's deleted. A scroll should feel like the visitor's own breath moving through the product — never a fireworks show.</p>
-        </article>
-        <article class="principle reveal">
-          <span class="principle-num">P2</span>
-          <h3 data-i18n="pr.2t">Honest states, no mock demos</h3>
-          <p data-i18n="pr.2b">An unwired checkout says "in preparation". A roadmap page shows the roadmap. Placeholder testimonials are labeled placeholder. Trust compounds.</p>
-        </article>
-        <article class="principle reveal">
-          <span class="principle-num">P3</span>
-          <h3 data-i18n="pr.3t">Constraints are design inputs</h3>
-          <p data-i18n="pr.3b">薬機法 advertising law, trade-secret pricing, factory workflows, PDP privacy law — I design with the constraint from day one instead of patching around it later.</p>
-        </article>
-        <article class="principle reveal">
-          <span class="principle-num">P4</span>
-          <h3 data-i18n="pr.4t">A lot with a little</h3>
-          <p data-i18n="pr.4b">A 7-variant configurator in three dependency-free HTML files. A 755-line scroll engine instead of a library. Complexity must be earned by the problem.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ================= 05 CONTACT ================= -->
-    <section id="contact" class="section section-contact chapter" data-chapter-id="contact">
-      <header class="section-head reveal">
-        <span class="section-num">06</span>
-        <p class="eyebrow"><span class="rule"></span><span data-i18n="ct.eyebrow">Contact</span></p>
-        <h2 data-i18n="ct.title">Let's build something that lasts.</h2>
-      </header>
-      <p class="contact-lede reveal" data-i18n="ct.lede">
-        Open to product work that needs both a brand feel and an engineering backbone —
-        from Batam, for anywhere.
-      </p>
-      <div class="contact-actions reveal">
-        <button class="btn btn-primary magnetic" id="copy-email" type="button" data-email="defrifegapratama002@gmail.com">
-          <span data-i18n="ct.copy">Copy email</span>
-          <span class="copy-feedback" data-i18n="ct.copied" aria-live="polite">Copied ✓</span>
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="finale">
+      <h2 class="giant giant-sm"><span data-i18n="ct.t1">BRING ME</span><br/><em class="hot" data-i18n="ct.t2">A PROBLEM.</em></h2>
+      <p class="finale-line" data-i18n="ct.line">From Batam, for anywhere. The first conversation is free; so is the honesty.</p>
+      <div class="finale-actions">
+        <button class="btn-solid mono" id="copy-email" type="button" data-email="defrifegapratama002@gmail.com">
+          <span data-i18n="ct.copy">COPY EMAIL</span>
+          <span class="copy-feedback mono" data-i18n="ct.copied" aria-live="polite">COPIED ✓</span>
         </button>
-        <a class="btn btn-ghost magnetic" href="https://github.com/defrifegapratama002" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn-line mono" href="https://github.com/defrifegapratama002" target="_blank" rel="noopener">GITHUB ↗</a>
       </div>
-      <p class="contact-email mono-label reveal">defrifegapratama002@gmail.com</p>
+      <p class="finale-email mono">defrifegapratama002@gmail.com</p>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Defri Fega Pratama · <span data-i18n="ft.built">Hand-built with zero dependencies — the way I like it.</span></p>
-    <p class="mono-label">Batam, Indonesia · 1.13°N 104.05°E</p>
+  <footer class="foot mono">
+    <span>© <span id="year"></span> DEFRI FEGA PRATAMA</span>
+    <span data-i18n="ft.built">hand-built · zero dependencies · like everything above</span>
   </footer>
 
   <script src="main.js"></script>

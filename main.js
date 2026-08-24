@@ -1,104 +1,102 @@
 /* ============================================================
-   FEGA — portfolio interactions
-   Zero dependencies. Everything guarded for reduced motion.
+   FEGA — PROBLEM IN. SYSTEM OUT.
+   Zero dependencies. Reduced-motion respected.
    ============================================================ */
 (() => {
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  /* ---------- theme ---------- */
-  const root = document.documentElement;
-  const themeToggle = document.getElementById("theme-toggle");
-  const storedTheme = safeGet("fega-theme");
-  if (storedTheme === "dark" || (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-    root.dataset.theme = "dark";
-  }
-  themeToggle?.addEventListener("click", () => {
-    const next = root.dataset.theme === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    safeSet("fega-theme", next);
-  });
-
   /* ---------- i18n ---------- */
+  const P = {
+    1: "stok kacau", 2: "penjualan tak tercatat", 3: "data berserakan di Excel",
+    4: "harga bocor ke kompetitor", 5: "butuh aplikasi kasir", 6: "mau jualan ke pasar Jepang",
+    7: "tak ada yang ingat follow-up", 8: "gudang tak tahu isinya sendiri",
+  };
   const ID = {
-    "skip": "Langsung ke karya",
-    "nav.about": "Karakter",
-    "nav.works": "Karya",
-    "nav.map": "Peta",
-    "nav.stack": "Teknologi",
-    "nav.principles": "Prinsip",
-    "nav.contact": "Kontak",
+    "bar.loc": "BATAM, ID · 1.13°LU 104.05°BT · UTC+7",
 
-    "hero.eyebrow": "Portofolio — Batam, Indonesia · UTC+7",
-    "hero.sub":
-      "Bisnis datang membawa masalah; saya datang membawa teknologi apa pun yang menyelesaikannya: <strong>AI &amp; machine learning</strong>, <strong>produk web &amp; mobile</strong>, <strong>data &amp; analitik</strong>, serta <strong>sistem bisnis</strong> yang menjalankan operasional harian nyata.",
-    "hero.cta1": "Lihat karya pilihan",
-    "hero.cta2": "Hubungi saya",
-    "hero.scroll": "gulir",
-    "stats.k1": "Sistem yang dibangun",
-    "stats.k2": "Bahasa pasar",
-    "stats.k3": "Feature test ERP",
-    "stats.k4": "Engine scroll custom",
-    "stats.loc": "baris, tanpa dependency",
+    "hero.in": "MASALAH", "hero.in2": "MASUK.",
+    "hero.out": "SISTEM", "hero.out2": "KELUAR.",
+    "hero.line":
+      "Pemecah masalah lewat teknologi. Saya membangun apa pun yang benar-benar dibutuhkan masalahnya — AI yang bisa bicara, aplikasi yang menjual, lapisan data di bawahnya, atau ERP yang menjalankan lantai pabrik.",
+    "hero.foot": "9 sistem rampung · 3 bahasa pasar · gulir ↓",
 
-    "about.eyebrow": "Karakter",
-    "about.title": "Banyak sisi, satu tujuan: menyelesaikan masalah.",
-    "about.a.label": "— Sisi brand",
-    "about.a.body":
-      "Situs film scroll-driven, produk 3D prosedural, motion yang hadir hanya untuk menjelaskan. Saya merancang dan membangun kehadiran web lengkap untuk brand aroma D2C pasar Jepang — dari riset pasar dan copywriting yang patuh 薬機法, sampai engine scroll-scrub video yang ditulis dari nol tanpa library animasi sama sekali.",
-    "about.b.label": "— Sisi sistem",
-    "about.b.body":
-      "Sebuah pabrik ekspor di Batam menjalankan CRM, penjualan, produksi, dan gudangnya di platform yang saya bangun: Laravel + Filament, 44 migrasi, 47 file feature test. Keputusan pemodelan domain seperti harga yang tidak pernah disimpan dan inventori yang selalu diturunkan melindungi bisnis di lapisan data, bukan cuma di UI.",
-    "about.d.label": "— Sisi AI & data",
-    "about.d.body":
-      "Tutor suara Android yang dijual langsung ke pengguna, berjalan di atas rantai routing 8 provider LLM yang saya rekayasa agar tanpa biaya. CNN skripsi untuk deteksi penyakit tanaman, dilatih di Keras dan dideploy sebagai web app live. Agent yang diatur guardrails tertulis. AI di sini adalah alat yang benar-benar dikirim — bukan kata kunci kosong.",
-    "about.c.label": "— Benang merah di semuanya",
-    "about.c.body":
-      "Kejujuran. Tidak ada demo palsu, tidak ada dashboard bohongan: checkout yang belum tersambung berkata jujur, halaman roadmap menampilkan rencana alih-alih pura-pura live, dan setiap estimasi dilabeli \"indikatif\". Saya lebih suka berbuat banyak dengan sedikit — salah satu project di bawah adalah configurator B2B lengkap dalam tiga file HTML mandiri tanpa dependency.",
+    "mq.1": P[1], "mq.2": P[2], "mq.3": P[3], "mq.4": P[4],
+    "mq.5": P[5], "mq.6": P[6], "mq.7": P[7], "mq.8": P[8],
+    "mq.1b": P[1], "mq.2b": P[2], "mq.3b": P[3], "mq.4b": P[4],
+    "mq.5b": P[5], "mq.6b": P[6], "mq.7b": P[7], "mq.8b": P[8],
 
-    "works.eyebrow": "Karya pilihan",
-    "works.title": "Delapan sistem, delapan dunia.",
+    "how.label": "CARA SAYA BEKERJA",
+    "how.1": "Saya lebih memilih mengirim tiga file jujur daripada sirkus framework.",
+    "how.1n": "configurator B2B 7 varian hidup dalam 3 file HTML tanpa dependency — RYO, di bawah",
+    "how.2": "Demo tidak pernah palsu. Kalau checkout belum tersambung, tombolnya berkata jujur.",
+    "how.2n": "keranjang zonzon jujur berlabel 準備中; halaman roadmap AI menampilkan roadmap, bukan angka bohongan",
+    "how.3": "Hukum, rahasia dagang, dan lantai pabrik adalah input desain — bukan penghalang.",
+    "how.3n": "copy patuh 薬機法 untuk Jepang; ERP yang database-nya secara fisik tak bisa membocorkan harga",
+    "how.4": "Bisnis bukan sebuah website. Bisnis adalah loop: rasakan → bangun → jual → operasikan → belajar.",
+    "how.4n": "roda gilanya dipetakan di akhir halaman ini — setiap klaim terikat pada sistem yang sudah jadi",
 
-    "w1.kind": "Situs brand D2C — pasar Jepang",
-    "w1.desc":
-      "Website brand lengkap untuk aroma inhaler kayu yang menyasar perokok Jepang yang ingin ritualnya tanpa asap. Produk Three.js yang dimodelkan prosedural dengan serat kayu walnut yang digenerate saat runtime, hero canvas 113 frame yang di-scrub scroll ala Apple, dan cerita GSAP terjepit yang mengubah rokok menjadi produk — semuanya ditulis di dalam batasan iklan 薬機法 yang nyata.",
-    "w1.h1": "Perangkat 3D prosedural — profil lathe + serat kayu dilukis di canvas, tanpa GLTF",
-    "w1.h2": "14 rute static-export dengan structured data JSON-LD lengkap",
-    "w1.h3": "Disiplin motion: reduced-motion, fallback noscript, koreografi desktop/mobile",
+    "sc.label": "SISTEM PILIHAN — 2025 → 2026",
+    "spec.proof": "BUKTI",
 
-    "w2.kind": "Toko sinematik — engine buatan sendiri",
-    "w2.desc":
-      "Pendamping commerce untuk ZONZON: satu film scroll-driven berkelanjutan dalam sembilan babak, dengan configurator aroma di tengahnya. Jantungnya adalah engine scroll-scrub video 755 baris yang saya tulis tanpa dependency — klip di-fetch sebagai blob agar seeking instan, easing kubik \"linger\" yang tak pernah menggeser frame sambungan, encode mobile terpisah, priming aman untuk iOS.",
-    "w2.h1": "Engine scroll↔video custom: loop rAF, easing smoothstep + linger, lifecycle AbortController",
-    "w2.h2": "Theming reaktif-aroma — rasa yang dipilih mewarnai ulang seluruh panggung",
-    "w2.h3": "Dideploy di Cloudflare Workers dengan CI typecheck + build",
+    "s1.kind": "COMMERCE SINEMATIK — JEPANG",
+    "s1.log": "Sembilan babak, satu gulir: toko ini <em>adalah</em> filmnya.",
+    "s1.dl": "DETAILNYA —",
+    "s1.d": "755 baris, nol library: engine scroll-scrub video dengan seeking instan via blob dan easing \"linger\" yang memperlambat tengah babak tanpa pernah menggeser frame sambungan.",
+    "s1.st": "brand + toko rampung fitur, CI hijau",
+    "s1.pf": "9 babak scroll-scrub · theming reaktif-aroma · encode khusus mobile",
 
-    "w3.kind": "CRM/ERP — dipakai produksi",
-    "w3.desc":
-      "Platform operasional untuk pabrik filter rod ekspor Indonesia, berjalan setiap hari di jaringan pabrik: intelijen pasar → pipeline penjualan → produksi → gudang. 13 resource admin, 16 halaman custom, ~18 ribu baris kode, diisi 1.229 perusahaan nyata dari 117 negara. Ide-ide paling tajamnya hidup di model data.",
-    "w3.h1": "Harga efemeral — quotation diketik saat cetak, tak pernah disimpan; rahasia dagang tak masuk database",
-    "w3.h2": "Inventori dihitung, tak pernah diketik: setiap unit diturunkan dari stock movement teraudit (lot FEFO, reorder point)",
-    "w3.h3": "Matematika kontainer & MOQ dari dimensi packing; backflush produksi mengikat batch ke bahan baku",
+    "s2.kind": "DUNIA BRAND D2C — JEPANG",
+    "s2.log": "Inhaler kayu untuk Jepang — dijual oleh website yang menjelaskannya seperti dokumenter.",
+    "s2.dl": "DETAILNYA —",
+    "s2.d": "produk 3D-nya bukan file model: ia geometri profil lathe yang dijiplak dari foto, dengan serat walnut dilukis kode ke canvas saat runtime — 260 goresan bezier, drag untuk memutar.",
+    "s2.st": "pra-rilis — checkout jujur ditandai belum aktif",
+    "s2.pf": "14 rute · hero canvas 113 frame · copy patuh 薬機法",
 
-    "w4.kind": "Configurator B2B — tanpa dependency",
-    "w4.desc":
-      "Configurator produk lengkap untuk filter tips linting — 7 konstruksi, diameter custom, 8 aroma, tier kemasan — dengan live preview tiga objek beranimasi di atas panggung meja studio. Tanpa framework, tanpa build step, tanpa npm: tiga file HTML mandiri yang bisa diedit klien cukup dengan mengubah satu objek JS.",
-    "w4.h1": "Aset yang meng-upgrade dirinya: foto diprobe lewat rantai kandidat dan menggantikan SVG begitu filenya ada",
-    "w4.h2": "Panggung cross-fade berjenjang dengan signature-diffing agar objek yang tak berubah tak pernah re-animasi",
-    "w4.h3": "Toggle \"integration payload\" menampilkan JSON siap-CRM dari konfigurasi — hadiah untuk developer berikutnya",
+    "s3.kind": "CRM/ERP — MENJALANKAN PABRIK, SETIAP HARI",
+    "s3.log": "Sistem operasi pabrik filter rod ekspor: lead masuk, kontainer keluar.",
+    "s3.dl": "DETAILNYA —",
+    "s3.d": "harga diketik saat mencetak, disimpan di session, menempel hanya pada PDF — tak pernah dipersistenkan. Database tak bisa membocorkan yang tak pernah ia simpan. Inventori sama: dihitung dari pergerakan teraudit, tak pernah diketik.",
+    "s3.st": "produksi — dipakai di LAN pabrik setiap hari",
+    "s3.pf": "13 resource · 16 halaman custom · ~18 ribu baris · lot FEFO · matematika kontainer",
 
-    "w5.kind": "Storefront katalog — brand refresh",
-    "w5.desc":
-      "Konsep brand-refresh dan storefront berbasis penawaran untuk supplier foodservice California: 186 SKU dalam 17 kategori, seluruhnya digerakkan satu file CSV yang dikompilasi saat build. Sistem \"visual family\" mengelompokkan varian ukuran sehingga satu foto meng-upgrade satu keluarga produk — dengan ilustrasi SVG gambar-tangan sebagai pengganti sampai fotonya datang.",
-    "w5.h1": "CSV-sebagai-CMS: mengedit produk = mengedit spreadsheet",
-    "w5.h2": "Keranjang penawaran menghasilkan invoice bernomor (JSF-YYYYMMDD-NNN) dengan transport yang bisa diganti",
-    "w5.h3": "Drawer produk deep-linkable dengan focus trap, navigasi keyboard, dan judul halaman per produk",
+    "s4.kind": "ANDROID × AI — TER-SIGN, RILIS, TERJUAL",
+    "s4.log": "Tutor bahasa Inggris AI yang membalas bicara — dijual via APK dan kode aktivasi, langsung ke pengguna.",
+    "s4.dl": "DETAILNYA —",
+    "s4.d": "delapan provider LLM tier gratis di balik satu interface dengan streaming, rotasi kunci, dan failover otomatis — saat satu kehabisan kuota di tengah percakapan, berikutnya yang menjawab. Lisensinya HMAC terikat perangkat dengan tamper guard dan backend Supabase.",
+    "s4.st": "release ter-sign — dijual langsung via WhatsApp",
+    "s4.pf": "protokol koreksi grammar terstruktur · 11 skenario · loop suara dengan barge-in",
 
-    "map.eyebrow": "Peta",
-    "map.title": "Bagaimana teknologi membangun bisnis.",
+    "s5.kind": "FLUTTER — BACK OFFICE OFFLINE-FIRST",
+    "s5.log": "Seluruh back office distributor daging — POS sampai struk thermal — offline, dalam satu APK.",
+    "s5.dl": "DETAILNYA —",
+    "s5.d": "uang adalah rupiah bulat, berat adalah gram bulat — float tak pernah menyentuh pembukuan. Satu penjualan mencatat keluar stok, piutang, dan jejak audit dalam satu transaksi database; barang mudah rusak keluar gudang first-expired-first-out.",
+    "s5.st": "MVP rampung fitur — release split-ABI ter-sign",
+    "s5.pf": "cetak Bluetooth ESC/POS · laporan PDF/CSV · design system tertulis 26 halaman",
+
+    "s6.kind": "CONFIGURATOR B2B — NOL DEPENDENCY",
+    "s6.log": "Configurator produk 7 varian dalam tiga file HTML. Tanpa framework. Tanpa build. Tanpa npm.",
+    "s6.dl": "DETAILNYA —",
+    "s6.d": "letakkan foto dengan nama file yang benar dan halamannya meng-upgrade dirinya sendiri: aset memeriksa rantai kandidat dari yang paling spesifik dan menggantikan SVG buatan, tanpa edit kode. Sebuah toggle tersembunyi mencetak seluruh konfigurasi sebagai JSON siap-CRM — hadiah untuk developer berikutnya.",
+    "s6.st": "mockup handoff rapi untuk itsfilterrod.com",
+    "s6.pf": "7 konstruksi · panggung live 3 objek · halaman SEO dwibahasa · funnel WhatsApp",
+
+    "fl.label": "FILMOGRAFI LENGKAP",
+    "fl.h1": "TAHUN", "fl.h2": "SISTEM", "fl.h3": "APA INI", "fl.h4": "STACK",
+    "fl.r1": "PWA depot air 4 peran — 30 kebijakan RLS, bukti antar GPS",
+    "fl.r2": "server tutor bahasa bersuara, streaming TTS per kalimat",
+    "fl.r3": "garapan klien — manajemen dokumen enterprise, RBAC, versioning",
+    "fl.r4": "MVP sebelum SpeakEnglish — renderer furigana custom",
+    "fl.r5": "storefront 186 SKU yang CMS-nya sebuah file CSV",
+    "fl.thesis": "skripsi",
+    "fl.r6t": "CNN penyakit daun",
+    "fl.r6": "classifier penyakit tanaman terlatih, live sebagai web app",
+
+    "map.label": "RODA GILA — ",
+    "map.label2": "UNTUK APA SEMUA INI ADA",
     "map.lede":
-      "Inilah roda gila yang menjadi poros karier saya: rasakan pasar dengan AI dan data, bangun di platform yang tepat, jual lewat pengalaman brand, operasikan dengan business intelligence, dan belajar dari data yang mengalir kembali. Setiap node dilabeli jujur — terbukti lewat project yang sudah jadi, sedang dibangun, atau target berikutnya.",
+      "Tak satu pun sistem ini demo skill acak. Mereka adalah stasiun di satu loop — loop yang membangun bisnis. Labelnya jujur: terbukti lewat sistem yang sudah jadi, sedang dibangun, atau target berikutnya.",
     "map.center": "nilai untuk pelanggan",
     "map.n1a": "Workflow berbantuan AI",
     "map.n1b": "Otomasi",
@@ -116,83 +114,23 @@
     "map.n5b": "Dashboard analitik",
     "map.n5c": "ML terapan (CNN)",
     "map.p5": "ITSFR · CNN skripsi — live",
-    "map.l1": "Terbukti — project sudah jadi",
+    "map.l1": "Terbukti — sistem sudah jadi",
     "map.l2": "Sedang dibangun",
     "map.l3": "Target berikutnya",
 
-    "w6.kind": "Aplikasi Android — rilis & dijual",
-    "w6.desc":
-      "Aplikasi Android komersial untuk latihan bahasa Inggris lisan bersama tutor AI: bicara saja, dan loop berjalan tanpa sentuhan — speech-to-text, LLM, balasan bersuara, mikrofon terbuka lagi. Berjalan sepenuhnya di tier LLM gratis berkat rantai routing 8 provider dengan failover otomatis dan rotasi kunci, dibungkus lisensi terikat perangkat, dan dijual langsung ke pengguna sebagai release ter-sign.",
-    "w6.h1": "8 provider LLM di balik satu interface — streaming SSE, fallback otomatis saat kuota habis, kunci terenkripsi",
-    "w6.h2": "Koreksi grammar terstruktur: ditandai model, dirender sebagai kartu, sengaja tidak pernah diucapkan",
-    "w6.h3": "Lapisan anti-bajak: fingerprint perangkat + aktivasi HMAC, tamper guard, backend lisensi Supabase",
-
-    "w7.kind": "Aplikasi Flutter — offline-first",
-    "w7.desc":
-      "Aplikasi Android offline-first untuk supplier daging segar: katalog, inventori batch FEFO untuk barang mudah rusak, POS, pembelian, piutang, struk thermal, laporan PDF/CSV, dan backup zip — ~34,5 ribu baris Dart tanpa dependensi jaringan sama sekali. Uang disimpan sebagai rupiah bulat, berat sebagai gram bulat; float tak pernah menyentuh pembukuan.",
-    "w7.h1": "17 tabel Drift; satu penjualan mencatat keluar stok + piutang + audit dalam satu transaksi",
-    "w7.h2": "Cetak struk thermal Bluetooth ESC/POS (58/80mm) dan invoice PDF langsung dari HP",
-    "w7.h3": "Design system tertulis — token master + 26 spesifikasi per halaman; test; release split-ABI ter-sign",
-
-    "w8.kind": "PWA full-stack — backend Postgres",
-    "w8.desc":
-      "PWA manajemen depot air galon dengan empat portal — admin, kasir, kurir, pelanggan. Backend-nya Postgres yang bekerja sungguhan: ~30 kebijakan row-level-security, penjaga kolom via trigger, buku besar deposit galon append-only, kalkulasi ulang poin loyalitas yang idempoten, dan bukti antar terverifikasi GPS.",
-    "w8.h1": "Otorisasi tingkat kolom di trigger — kurir hanya boleh menyentuh kolom status/GPS, pelanggan hanya konfirmasi",
-    "w8.h2": "Anti-kecurangan antar: cek jarak haversine menandai penyelesaian >300m dari pin pelanggan",
-    "w8.h3": "Papan pesanan realtime via Postgres changes; matriks harga bisa diedit admin tanpa ubah kode",
-
-    "mw.label": "— Juga dibangun",
-    "mw.1": "tutor bahasa bersuara (EN/JP) di Node.js + Claude Agent SDK, streaming TTS per kalimat, memori progres Leitner",
-    "mw.2": "manajemen dokumen enterprise untuk klien: Express + Prisma + Postgres, JWT/RBAC, versioning, log audit",
-    "mw.3t": "CNN penyakit daun (skripsi)",
-    "mw.3": "classifier TensorFlow/Keras untuk penyakit tanaman karet, dideploy sebagai aplikasi Flask live di Vercel",
-    "mw.4": "MVP yang lahir duluan: latihan suara dwibahasa dengan renderer furigana custom — post-mortem-nya membentuk SpeakEnglish",
-
-    "stack.eyebrow": "Teknologi & kapabilitas",
-    "stack.title": "Alat dipilih per masalah, bukan per kebiasaan.",
-    "stack.c1": "— Frontend",
-    "stack.c1n": "(saat tanpa dependency lebih unggul)",
-    "stack.c2": "— Motion & 3D",
-    "stack.c2a": "Engine scroll-video custom",
-    "stack.c2b": "Sekuens gambar di canvas",
-    "stack.c2c": "Geometri & tekstur prosedural",
-    "stack.c2d": "selalu",
-    "stack.c3": "— Sistem",
-    "stack.c3a": "pemodelan derived-state",
-    "stack.c3b": "Generasi PDF, RBAC, log audit",
-    "stack.c3c": "Arsitektur static-export",
-    "stack.c4": "— AI & machine learning",
-    "stack.c4a": "Arsitektur agent human-in-the-loop",
-    "stack.c4c": "Guardrails tertulis: tanpa data karangan",
-    "stack.c4e": "Routing LLM multi-provider & failover",
-    "stack.c4f": "Pipeline suara: STT · LLM · TTS streaming",
-    "stack.c3b2": "Test Flutter",
-
-    "pr.eyebrow": "Prinsip",
-    "pr.title": "Cara saya mengambil keputusan.",
-    "pr.1t": "Motion hanya untuk menjelaskan",
-    "pr.1b": "Animasi harus diegetik atau dihapus. Scroll semestinya terasa seperti napas pengunjung sendiri yang bergerak melewati produk — bukan pertunjukan kembang api.",
-    "pr.2t": "Keadaan jujur, tanpa demo palsu",
-    "pr.2b": "Checkout yang belum tersambung berkata \"dalam persiapan\". Halaman roadmap menampilkan roadmap. Testimoni placeholder dilabeli placeholder. Kepercayaan itu berbunga.",
-    "pr.3t": "Batasan adalah input desain",
-    "pr.3b": "Hukum iklan 薬機法, harga rahasia dagang, alur kerja pabrik, UU PDP — saya mendesain bersama batasan sejak hari pertama, bukan menambalnya belakangan.",
-    "pr.4t": "Banyak dengan sedikit",
-    "pr.4b": "Configurator 7 varian dalam tiga file HTML bebas dependency. Engine scroll 755 baris alih-alih library. Kompleksitas harus dibayar oleh masalahnya.",
-
-    "ct.eyebrow": "Kontak",
-    "ct.title": "Mari bangun sesuatu yang tahan lama.",
-    "ct.lede": "Terbuka untuk pekerjaan produk yang butuh rasa brand sekaligus tulang punggung engineering — dari Batam, untuk mana saja.",
-    "ct.copy": "Salin email",
-    "ct.copied": "Tersalin ✓",
-    "ft.built": "Dibangun tangan tanpa dependency — memang begitu cara saya suka.",
+    "ct.t1": "BAWA",
+    "ct.t2": "MASALAH ANDA.",
+    "ct.line": "Dari Batam, untuk mana saja. Obrolan pertama gratis; kejujurannya juga.",
+    "ct.copy": "SALIN EMAIL",
+    "ct.copied": "TERSALIN ✓",
+    "ft.built": "dibangun tangan · nol dependency · seperti semua di atas",
   };
 
-  // Cache the English originals from the DOM so we can switch back.
+  const RICH_KEYS = new Set(["s1.log"]);
+
   const i18nNodes = document.querySelectorAll("[data-i18n]");
   const EN = {};
   i18nNodes.forEach((el) => { EN[el.dataset.i18n] = el.innerHTML; });
-
-  const RICH_KEYS = new Set(["hero.sub"]); // keys whose ID strings contain markup
 
   function applyLang(lang) {
     document.documentElement.lang = lang;
@@ -201,11 +139,8 @@
       const dict = lang === "id" ? ID : EN;
       const val = dict[key];
       if (val == null) return;
-      if (lang === "en" || RICH_KEYS.has(key)) {
-        el.innerHTML = val; // EN restores original markup; rich ID keys carry vetted tags
-      } else {
-        el.textContent = val;
-      }
+      if (lang === "en" || RICH_KEYS.has(key)) el.innerHTML = val;
+      else el.textContent = val;
     });
     const label = document.querySelector("[data-lang-label]");
     if (label) label.textContent = lang === "id" ? "EN" : "ID";
@@ -219,97 +154,29 @@
     applyLang(lang);
   });
 
-  /* ---------- reveals ---------- */
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("in");
-        io.unobserve(entry.target);
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-
-    // stagger siblings that reveal together
-    document.querySelectorAll(".reveal").forEach((el) => {
-      const siblings = el.parentElement
-        ? [...el.parentElement.children].filter((c) => c.classList.contains("reveal"))
-        : [el];
-      const idx = siblings.indexOf(el);
-      el.style.setProperty("--reveal-delay", `${Math.min(idx * 0.09, 0.45)}s`);
-      io.observe(el);
-    });
-  } else {
-    document.documentElement.classList.add("no-observer");
-  }
-
-  /* ---------- chapter rail + progress ---------- */
-  const railLinks = [...document.querySelectorAll(".chapter-rail a")];
-  const chapters = [...document.querySelectorAll("[data-chapter-id]")];
+  /* ---------- scroll: progress + scene-number parallax ---------- */
   const progressBar = document.getElementById("progress-bar");
-
-  if ("IntersectionObserver" in window && railLinks.length) {
-    const chapterIO = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.dataset.chapterId;
-        railLinks.forEach((a) => a.classList.toggle("active", a.dataset.chapter === id));
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    chapters.forEach((c) => chapterIO.observe(c));
-  }
-
+  const plxEls = reduceMotion.matches ? [] : [...document.querySelectorAll("[data-plx]")];
   let ticking = false;
-  window.addEventListener("scroll", () => {
+
+  function onScroll() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (progressBar && max > 0) {
-        progressBar.style.width = `${(window.scrollY / max) * 100}%`;
-      }
+      if (progressBar && max > 0) progressBar.style.width = `${(window.scrollY / max) * 100}%`;
+      const vh = window.innerHeight;
+      plxEls.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const offset = (r.top + r.height / 2 - vh / 2) * -0.1;
+        el.style.transform = `translateY(${offset.toFixed(1)}px)`;
+      });
       ticking = false;
     });
-  }, { passive: true });
-
-  /* ---------- counters ---------- */
-  const counters = document.querySelectorAll("[data-count]");
-  function runCounter(el) {
-    const target = parseInt(el.dataset.count, 10);
-    if (reduceMotion.matches) { el.textContent = target.toLocaleString(); return; }
-    const dur = 1200;
-    const start = performance.now();
-    (function tick(now) {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased).toLocaleString();
-      if (p < 1) requestAnimationFrame(tick);
-    })(start);
   }
-  if ("IntersectionObserver" in window) {
-    const countIO = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        runCounter(e.target);
-        countIO.unobserve(e.target);
-      });
-    }, { threshold: 0.6 });
-    counters.forEach((c) => countIO.observe(c));
-  } else {
-    counters.forEach((c) => { c.textContent = parseInt(c.dataset.count, 10).toLocaleString(); });
-  }
-
-  /* ---------- magnetic buttons ---------- */
-  if (!reduceMotion.matches && window.matchMedia("(hover: hover)").matches) {
-    document.querySelectorAll(".magnetic").forEach((btn) => {
-      btn.addEventListener("pointermove", (e) => {
-        const r = btn.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        btn.style.transform = `translate(${x * 0.18}px, ${y * 0.22}px)`;
-      });
-      btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
-    });
-  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   /* ---------- copy email ---------- */
   const copyBtn = document.getElementById("copy-email");
@@ -328,70 +195,6 @@
     copyBtn.classList.add("copied");
     setTimeout(() => copyBtn.classList.remove("copied"), 1600);
   });
-
-  /* ---------- wisp canvas (ambient aroma trails) ---------- */
-  const canvas = document.getElementById("wisp-canvas");
-  if (canvas && !reduceMotion.matches) {
-    const ctx = canvas.getContext("2d");
-    let w = 0, h = 0, dpr = 1;
-    let particles = [];
-    let raf = null;
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.clientWidth = window.innerWidth;
-      h = canvas.clientHeight = window.innerHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(Math.round((w * h) / 38000), 42);
-      particles = Array.from({ length: count }, () => spawn(true));
-    }
-
-    function spawn(anywhere) {
-      return {
-        x: Math.random() * w,
-        y: anywhere ? Math.random() * h : h + 20,
-        r: 1 + Math.random() * 2.2,
-        vy: 0.12 + Math.random() * 0.3,
-        drift: Math.random() * Math.PI * 2,
-        driftSpeed: 0.004 + Math.random() * 0.008,
-        alpha: 0.12 + Math.random() * 0.2,
-      };
-    }
-
-    function palette() {
-      return document.documentElement.dataset.theme === "dark"
-        ? ["156, 107, 52", "91, 107, 79", "168, 67, 42"]
-        : ["156, 107, 52", "91, 107, 79", "139, 94, 60"];
-    }
-
-    function frame() {
-      ctx.clearRect(0, 0, w, h);
-      const cols = palette();
-      particles.forEach((p, i) => {
-        p.drift += p.driftSpeed;
-        p.x += Math.sin(p.drift) * 0.4;
-        p.y -= p.vy;
-        if (p.y < -20) particles[i] = spawn(false);
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${cols[i % cols.length]}, ${p.alpha})`;
-        ctx.fill();
-      });
-      raf = requestAnimationFrame(frame);
-    }
-
-    resize();
-    window.addEventListener("resize", resize);
-    frame();
-
-    // pause when tab hidden
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) { cancelAnimationFrame(raf); raf = null; }
-      else if (!raf) frame();
-    });
-  }
 
   /* ---------- misc ---------- */
   const year = document.getElementById("year");
