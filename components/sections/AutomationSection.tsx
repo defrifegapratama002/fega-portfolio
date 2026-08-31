@@ -94,8 +94,8 @@ export default function AutomationSection() {
 
         <p className="mt-6 font-mono text-[0.65rem] leading-relaxed tracking-wide text-dim">
           {lang === "en"
-            ? "REAL EXAMPLE — ITSFR Platform replaced scattered spreadsheets with an ERP a factory uses daily: inventory computed from audited movements, never typed; prices that physically cannot leak because they are never stored."
-            : "CONTOH NYATA — ITSFR Platform menggantikan spreadsheet berserakan dengan ERP yang dipakai pabrik setiap hari: inventori dihitung dari pergerakan teraudit, tak pernah diketik; harga yang secara fisik tak bisa bocor karena tak pernah disimpan."}
+            ? "REAL EXAMPLE — ITSFR Platform replaced scattered spreadsheets with an ERP used in daily operations: inventory computed from audited movements, never typed; prices that physically cannot leak because they are never stored."
+            : "CONTOH NYATA — ITSFR Platform menggantikan spreadsheet berserakan dengan ERP yang dipakai operasional setiap hari: inventori dihitung dari pergerakan teraudit, tak pernah diketik; harga yang secara fisik tak bisa bocor karena tak pernah disimpan."}
         </p>
       </div>
 

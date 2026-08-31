@@ -8,12 +8,12 @@ const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-grotesk" }
 const jbmono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jbmono" });
 
 export const metadata: Metadata = {
-  title: "Defri Fega Pratama — Technology Problem Solver",
+  title: "Defri Fega Pratama — Software Engineer",
   description:
-    "Defri Fega Pratama is a technology problem solver building practical solutions through AI, data, software, automation, web and mobile technologies.",
+    "Defri Fega Pratama is a software engineer solving real problems with precise, creative, and modern solutions — through AI, data, software, automation, web and mobile technologies.",
   keywords: [
     "Defri Fega Pratama",
-    "technology problem solver",
+    "software engineer",
     "AI",
     "computer vision",
     "data analytics",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     "automation",
   ],
   openGraph: {
-    title: "Defri Fega Pratama — Technology Problem Solver",
+    title: "Defri Fega Pratama — Software Engineer",
     description:
-      "I build technology to solve real problems. AI · Data · Software · Automation.",
+      "I build technology to solve real problems — with precise, creative, modern solutions. AI · Data · Software · Automation.",
     type: "website",
   },
 };

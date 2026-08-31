@@ -90,23 +90,23 @@ export const projects: Project[] = [
     slug: "itsfr",
     title: "ITSFR Platform",
     year: "2026",
-    category: { en: "CRM/ERP — export factory", id: "CRM/ERP — pabrik ekspor" },
+    category: { en: "CRM/ERP — export operations", id: "CRM/ERP — operasional ekspor" },
     status: "production",
     statusLabel: {
-      en: "In production — used on the factory LAN every day",
-      id: "Produksi — dipakai di LAN pabrik setiap hari",
+      en: "In production — used in daily operations",
+      id: "Produksi — dipakai operasional setiap hari",
     },
     logline: {
-      en: "The operating system of an export filter-rod factory: leads in, containers out.",
-      id: "Sistem operasi pabrik filter rod ekspor: lead masuk, kontainer keluar.",
+      en: "The operating system of an export business: leads in, containers out.",
+      id: "Sistem operasi sebuah bisnis ekspor: lead masuk, kontainer keluar.",
     },
     problem: {
-      en: "A factory ran its pipeline, production, warehouse and shipping across scattered spreadsheets — and its most sensitive asset, pricing, could leak with a single forwarded file.",
-      id: "Sebuah pabrik menjalankan pipeline, produksi, gudang, dan pengiriman lewat spreadsheet berserakan — dan aset paling sensitifnya, harga, bisa bocor lewat satu file yang diteruskan.",
+      en: "An export company ran its pipeline, production, warehouse and shipping across scattered spreadsheets — and its most sensitive asset, pricing, could leak with a single forwarded file.",
+      id: "Sebuah perusahaan ekspor menjalankan pipeline, produksi, gudang, dan pengiriman lewat spreadsheet berserakan — dan aset paling sensitifnya, harga, bisa bocor lewat satu file yang diteruskan.",
     },
     approach: {
-      en: "Treat trade secrets and the factory floor as design inputs, not obstacles. Model the real flow — lead → order → production → warehouse → container — and design the database so it physically cannot leak what it never stores.",
-      id: "Perlakukan rahasia dagang dan lantai pabrik sebagai input desain, bukan penghalang. Modelkan alur nyata — lead → order → produksi → gudang → kontainer — dan rancang database agar secara fisik tak bisa membocorkan yang tak pernah ia simpan.",
+      en: "Treat trade secrets and real operations as design inputs, not obstacles. Model the real flow — lead → order → production → warehouse → container — and design the database so it physically cannot leak what it never stores.",
+      id: "Perlakukan rahasia dagang dan operasional nyata sebagai input desain, bukan penghalang. Modelkan alur nyata — lead → order → produksi → gudang → kontainer — dan rancang database agar secara fisik tak bisa membocorkan yang tak pernah ia simpan.",
     },
     technologies: ["Laravel", "Filament", "MySQL", "PHP"],
     solution: {
@@ -114,8 +114,8 @@ export const projects: Project[] = [
       id: "Harga diketik saat mencetak, disimpan di session, menempel hanya pada PDF — tak pernah dipersistenkan. Inventori dihitung dari pergerakan stok teraudit, tak pernah diketik. Lot FEFO, matematika muatan kontainer, tampilan pelanggan 360° atas 1.229 perusahaan di 117 negara.",
     },
     result: {
-      en: "13 resources, 16 custom pages, ~18k lines of code — running the factory's daily operations in production.",
-      id: "13 resource, 16 halaman custom, ~18 ribu baris kode — menjalankan operasi harian pabrik di produksi.",
+      en: "13 resources, 16 custom pages, ~18k lines of code — running the company's daily operations in production.",
+      id: "13 resource, 16 halaman custom, ~18 ribu baris kode — menjalankan operasi harian perusahaan di produksi.",
     },
     lesson: {
       en: "The safest data is data you never store. Security by architecture beats security by policy.",

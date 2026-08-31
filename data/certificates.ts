@@ -59,8 +59,8 @@ export const knowledge: Knowledge[] = [
     category: "Automation & Systems",
     kind: "study",
     learned: {
-      en: "Modeling real operations — pipeline, production, warehouse, money — into schemas, audit trails and workflows a factory trusts daily.",
-      id: "Memodelkan operasi nyata — pipeline, produksi, gudang, uang — menjadi skema, jejak audit, dan alur kerja yang dipercaya pabrik setiap hari.",
+      en: "Modeling real operations — pipeline, production, warehouse, money — into schemas, audit trails and workflows a business trusts daily.",
+      id: "Memodelkan operasi nyata — pipeline, produksi, gudang, uang — menjadi skema, jejak audit, dan alur kerja yang dipercaya bisnis setiap hari.",
     },
     relatedSkill: "ERP · Databases · Process Improvement",
     relatedProject: "ITSFR Platform",

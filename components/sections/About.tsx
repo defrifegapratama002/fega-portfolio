@@ -22,8 +22,8 @@ export default function About() {
         <div>
           <p className="prose-mut text-base md:text-lg" data-reveal>
             {lang === "en"
-              ? "I'm Defri Fega Pratama, a technology enthusiast and problem solver from Batam, Indonesia — focused on building practical solutions through AI, data, software, automation, and modern digital technologies. Systems I build run a factory's daily operations, teach people to speak English, and sell products in three market languages."
-              : "Saya Defri Fega Pratama, penggemar teknologi dan pemecah masalah dari Batam, Indonesia — fokus membangun solusi praktis lewat AI, data, software, otomasi, dan teknologi digital modern. Sistem yang saya bangun menjalankan operasi harian sebuah pabrik, mengajari orang berbicara bahasa Inggris, dan menjual produk dalam tiga bahasa pasar."}
+              ? "I'm Defri Fega Pratama, a Minangkabau software engineer — focused on solving real problems with precise, creative, and modern solutions through AI, data, software, and automation. Systems I build run companies' daily operations, teach people to speak English, and sell products in three market languages."
+              : "Saya Defri Fega Pratama, software engineer berdarah Minangkabau — fokus menyelesaikan masalah nyata dengan solusi yang tepat, kreatif, dan modern lewat AI, data, software, dan otomasi. Sistem yang saya bangun menjalankan operasi harian perusahaan, mengajari orang berbicara bahasa Inggris, dan menjual produk dalam tiga bahasa pasar."}
           </p>
           <div className="mt-10" data-reveal>
             <Pipeline
@@ -46,7 +46,7 @@ export default function About() {
       </div>
 
       <p className="mt-12 font-mono text-xs tracking-[0.2em] text-dim uppercase" data-reveal>
-        Batam, Indonesia · 1.13°N 104.05°E · UTC+7 · {lang === "en" ? "working with anywhere" : "bekerja dengan mana saja"}
+        Minangkabau · Indonesia · UTC+7 · {lang === "en" ? "working with anywhere" : "bekerja dengan mana saja"}
       </p>
     </Section>
   );

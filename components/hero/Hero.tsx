@@ -47,7 +47,7 @@ export default function Hero() {
 
       <div className="hero-content relative z-10 mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
         <p className="kicker" data-reveal>
-          Defri Fega Pratama — {lang === "en" ? "Technology Problem Solver" : "Pemecah Masalah lewat Teknologi"}
+          Defri Fega Pratama — Software Engineer
         </p>
 
         <h1 className="h-display mt-6 text-[2.6rem] leading-[1.02] sm:text-6xl md:text-7xl" data-reveal>
@@ -68,8 +68,8 @@ export default function Hero() {
 
         <p className="prose-mut mt-8 text-lg" data-reveal>
           {lang === "en"
-            ? "Turning complex problems into intelligent, practical solutions."
-            : "Mengubah masalah kompleks menjadi solusi yang cerdas dan praktis."}
+            ? "A software engineer turning complex problems into precise, creative, and modern solutions."
+            : "Software engineer yang mengubah masalah kompleks menjadi solusi yang tepat, kreatif, dan modern."}
         </p>
 
         <p className="mt-6 font-mono text-xs tracking-[0.3em] text-dim uppercase" data-reveal>

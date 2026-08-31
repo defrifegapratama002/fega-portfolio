@@ -2,7 +2,7 @@
 
 > **I BUILD TECHNOLOGY TO SOLVE REAL PROBLEMS.**
 
-Personal portfolio of **Defri Fega Pratama** — Technology Problem Solver, Batam, Indonesia.
+Personal portfolio of **Defri Fega Pratama** — Software Engineer solving real problems with precise, creative, and modern solutions.
 
 Built to the [Interactive Technology Portfolio Blueprint](./Interactive_Technology_Portfolio_Blueprint.md): not a CV, but a **living demonstration** of the skills it describes. *Don't just tell. Demonstrate.*
 
