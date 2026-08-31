@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n";
+import { ThemeProvider } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -34,20 +35,24 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     // suppressHydrationWarning: a pre-hydration inline script adds the "js"
-    // class (progressive-enhancement flag for reveal styles) to <html>.
+    // class and the persisted data-theme to <html> before React hydrates.
     <html
       lang="en"
+      data-theme="merah"
       className={`${inter.variable} ${grotesk.variable} ${jbmono.variable}`}
       suppressHydrationWarning
     >
       <body>
-        {/* Progressive enhancement flag: reveal styles apply only with JS */}
+        {/* Progressive enhancement: JS flag + persisted theme, before paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
+            __html:
+              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('fega-theme');if(t==='merah'||t==='ungu')document.documentElement.dataset.theme=t}catch(e){}",
           }}
         />
-        <LanguageProvider>{children}</LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

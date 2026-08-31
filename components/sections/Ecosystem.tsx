@@ -76,15 +76,17 @@ export default function Ecosystem() {
                 y1="50"
                 x2={p.x}
                 y2={p.y}
-                stroke={p.key === selectedKey ? "#2fe0b8" : "#232329"}
                 strokeWidth={p.key === selectedKey ? 0.35 : 0.2}
-                style={{ transition: "stroke 0.3s ease" }}
+                style={{
+                  stroke: p.key === selectedKey ? "var(--color-accent)" : "var(--color-line)",
+                  transition: "stroke 0.3s ease",
+                }}
               />
             ))}
           </svg>
 
           <div
-            className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-accent-dim bg-panel px-6 py-4 text-center shadow-[0_0_40px_-10px_rgba(47,224,184,0.4)]"
+            className="glow-accent absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-accent-dim bg-panel px-6 py-4 text-center"
             aria-hidden="true"
           >
             <span className="h-display block text-lg tracking-wide">

@@ -187,7 +187,9 @@ export default function AISection() {
                   <ul className="flex flex-col gap-3">
                     {result.matches.map((m, i) => (
                       <li key={m.key} className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                        <span className="font-mono text-xs text-accent">{i === 0 ? "PRIMARY" : "COMBINE"}</span>
+                        <span className={`font-mono text-xs ${i === 0 ? "text-accent" : "text-accent2"}`}>
+                          {i === 0 ? "PRIMARY" : "COMBINE"}
+                        </span>
                         <span className="text-sm font-medium text-fg">{m.name}</span>
                         <span className="font-mono text-[0.65rem] text-dim">
                           {lang === "en" ? "signals:" : "sinyal:"} {m.hits.join(", ")}

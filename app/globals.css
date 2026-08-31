@@ -1,23 +1,58 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   Design tokens — blueprint §34: near-black background, soft white
-   primary text, muted gray secondary, ONE controlled technology accent.
+   Design tokens — one controlled accent system, two themes (§34):
+
+   [data-theme="merah"]  MERAH·PUTIH·HITAM — near-black ground,
+                         white ink, red accent. (default)
+   [data-theme="ungu"]   UNGU·CYAN — editorial poster: paper ground,
+                         black ink, purple accent + cyan support.
    ------------------------------------------------------------------ */
 @theme {
-  --color-bg: #0a0a0d;
-  --color-panel: #101014;
-  --color-panel2: #16161c;
-  --color-line: #232329;
-  --color-fg: #ededf2;
-  --color-mut: #a3a3ae;
-  --color-dim: #6b6b75;
-  --color-accent: #2fe0b8;
-  --color-accent-dim: #17705d;
+  /* defaults = merah theme */
+  --color-bg: #0b0a0a;
+  --color-panel: #141112;
+  --color-panel2: #1c1717;
+  --color-line: #2b2424;
+  --color-fg: #f4efec;
+  --color-mut: #a9a09b;
+  --color-dim: #756b67;
+  --color-accent: #e33b3b;
+  --color-accent-dim: #7c2020;
+  --color-accent2: #f4efec;
+  --color-bad: #e0a13a;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jbmono), ui-monospace, "Cascadia Mono", monospace;
+}
+
+:root[data-theme="merah"] {
+  --color-bg: #0b0a0a;
+  --color-panel: #141112;
+  --color-panel2: #1c1717;
+  --color-line: #2b2424;
+  --color-fg: #f4efec;
+  --color-mut: #a9a09b;
+  --color-dim: #756b67;
+  --color-accent: #e33b3b;
+  --color-accent-dim: #7c2020;
+  --color-accent2: #f4efec;
+  --color-bad: #e0a13a;
+}
+
+:root[data-theme="ungu"] {
+  --color-bg: #ededf1;
+  --color-panel: #f7f7fa;
+  --color-panel2: #e2e2e9;
+  --color-line: #c9c9d4;
+  --color-fg: #0e0e14;
+  --color-mut: #464652;
+  --color-dim: #71717f;
+  --color-accent: #7c3aed;
+  --color-accent-dim: #cdb8f7;
+  --color-accent2: #2385cc;
+  --color-bad: #c2410c;
 }
 
 html {
@@ -37,6 +72,9 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 ::selection {
@@ -93,6 +131,9 @@ body {
   background: var(--color-panel);
   border: 1px solid var(--color-line);
   border-radius: 1rem;
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .chip {
@@ -128,8 +169,13 @@ body {
   font-weight: 700;
 }
 
+:root[data-theme="ungu"] .btn-solid {
+  color: #f7f7fa;
+}
+
 .btn-solid:hover {
   background: var(--color-fg);
+  color: var(--color-bg);
 }
 
 .btn-line {
@@ -163,12 +209,13 @@ body {
   transition:
     color 0.4s ease,
     border-color 0.4s ease,
+    background-color 0.35s ease,
     box-shadow 0.4s ease;
 }
 
 .pipe-step.is-on {
   color: var(--color-fg);
-  border-color: var(--color-accent-dim);
+  border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-line));
   box-shadow: 0 0 18px -6px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 
@@ -215,6 +262,11 @@ html:not(.js) .pipe-step {
   transform: scale(1.06);
   box-shadow: 0 0 30px -8px color-mix(in srgb, var(--color-accent) 55%, transparent);
   z-index: 2;
+}
+
+/* Soft accent glow used on the ecosystem PROBLEM hub --------------- */
+.glow-accent {
+  box-shadow: 0 0 40px -10px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 
 /* Details/summary reset for case studies --------------------------- */

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useTheme, cssVar } from "@/lib/theme";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -22,6 +23,7 @@ export default function Pipeline({
   label?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useGSAP(
     () => {
@@ -30,6 +32,11 @@ export default function Pipeline({
         const items = gsap.utils.toArray<HTMLElement>(".pipe-step", ref.current);
         const arrows = gsap.utils.toArray<HTMLElement>(".pipe-arrow", ref.current);
         gsap.set(arrows, { opacity: 0.25 });
+
+        // Active-theme palette; the hook re-runs on theme change (revert
+        // clears stale inline colors, then re-reads the new tokens).
+        const fg = cssVar("--color-fg");
+        const accent = cssVar("--color-accent");
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -40,12 +47,12 @@ export default function Pipeline({
           },
         });
         items.forEach((el, i) => {
-          tl.to(el, { color: "#ededf2", borderColor: "#17705d", duration: 0.3 }, i * 0.3);
+          tl.to(el, { color: fg, borderColor: accent, duration: 0.3 }, i * 0.3);
           if (arrows[i]) tl.to(arrows[i], { opacity: 1, duration: 0.2 }, i * 0.3 + 0.2);
         });
       });
     },
-    { scope: ref },
+    { scope: ref, dependencies: [theme], revertOnUpdate: true },
   );
 
   return (

@@ -3,6 +3,7 @@
 import { Component, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useTheme, cssVar } from "@/lib/theme";
 
 /**
  * The hero focal point (blueprint §7): a geometric digital core with
@@ -14,8 +15,15 @@ import * as THREE from "three";
  *  - Paused when offscreen; static when prefers-reduced-motion.
  */
 
-const ACCENT = "#2fe0b8";
-const BG = "#0a0a0d";
+type CoreColors = { accent: string; bg: string; panel: string; fg: string };
+
+/** SSR-safe defaults = merah theme; refreshed from CSS vars on the client. */
+const DEFAULT_COLORS: CoreColors = {
+  accent: "#e33b3b",
+  bg: "#0b0a0a",
+  panel: "#141112",
+  fg: "#f4efec",
+};
 
 function buildNetwork(count = 110, minR = 1.9, spread = 1.0, linkDist = 0.95) {
   const rng = () => Math.random() * 2 - 1;
@@ -48,7 +56,7 @@ function buildNetwork(count = 110, minR = 1.9, spread = 1.0, linkDist = 0.95) {
   return { nodeGeo, linkGeo };
 }
 
-function CoreScene({ animate }: { animate: boolean }) {
+function CoreScene({ animate, colors }: { animate: boolean; colors: CoreColors }) {
   const group = useRef<THREE.Group>(null);
   const core = useRef<THREE.Mesh>(null);
   const pointer = useRef({ x: 0, y: 0 });
@@ -93,17 +101,17 @@ function CoreScene({ animate }: { animate: boolean }) {
     <group ref={group}>
       <mesh ref={core}>
         <icosahedronGeometry args={[1.15, 1]} />
-        <meshBasicMaterial color={ACCENT} wireframe transparent opacity={0.55} />
+        <meshBasicMaterial color={colors.accent} wireframe transparent opacity={0.55} />
       </mesh>
       <mesh scale={0.72}>
         <icosahedronGeometry args={[1.15, 0]} />
-        <meshBasicMaterial color="#101014" transparent opacity={0.9} />
+        <meshBasicMaterial color={colors.panel} transparent opacity={0.9} />
       </mesh>
       <points geometry={nodeGeo}>
-        <pointsMaterial color="#ededf2" size={0.035} sizeAttenuation transparent opacity={0.85} />
+        <pointsMaterial color={colors.fg} size={0.035} sizeAttenuation transparent opacity={0.85} />
       </points>
       <lineSegments geometry={linkGeo}>
-        <lineBasicMaterial color={ACCENT} transparent opacity={0.16} />
+        <lineBasicMaterial color={colors.accent} transparent opacity={0.2} />
       </lineSegments>
     </group>
   );
@@ -121,9 +129,21 @@ class CoreErrorBoundary extends Component<{ children: ReactNode }, { failed: boo
 
 export default function DigitalCore({ className = "" }: { className?: string }) {
   const wrap = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+  const [colors, setColors] = useState<CoreColors>(DEFAULT_COLORS);
   const [visible, setVisible] = useState(true);
   const [reduced, setReduced] = useState(false);
   const [tabActive, setTabActive] = useState(true);
+
+  // Pick up the active theme's palette from CSS variables.
+  useEffect(() => {
+    setColors({
+      accent: cssVar("--color-accent") || DEFAULT_COLORS.accent,
+      bg: cssVar("--color-bg") || DEFAULT_COLORS.bg,
+      panel: cssVar("--color-panel") || DEFAULT_COLORS.panel,
+      fg: cssVar("--color-fg") || DEFAULT_COLORS.fg,
+    });
+  }, [theme]);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -152,13 +172,14 @@ export default function DigitalCore({ className = "" }: { className?: string }) 
     <div ref={wrap} className={className} aria-hidden="true">
       <CoreErrorBoundary>
         <Canvas
+          key={theme}
           frameloop={running ? "always" : "demand"}
           dpr={[1, 1.75]}
           camera={{ position: [0, 0, 7.4], fov: 45 }}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         >
-          <fog attach="fog" args={[BG, 6, 13]} />
-          <CoreScene animate={running} />
+          <fog attach="fog" args={[colors.bg, 6, 13]} />
+          <CoreScene animate={running} colors={colors} />
         </Canvas>
       </CoreErrorBoundary>
     </div>

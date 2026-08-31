@@ -102,20 +102,20 @@ export default function VisionSection() {
         <figure className="card relative overflow-hidden p-5">
           <div className="relative overflow-hidden rounded-lg border border-line bg-panel2">
             <svg viewBox="0 0 320 240" className="block w-full" role="img" aria-label="Manga panel with Japanese speech bubble">
-              <rect x="8" y="8" width="304" height="224" rx="6" fill="#0a0a0d" stroke="#232329" />
+              <rect x="8" y="8" width="304" height="224" rx="6" style={{ fill: "var(--color-bg)", stroke: "var(--color-line)" }} />
               {/* character silhouette */}
-              <circle cx="95" cy="150" r="28" fill="#16161c" stroke="#232329" />
-              <rect x="65" y="180" width="60" height="52" rx="14" fill="#16161c" stroke="#232329" />
+              <circle cx="95" cy="150" r="28" style={{ fill: "var(--color-panel2)", stroke: "var(--color-line)" }} />
+              <rect x="65" y="180" width="60" height="52" rx="14" style={{ fill: "var(--color-panel2)", stroke: "var(--color-line)" }} />
               {/* speed lines */}
-              <g stroke="#232329" strokeWidth="1">
+              <g strokeWidth="1" style={{ stroke: "var(--color-line)" }}>
                 <line x1="240" y1="24" x2="300" y2="18" />
                 <line x1="248" y1="44" x2="304" y2="42" />
                 <line x1="244" y1="64" x2="300" y2="68" />
               </g>
               {/* speech bubble */}
-              <ellipse cx="205" cy="105" rx="88" ry="46" fill="#16161c" stroke="#3a3a42" />
-              <path d="M150 138 L128 165 L166 144 Z" fill="#16161c" stroke="#3a3a42" />
-              <text x="205" y="112" textAnchor="middle" fill="#ededf2" fontSize="19" fontFamily="serif">
+              <ellipse cx="205" cy="105" rx="88" ry="46" style={{ fill: "var(--color-panel2)", stroke: "var(--color-line)" }} />
+              <path d="M150 138 L128 165 L166 144 Z" style={{ fill: "var(--color-panel2)", stroke: "var(--color-line)" }} />
+              <text x="205" y="112" textAnchor="middle" fontSize="19" fontFamily="serif" style={{ fill: "var(--color-fg)" }}>
                 {JP_TEXT}
               </text>
               {/* bounding box after detection */}
@@ -126,13 +126,13 @@ export default function VisionSection() {
                   width="170"
                   height="36"
                   fill="none"
-                  stroke="#2fe0b8"
                   strokeWidth="1.5"
                   strokeDasharray="6 4"
+                  style={{ stroke: "var(--color-accent)" }}
                 />
               ) : null}
               {stage >= 2 ? (
-                <text x="122" y="80" fill="#2fe0b8" fontSize="9" fontFamily="monospace">
+                <text x="122" y="80" fontSize="9" fontFamily="monospace" style={{ fill: "var(--color-accent2)" }}>
                   text 0.98
                 </text>
               ) : null}
@@ -140,8 +140,11 @@ export default function VisionSection() {
             {/* scan line */}
             <div
               ref={scanLine}
-              className="pointer-events-none absolute right-0 left-0 h-[2px] bg-accent opacity-0 shadow-[0_0_16px_2px_rgba(47,224,184,0.7)]"
-              style={{ top: "0%" }}
+              className="pointer-events-none absolute right-0 left-0 h-[2px] bg-accent opacity-0"
+              style={{
+                top: "0%",
+                boxShadow: "0 0 16px 2px color-mix(in srgb, var(--color-accent) 70%, transparent)",
+              }}
               aria-hidden="true"
             />
           </div>

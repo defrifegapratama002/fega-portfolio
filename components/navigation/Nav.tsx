@@ -2,6 +2,34 @@
 
 import { useEffect, useState } from "react";
 import { useLang, type L10n } from "@/lib/i18n";
+import { useTheme } from "@/lib/theme";
+
+/** Preview dot showing the accent of the theme you would switch TO. */
+const THEME_PREVIEW: Record<string, { dot: string; label: string }> = {
+  merah: { dot: "#7c3aed", label: "UNGU" },
+  ungu: { dot: "#e33b3b", label: "MERAH" },
+};
+
+function ThemeToggle({ compact = false }: { compact?: boolean }) {
+  const { theme, toggle } = useTheme();
+  const target = THEME_PREVIEW[theme];
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      className="flex items-center gap-1.5 font-mono text-xs tracking-widest text-mut transition-colors hover:text-fg"
+      aria-label={`Ganti tema ke ${target.label.toLowerCase()}`}
+      title={`Tema: ${target.label.toLowerCase()}`}
+    >
+      <span
+        className="inline-block h-2.5 w-2.5 rounded-full border border-line"
+        style={{ background: target.dot }}
+        aria-hidden="true"
+      />
+      {compact ? null : target.label}
+    </button>
+  );
+}
 
 const LINKS: { href: string; label: L10n }[] = [
   { href: "#ecosystem", label: { en: "Technology", id: "Teknologi" } },
@@ -50,6 +78,7 @@ export default function Nav() {
           <a href="#contact" className="btn btn-solid !px-4 !py-2 text-[0.7rem]">
             {lang === "en" ? "LET'S TALK" : "AYO BICARA"}
           </a>
+          <ThemeToggle />
           <button
             type="button"
             onClick={toggle}
@@ -61,6 +90,7 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle compact />
           <button
             type="button"
             onClick={toggle}

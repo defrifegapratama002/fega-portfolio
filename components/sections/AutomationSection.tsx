@@ -73,7 +73,7 @@ export default function AutomationSection() {
             <span key={s + automated} className="contents">
               <span
                 className={`pipe-step ${automated ? "is-on" : ""}`}
-                style={!automated ? { borderStyle: "dashed", color: "#a3a3ae" } : undefined}
+                style={!automated ? { borderStyle: "dashed", color: "var(--color-mut)" } : undefined}
               >
                 {s}
               </span>

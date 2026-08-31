@@ -177,8 +177,8 @@ export default function DataSection() {
             {/* recessive grid */}
             {ticks.map((v) => (
               <g key={v}>
-                <line x1={PAD.left} x2={CHART_W - PAD.right} y1={yFor(v)} y2={yFor(v)} stroke="#232329" strokeWidth="1" />
-                <text x={PAD.left - 8} y={yFor(v) + 4} textAnchor="end" fontSize="11" fontFamily="monospace" fill="#6b6b75">
+                <line x1={PAD.left} x2={CHART_W - PAD.right} y1={yFor(v)} y2={yFor(v)} strokeWidth="1" style={{ stroke: "var(--color-line)" }} />
+                <text x={PAD.left - 8} y={yFor(v) + 4} textAnchor="end" fontSize="11" fontFamily="monospace" style={{ fill: "var(--color-dim)" }}>
                   {v}
                 </text>
               </g>
@@ -191,9 +191,8 @@ export default function DataSection() {
                 <g key={b.year}>
                   <path
                     d={barPath(x, y, barW, h)}
-                    fill="#2fe0b8"
                     opacity={hover === null || hover === i ? 1 : 0.35}
-                    style={{ transition: "opacity 0.2s ease, d 0.4s ease" }}
+                    style={{ fill: "var(--color-accent)", transition: "opacity 0.2s ease" }}
                     tabIndex={0}
                     role="graphics-symbol"
                     aria-label={`${b.year}: ${b.count}`}
@@ -203,11 +202,11 @@ export default function DataSection() {
                     onBlur={() => setHover(null)}
                   />
                   {b.count > 0 ? (
-                    <text x={x + barW / 2} y={y - 8} textAnchor="middle" fontSize="12" fontFamily="monospace" fill="#ededf2">
+                    <text x={x + barW / 2} y={y - 8} textAnchor="middle" fontSize="12" fontFamily="monospace" style={{ fill: "var(--color-fg)" }}>
                       {b.count}
                     </text>
                   ) : null}
-                  <text x={x + barW / 2} y={CHART_H - 12} textAnchor="middle" fontSize="12" fontFamily="monospace" fill="#a3a3ae">
+                  <text x={x + barW / 2} y={CHART_H - 12} textAnchor="middle" fontSize="12" fontFamily="monospace" style={{ fill: "var(--color-mut)" }}>
                     {b.year}
                   </text>
                 </g>
