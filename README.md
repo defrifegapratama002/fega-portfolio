@@ -1,45 +1,62 @@
-# FEGA — Portfolio
+# Interactive Technology Portfolio — Defri Fega Pratama
 
-Personal portfolio of **Defri Fega Pratama** (Fega) — full-stack developer from Batam, Indonesia.
+> **I BUILD TECHNOLOGY TO SOLVE REAL PROBLEMS.**
 
-Live concept: *cinematic brand worlds* × *factory-grade business systems*, presented as a numbered-chapter "studio dossier".
+Personal portfolio of **Defri Fega Pratama** — Technology Problem Solver, Batam, Indonesia.
+
+Built to the [Interactive Technology Portfolio Blueprint](./Interactive_Technology_Portfolio_Blueprint.md): not a CV, but a **living demonstration** of the skills it describes. *Don't just tell. Demonstrate.*
+
+## What demonstrates what
+
+| Skill | How the site proves it |
+|---|---|
+| Web / UI-UX | The site itself — responsive, accessible, reduced-motion aware |
+| 3D | Real-time WebGL "Digital Core" hero (Three.js / R3F), camera moves on scroll |
+| Motion | GSAP + ScrollTrigger storytelling (scrubbed pipelines, pinned "How I Think") |
+| AI | In-browser "problem router" mini-demo (honestly labeled) |
+| Computer Vision | Interactive Manga-OCR pipeline with real Web Speech TTS |
+| Data | Interactive chart aggregating the real systems on the page (filter + hover) |
+| Mobile | Interactive device replaying the AI tutor loop, pointer tilt |
+| Automation | Manual → automated workflow switch |
 
 ## Stack
 
-Deliberately **zero dependencies** — the same "a lot with a little" philosophy the portfolio describes:
+Next.js 15 (App Router, static export) · React 19 · TypeScript · Tailwind CSS 4 · Three.js / React Three Fiber · GSAP + ScrollTrigger · EN/ID bilingual (persisted toggle).
 
-- One `index.html`, one `styles.css`, one `main.js`. No framework, no build step, no npm.
-- Google Fonts (Fraunces · Outfit · JetBrains Mono) is the only external resource.
-- Hand-drawn animated SVG vignettes per project (no screenshots needed).
-- Vanilla features: EN/ID language toggle, light/dark theme (both persisted), scroll-progress bar, chapter rail, IntersectionObserver reveals, animated counters, magnetic buttons, ambient particle canvas.
-- `prefers-reduced-motion` honored everywhere; works without JavaScript (content stays visible).
+## Structure
 
-## Run locally
-
-Just open `index.html` in a browser, or serve the folder:
-
-```bash
-npx serve .
-# or
-python -m http.server 8080
+```
+app/               layout (SEO), single-journey page, global styles
+components/
+  hero/            Hero + core statement
+  3d/              DigitalCore (the one WebGL canvas on the site)
+  navigation/      Floating nav + language toggle
+  sections/        Tool → Ecosystem → AI/CV/Data/Web/Mobile/Automation →
+                   HowIThink → ProblemToSolution → Projects → Knowledge →
+                   About → Contact
+  ui/              Section, Pipeline, ScrollFX (reveals), Magnetic
+data/              projects.ts · technologies.ts · certificates.ts (data-driven)
+lib/               i18n (EN/ID)
 ```
 
-## Deploy to GitHub Pages
+## Develop
 
 ```bash
-git init
-git add .
-git commit -m "feat: portfolio v1"
-gh repo create fega-portfolio --public --source=. --push
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # static export → out/
 ```
 
-Then on GitHub: **Settings → Pages → Source: Deploy from a branch → `main` / `(root)` → Save.**
-The site will be live at `https://<username>.github.io/fega-portfolio/` within a minute or two.
+## Deploy
 
-(Optional) custom domain: add a `CNAME` file containing your domain and point DNS at GitHub Pages.
+- **GitHub Pages**: push to `main` — `.github/workflows/deploy.yml` builds with
+  `NEXT_PUBLIC_BASE_PATH=/fega-portfolio` and publishes `out/`.
+  (Repo Settings → Pages → Source: **GitHub Actions**.)
+- **Vercel / custom domain**: import the repo, no basePath needed.
 
 ## Editing content
 
-- All copy lives in `index.html` (English) and in the `ID` dictionary at the top of `main.js` (Indonesian).
-- Each project card is one `<article class="work">` with its accent color set inline via `--work-accent`.
-- Contact email lives in two places: the `#copy-email` button's `data-email` and the visible line below it.
+- Projects / case studies: `data/projects.ts` (every project answers problem → approach → technology → solution → result → lesson; keep status labels honest).
+- Technology ecosystem: `data/technologies.ts`.
+- Knowledge & certificates: `data/certificates.ts` — add real credentials with `credentialUrl` for the "Verify Credential" link. **Never invent credentials.**
+- All copy is bilingual: `{ en: "...", id: "..." }`.
