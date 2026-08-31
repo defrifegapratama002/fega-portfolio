@@ -3,24 +3,24 @@
 /* ------------------------------------------------------------------
    Design tokens — one controlled accent system, two themes (§34):
 
-   [data-theme="merah"]  MERAH·PUTIH·HITAM — near-black ground,
-                         white ink, red accent. (default)
+   [data-theme="merah"]  MERAH·PUTIH·HITAM — white ground, black ink,
+                         red accent, black as second accent. (default)
    [data-theme="ungu"]   UNGU·CYAN — editorial poster: paper ground,
-                         black ink, purple accent + cyan support.
+                         black ink, purple accent + cyan co-accent.
    ------------------------------------------------------------------ */
 @theme {
   /* defaults = merah theme */
-  --color-bg: #0b0a0a;
-  --color-panel: #141112;
-  --color-panel2: #1c1717;
-  --color-line: #2b2424;
-  --color-fg: #f4efec;
-  --color-mut: #a9a09b;
-  --color-dim: #756b67;
-  --color-accent: #e33b3b;
-  --color-accent-dim: #7c2020;
-  --color-accent2: #f4efec;
-  --color-bad: #e0a13a;
+  --color-bg: #f8f6f4;
+  --color-panel: #ffffff;
+  --color-panel2: #efeae6;
+  --color-line: #ddd5cf;
+  --color-fg: #131010;
+  --color-mut: #4c4541;
+  --color-dim: #7a726c;
+  --color-accent: #d21f2f;
+  --color-accent-dim: #f3bcbc;
+  --color-accent2: #131010;
+  --color-bad: #b45309;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
@@ -28,17 +28,17 @@
 }
 
 :root[data-theme="merah"] {
-  --color-bg: #0b0a0a;
-  --color-panel: #141112;
-  --color-panel2: #1c1717;
-  --color-line: #2b2424;
-  --color-fg: #f4efec;
-  --color-mut: #a9a09b;
-  --color-dim: #756b67;
-  --color-accent: #e33b3b;
-  --color-accent-dim: #7c2020;
-  --color-accent2: #f4efec;
-  --color-bad: #e0a13a;
+  --color-bg: #f8f6f4;
+  --color-panel: #ffffff;
+  --color-panel2: #efeae6;
+  --color-line: #ddd5cf;
+  --color-fg: #131010;
+  --color-mut: #4c4541;
+  --color-dim: #7a726c;
+  --color-accent: #d21f2f;
+  --color-accent-dim: #f3bcbc;
+  --color-accent2: #131010;
+  --color-bad: #b45309;
 }
 
 :root[data-theme="ungu"] {
@@ -165,12 +165,8 @@ body {
 
 .btn-solid {
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #fdfcfb;
   font-weight: 700;
-}
-
-:root[data-theme="ungu"] .btn-solid {
-  color: #f7f7fa;
 }
 
 .btn-solid:hover {
@@ -183,9 +179,19 @@ body {
   color: var(--color-fg);
 }
 
+/* Secondary interactions carry the SECOND accent (cyan in ungu, black in merah) */
 .btn-line:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--color-accent2);
+  color: var(--color-accent2);
+}
+
+/* Dual-accent display moments: accent → accent2 gradient text
+   (ungu → cyan on the ungu theme; merah → hitam on the merah theme) */
+.accent-split {
+  background: linear-gradient(100deg, var(--color-accent) 20%, var(--color-accent2) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Pipeline chips (the recurring flow diagrams) --------------------- */

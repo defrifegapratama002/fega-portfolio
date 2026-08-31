@@ -15,14 +15,15 @@ import { useTheme, cssVar } from "@/lib/theme";
  *  - Paused when offscreen; static when prefers-reduced-motion.
  */
 
-type CoreColors = { accent: string; bg: string; panel: string; fg: string };
+type CoreColors = { accent: string; accent2: string; bg: string; panel: string; fg: string };
 
 /** SSR-safe defaults = merah theme; refreshed from CSS vars on the client. */
 const DEFAULT_COLORS: CoreColors = {
-  accent: "#e33b3b",
-  bg: "#0b0a0a",
-  panel: "#141112",
-  fg: "#f4efec",
+  accent: "#d21f2f",
+  accent2: "#131010",
+  bg: "#f8f6f4",
+  panel: "#ffffff",
+  fg: "#131010",
 };
 
 function buildNetwork(count = 110, minR = 1.9, spread = 1.0, linkDist = 0.95) {
@@ -110,8 +111,9 @@ function CoreScene({ animate, colors }: { animate: boolean; colors: CoreColors }
       <points geometry={nodeGeo}>
         <pointsMaterial color={colors.fg} size={0.035} sizeAttenuation transparent opacity={0.85} />
       </points>
+      {/* Data links carry the SECOND accent — the ungu×cyan pairing */}
       <lineSegments geometry={linkGeo}>
-        <lineBasicMaterial color={colors.accent} transparent opacity={0.2} />
+        <lineBasicMaterial color={colors.accent2} transparent opacity={0.3} />
       </lineSegments>
     </group>
   );
@@ -139,6 +141,7 @@ export default function DigitalCore({ className = "" }: { className?: string }) 
   useEffect(() => {
     setColors({
       accent: cssVar("--color-accent") || DEFAULT_COLORS.accent,
+      accent2: cssVar("--color-accent2") || DEFAULT_COLORS.accent2,
       bg: cssVar("--color-bg") || DEFAULT_COLORS.bg,
       panel: cssVar("--color-panel") || DEFAULT_COLORS.panel,
       fg: cssVar("--color-fg") || DEFAULT_COLORS.fg,

@@ -7,7 +7,7 @@ import { useTheme } from "@/lib/theme";
 /** Preview dot showing the accent of the theme you would switch TO. */
 const THEME_PREVIEW: Record<string, { dot: string; label: string }> = {
   merah: { dot: "#7c3aed", label: "UNGU" },
-  ungu: { dot: "#e33b3b", label: "MERAH" },
+  ungu: { dot: "#d21f2f", label: "MERAH" },
 };
 
 function ThemeToggle({ compact = false }: { compact?: boolean }) {

@@ -41,7 +41,7 @@ export default function About() {
           <br />
           SOLVE.
           <br />
-          <span className="text-accent">EVOLVE.</span>
+          <span className="accent-split">EVOLVE.</span>
         </div>
       </div>
 

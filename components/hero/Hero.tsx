@@ -55,13 +55,13 @@ export default function Hero() {
             <>
               I BUILD TECHNOLOGY
               <br />
-              TO SOLVE <span className="text-accent">REAL PROBLEMS.</span>
+              TO SOLVE <span className="accent-split">REAL PROBLEMS.</span>
             </>
           ) : (
             <>
               SAYA MEMBANGUN TEKNOLOGI
               <br />
-              UNTUK MENYELESAIKAN <span className="text-accent">MASALAH NYATA.</span>
+              UNTUK MENYELESAIKAN <span className="accent-split">MASALAH NYATA.</span>
             </>
           )}
         </h1>

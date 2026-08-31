@@ -37,6 +37,7 @@ export default function Pipeline({
         // clears stale inline colors, then re-reads the new tokens).
         const fg = cssVar("--color-fg");
         const accent = cssVar("--color-accent");
+        const accent2 = cssVar("--color-accent2");
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -48,7 +49,8 @@ export default function Pipeline({
         });
         items.forEach((el, i) => {
           tl.to(el, { color: fg, borderColor: accent, duration: 0.3 }, i * 0.3);
-          if (arrows[i]) tl.to(arrows[i], { opacity: 1, duration: 0.2 }, i * 0.3 + 0.2);
+          // arrows light up in the co-accent (cyan on ungu, black on merah)
+          if (arrows[i]) tl.to(arrows[i], { opacity: 1, color: accent2, duration: 0.2 }, i * 0.3 + 0.2);
         });
       });
     },

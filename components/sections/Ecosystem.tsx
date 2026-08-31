@@ -92,7 +92,7 @@ export default function Ecosystem() {
             <span className="h-display block text-lg tracking-wide">
               {lang === "en" ? "PROBLEM" : "MASALAH"}
             </span>
-            <span className="font-mono text-[0.6rem] tracking-widest text-dim uppercase">
+            <span className="font-mono text-[0.6rem] tracking-widest text-accent2 uppercase">
               {lang === "en" ? "always the center" : "selalu pusatnya"}
             </span>
           </div>
