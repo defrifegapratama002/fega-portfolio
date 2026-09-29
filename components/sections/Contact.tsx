@@ -30,17 +30,17 @@ export default function Contact() {
   return (
     <>
       <section id="contact" className="mx-auto max-w-6xl px-6 py-32 text-center md:py-44">
-        <p className="kicker" data-reveal>
-          14 · {lang === "en" ? "The invitation" : "Undangan"}
+        <p className="kicker kicker-2" data-reveal>
+          16 · {lang === "en" ? "The invitation" : "Undangan"}
         </p>
         <h2 className="h-display mt-6 text-4xl md:text-6xl" data-reveal>
           {lang === "en" ? (
             <>
-              Have a problem <span className="accent-split">worth solving?</span>
+              Have a problem <span className="text-accent">worth solving?</span>
             </>
           ) : (
             <>
-              Punya masalah yang <span className="accent-split">layak diselesaikan?</span>
+              Punya masalah yang <span className="text-accent">layak diselesaikan?</span>
             </>
           )}
         </h2>

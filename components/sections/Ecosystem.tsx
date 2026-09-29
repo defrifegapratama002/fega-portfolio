@@ -148,10 +148,14 @@ export default function Ecosystem() {
             ))}
           </div>
 
-          <p className="mt-6 font-mono text-[0.65rem] tracking-widest text-dim uppercase">
-            {lang === "en" ? "Proven by" : "Dibuktikan oleh"}
-          </p>
-          <p className="mt-2 text-sm text-mut">{selected.projects.join(" · ")}</p>
+          {selected.projects.length ? (
+            <>
+              <p className="mt-6 font-mono text-[0.65rem] tracking-widest text-dim uppercase">
+                {lang === "en" ? "Proven by" : "Dibuktikan oleh"}
+              </p>
+              <p className="mt-2 text-sm text-mut">{selected.projects.join(" · ")}</p>
+            </>
+          ) : null}
 
           <a
             href={`#${selected.sectionId}`}

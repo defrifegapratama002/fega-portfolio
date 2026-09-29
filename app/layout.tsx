@@ -9,12 +9,14 @@ const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-grotesk" }
 const jbmono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jbmono" });
 
 export const metadata: Metadata = {
-  title: "Defri Fega Pratama — Software Engineer",
+  title: "Defri Fega Pratama — Problem Solver & Software Engineer",
   description:
-    "Defri Fega Pratama is a software engineer solving real problems with precise, creative, and modern solutions — through AI, data, software, automation, web and mobile technologies.",
+    "Defri Fega Pratama is a problem solver and software engineer, solving real problems with precise, creative, and modern solutions — through AI, data, software, automation, web and mobile technologies.",
   keywords: [
     "Defri Fega Pratama",
+    "problem solver",
     "software engineer",
+    "IoT",
     "AI",
     "computer vision",
     "data analytics",
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
     "automation",
   ],
   openGraph: {
-    title: "Defri Fega Pratama — Software Engineer",
+    title: "Defri Fega Pratama — Problem Solver & Software Engineer",
     description:
       "I build technology to solve real problems — with precise, creative, modern solutions. AI · Data · Software · Automation.",
     type: "website",
@@ -47,7 +49,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('fega-theme');if(t==='merah'||t==='ungu')document.documentElement.dataset.theme=t}catch(e){}",
+              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('fega-theme');if(t==='merah'||t==='ungu'||t==='hijau'||t==='gelap')document.documentElement.dataset.theme=t}catch(e){}",
           }}
         />
         <ThemeProvider>

@@ -2,7 +2,7 @@
   "name": "fega-portfolio",
   "version": "2.0.0",
   "private": true,
-  "description": "Interactive Technology Portfolio — Defri Fega Pratama, Technology Problem Solver",
+  "description": "Interactive Technology Portfolio — Defri Fega Pratama, Problem Solver & Software Engineer",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

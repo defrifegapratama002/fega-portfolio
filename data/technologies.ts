@@ -131,4 +131,21 @@ export const technologies: Technology[] = [
     projects: ["ITSFR Platform", "SupplierDaging"],
     sectionId: "tech-automation",
   },
+  {
+    key: "iot",
+    name: "Internet of Things",
+    short: "IOT",
+    description: {
+      en: "Connecting sensors and devices to software, so the physical world can report on itself.",
+      id: "Menghubungkan sensor dan perangkat ke software, agar dunia fisik bisa melaporkan dirinya sendiri.",
+    },
+    purpose: {
+      en: "When someone still has to walk over and check — a tank, a room, a machine, a door.",
+      id: "Saat seseorang masih harus datang dan mengecek sendiri — tandon, ruangan, mesin, pintu.",
+    },
+    areas: ["Sensors", "Device connectivity", "Monitoring", "Automatic control", "Notifications"],
+    // A field of the brand — no finished project is listed until one exists.
+    projects: [],
+    sectionId: "chapter-iot",
+  },
 ];

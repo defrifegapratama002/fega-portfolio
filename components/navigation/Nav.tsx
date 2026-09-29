@@ -2,40 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useLang, type L10n } from "@/lib/i18n";
-import { useTheme } from "@/lib/theme";
-
-/** Preview dot showing the accent of the theme you would switch TO. */
-const THEME_PREVIEW: Record<string, { dot: string; label: string }> = {
-  merah: { dot: "#7c3aed", label: "UNGU" },
-  ungu: { dot: "#d21f2f", label: "MERAH" },
-};
-
-function ThemeToggle({ compact = false }: { compact?: boolean }) {
-  const { theme, toggle } = useTheme();
-  const target = THEME_PREVIEW[theme];
-  return (
-    <button
-      type="button"
-      onClick={toggle}
-      className="flex items-center gap-1.5 font-mono text-xs tracking-widest text-mut transition-colors hover:text-fg"
-      aria-label={`Ganti tema ke ${target.label.toLowerCase()}`}
-      title={`Tema: ${target.label.toLowerCase()}`}
-    >
-      <span
-        className="inline-block h-2.5 w-2.5 rounded-full border border-line"
-        style={{ background: target.dot }}
-        aria-hidden="true"
-      />
-      {compact ? null : target.label}
-    </button>
-  );
-}
+import { PALETTE_EVENT } from "@/components/ui/CommandPalette";
+import ThemePicker from "@/components/navigation/ThemePicker";
 
 const LINKS: { href: string; label: L10n }[] = [
   { href: "#ecosystem", label: { en: "Technology", id: "Teknologi" } },
   { href: "#projects", label: { en: "Work", id: "Karya" } },
   { href: "#knowledge", label: { en: "Knowledge", id: "Pengetahuan" } },
   { href: "#about", label: { en: "About", id: "Tentang" } },
+  { href: "#consult", label: { en: "Consult", id: "Konsultasi" } },
   { href: "#contact", label: { en: "Contact", id: "Kontak" } },
 ];
 
@@ -65,7 +40,7 @@ export default function Nav() {
           DEFRI<span className="text-accent">·</span>FEGA
         </a>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {LINKS.map((l) => (
             <a
               key={l.href}
@@ -78,7 +53,15 @@ export default function Nav() {
           <a href="#contact" className="btn btn-solid !px-4 !py-2 text-[0.7rem]">
             {lang === "en" ? "LET'S TALK" : "AYO BICARA"}
           </a>
-          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))}
+            className="kbd hidden cursor-pointer transition-colors hover:border-accent2 hover:text-fg lg:block"
+            aria-label={lang === "en" ? "Open command palette" : "Buka palet perintah"}
+          >
+            Ctrl K
+          </button>
+          <ThemePicker />
           <button
             type="button"
             onClick={toggle}
@@ -90,7 +73,6 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-4 md:hidden">
-          <ThemeToggle compact />
           <button
             type="button"
             onClick={toggle}
@@ -125,6 +107,24 @@ export default function Nav() {
                 </a>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                className="font-mono text-sm tracking-[0.14em] text-accent2 uppercase"
+                onClick={() => {
+                  setOpen(false);
+                  window.dispatchEvent(new Event(PALETTE_EVENT));
+                }}
+              >
+                &gt; {lang === "en" ? "Search / commands" : "Cari / perintah"}
+              </button>
+            </li>
+            <li>
+              <p className="mb-2 font-mono text-[0.65rem] tracking-widest text-dim uppercase">
+                {lang === "en" ? "Theme" : "Tema"}
+              </p>
+              <ThemePicker inline />
+            </li>
             <li>
               <a href="#contact" className="btn btn-solid" onClick={() => setOpen(false)}>
                 {lang === "en" ? "LET'S TALK" : "AYO BICARA"}
