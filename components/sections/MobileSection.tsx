@@ -75,7 +75,7 @@ export default function MobileSection() {
   return (
     <Section
       id="tech-mobile"
-      num="07"
+      num="08"
       label={{ en: "Demonstration — Mobile Development", id: "Demonstrasi — Mobile Development" }}
       title={{
         en: "A digital solution in your hands.",

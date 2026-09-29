@@ -6,11 +6,10 @@ import { PALETTE_EVENT } from "@/components/ui/CommandPalette";
 import ThemePicker from "@/components/navigation/ThemePicker";
 
 const LINKS: { href: string; label: L10n }[] = [
-  { href: "#ecosystem", label: { en: "Technology", id: "Teknologi" } },
   { href: "#projects", label: { en: "Work", id: "Karya" } },
-  { href: "#knowledge", label: { en: "Knowledge", id: "Pengetahuan" } },
+  { href: "#lab", label: { en: "Lab", id: "Lab" } },
+  { href: "#ecosystem", label: { en: "Technology", id: "Teknologi" } },
   { href: "#about", label: { en: "About", id: "Tentang" } },
-  { href: "#consult", label: { en: "Consult", id: "Konsultasi" } },
   { href: "#contact", label: { en: "Contact", id: "Kontak" } },
 ];
 
@@ -51,7 +50,7 @@ export default function Nav() {
             </a>
           ))}
           <a href="#contact" className="btn btn-solid !px-4 !py-2 text-[0.7rem]">
-            {lang === "en" ? "LET'S TALK" : "AYO BICARA"}
+            {lang === "en" ? "LET'S BUILD" : "AYO BANGUN"}
           </a>
           <button
             type="button"
@@ -127,7 +126,7 @@ export default function Nav() {
             </li>
             <li>
               <a href="#contact" className="btn btn-solid" onClick={() => setOpen(false)}>
-                {lang === "en" ? "LET'S TALK" : "AYO BICARA"}
+                {lang === "en" ? "LET'S BUILD" : "AYO BANGUN"}
               </a>
             </li>
           </ul>

@@ -5,13 +5,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLang } from "@/lib/i18n";
-import DigitalCore from "@/components/3d/DigitalCore";
+import dynamic from "next/dynamic";
 import Magnetic from "@/components/ui/Magnetic";
 import CodeCard from "@/components/hero/CodeCard";
 import ScrollBackdrop from "@/components/ui/ScrollBackdrop";
 import type { BackdropMedia } from "@/lib/backdrops";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+// Three.js is the heaviest thing on the page: load it after the text is up.
+const DigitalCore = dynamic(() => import("@/components/3d/DigitalCore"), { ssr: false });
 
 /** Hero (blueprint §6–7): core statement + 3D digital core + the editor window. */
 export default function Hero({ media }: { media: BackdropMedia }) {

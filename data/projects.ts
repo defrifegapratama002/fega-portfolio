@@ -36,6 +36,9 @@ export type Project = {
   /** Ecosystem domains this project proves (keys from data/technologies.ts). */
   domains: string[];
   featured: boolean;
+  /** Public links (specification §33) — only when they really exist. */
+  demoUrl?: string;
+  sourceUrl?: string;
 };
 
 export const STATUS_LABELS: Record<ProjectStatus, L10n> = {
@@ -349,6 +352,7 @@ export const projects: Project[] = [
     pipeline: ["SKILL", "EXPERIENCE", "DEMONSTRATION", "PROOF"],
     domains: ["web"],
     featured: true,
+    sourceUrl: "https://github.com/defrifegapratama002/fega-portfolio",
   },
 ];
 

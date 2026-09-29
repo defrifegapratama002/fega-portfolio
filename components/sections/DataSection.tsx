@@ -126,7 +126,7 @@ export default function DataSection() {
   return (
     <Section
       id="tech-data"
-      num="05"
+      num="06"
       label={{ en: "Demonstration — Data", id: "Demonstrasi — Data" }}
       title={{
         en: "Data becomes valuable when it helps someone decide.",

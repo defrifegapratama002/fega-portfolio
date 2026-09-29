@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Section from "@/components/ui/Section";
 import { technologies } from "@/data/technologies";
+import { stack } from "@/data/stack";
 import { useLang } from "@/lib/i18n";
 
 gsap.registerPlugin(useGSAP);
@@ -54,8 +55,8 @@ export default function Ecosystem() {
   return (
     <Section
       id="ecosystem"
-      num="02"
-      label={{ en: "Technology ecosystem", id: "Ekosistem teknologi" }}
+      num="10"
+      label={{ en: "Technology", id: "Teknologi" }}
       title={{
         en: "One problem. Many possible technologies.",
         id: "Satu masalah. Banyak kemungkinan teknologi.",
@@ -164,6 +165,21 @@ export default function Ecosystem() {
             {lang === "en" ? "See it demonstrated" : "Lihat demonstrasinya"} ↓
           </a>
         </div>
+      </div>
+
+      {/* Specification §12 — grouped by use, never by percentage */}
+      <div className="mt-16" data-reveal>
+        <p className="font-mono text-[0.65rem] tracking-widest text-dim uppercase">
+          {lang === "en" ? "What I use — every tool below shipped in a real project" : "Yang saya pakai — setiap alat di bawah dipakai di project nyata"}
+        </p>
+        <dl className="mt-4 border-t border-line">
+          {stack.map((g, i) => (
+            <div key={g.name} className="grid gap-x-8 gap-y-1 border-b border-line py-4 sm:grid-cols-[9rem_1fr] sm:items-baseline">
+              <dt className={`font-mono text-xs tracking-widest uppercase ${i % 2 ? "text-accent2" : "text-accent"}`}>{g.name}</dt>
+              <dd className="font-mono text-sm text-mut">{g.tools.join(" · ")}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </Section>
   );

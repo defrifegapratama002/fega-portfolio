@@ -131,7 +131,7 @@ export default function HowIThink() {
       <div className={pinned ? "md:sticky md:top-0 md:flex md:h-svh md:items-center" : ""}>
         <div className="mx-auto w-full max-w-6xl px-6 py-28 md:py-0">
           <p className="kicker" data-reveal>
-            09 · {lang === "en" ? "How I think" : "Cara saya berpikir"}
+            11 · {lang === "en" ? "How I think" : "Cara saya berpikir"}
           </p>
           <h2 className="h-display mt-4 max-w-3xl text-3xl md:text-5xl" data-reveal>
             {lang === "en"

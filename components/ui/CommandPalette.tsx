@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { projects } from "@/data/projects";
+import { contacts } from "@/data/brand";
 import { useLang, type L10n } from "@/lib/i18n";
 import { useTheme, THEMES } from "@/lib/theme";
 
@@ -13,15 +14,18 @@ import { useTheme, THEMES } from "@/lib/theme";
 
 export const PALETTE_EVENT = "fega:palette";
 
-const EMAIL = "defrifegapratama002@gmail.com";
-const GITHUB = "https://github.com/defrifegapratama002";
+const EMAIL = contacts.email;
+const GITHUB = contacts.github;
 
 const SECTIONS: { href: string; label: L10n }[] = [
   { href: "#top", label: { en: "Home", id: "Beranda" } },
-  { href: "#ecosystem", label: { en: "Technology ecosystem", id: "Ekosistem teknologi" } },
+  { href: "#build", label: { en: "What I build", id: "Yang saya bangun" } },
   { href: "#projects", label: { en: "Work — case studies", id: "Karya — studi kasus" } },
-  { href: "#knowledge", label: { en: "Knowledge", id: "Pengetahuan" } },
+  { href: "#lab", label: { en: "Live lab", id: "Lab langsung" } },
+  { href: "#ecosystem", label: { en: "Technology", id: "Teknologi" } },
   { href: "#about", label: { en: "About", id: "Tentang" } },
+  { href: "#exploring", label: { en: "Things I'm exploring", id: "Yang sedang saya jelajahi" } },
+  { href: "#knowledge", label: { en: "Knowledge", id: "Pengetahuan" } },
   { href: "#consult", label: { en: "Consult", id: "Konsultasi" } },
   { href: "#contact", label: { en: "Contact", id: "Kontak" } },
 ];

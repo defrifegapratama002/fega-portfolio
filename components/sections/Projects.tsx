@@ -131,6 +131,21 @@ function CaseStudy({
                 </div>
               ))}
             </dl>
+
+            {project.demoUrl || project.sourceUrl ? (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {project.demoUrl ? (
+                  <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-solid !px-4 !py-2 text-[0.7rem]">
+                    {lang === "en" ? "OPEN DEMO" : "BUKA DEMO"} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
+                {project.sourceUrl ? (
+                  <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="btn btn-line !px-4 !py-2 text-[0.7rem]">
+                    {lang === "en" ? "SOURCE CODE" : "KODE SUMBER"} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -182,11 +197,11 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      num="11"
+      num="02"
       label={{ en: "The proof", id: "Buktinya" }}
       title={{
-        en: "Problems I've turned into solutions.",
-        id: "Masalah yang saya ubah menjadi solusi.",
+        en: "Problems I've solved.",
+        id: "Masalah yang sudah saya selesaikan.",
       }}
       lede={{
         en: "Not a screenshot gallery — case studies. Every project answers the same six questions, and every status label is honest.",

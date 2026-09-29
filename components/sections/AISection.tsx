@@ -94,7 +94,7 @@ export default function AISection() {
   return (
     <Section
       id="tech-ai"
-      num="03"
+      num="04"
       label={{ en: "Demonstration — Artificial Intelligence", id: "Demonstrasi — Artificial Intelligence" }}
       title={{
         en: "Systems that understand, decide, and assist.",

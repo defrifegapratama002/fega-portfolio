@@ -14,7 +14,7 @@ export default function VisionMission() {
   return (
     <Section
       id="vision-mission"
-      num="14"
+      num="13"
       label={{ en: "Vision & mission", id: "Visi & misi" }}
       title={{
         en: "What the technology is for.",

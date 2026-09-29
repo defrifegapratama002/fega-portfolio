@@ -78,7 +78,7 @@ export default function VisionSection() {
   return (
     <Section
       id="tech-vision"
-      num="04"
+      num="05"
       label={{ en: "Demonstration — Computer Vision", id: "Demonstrasi — Computer Vision" }}
       title={{
         en: "Teaching computers to understand what they see.",

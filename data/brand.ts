@@ -24,6 +24,24 @@ export const brand = {
   },
 } as const;
 
+/**
+ * Contact channels (specification §24): only active, professional ones.
+ * A channel left as `null` is simply not shown — fill it in to show it.
+ *  - whatsapp: full international number, digits only, e.g. "6281234567890"
+ *  - linkedin: full profile URL
+ */
+export const contacts: {
+  email: string;
+  github: string;
+  whatsapp: string | null;
+  linkedin: string | null;
+} = {
+  email: "defrifegapratama002@gmail.com",
+  github: "https://github.com/defrifegapratama002",
+  whatsapp: null,
+  linkedin: null,
+};
+
 export type Principle = {
   word: L10n;
   meaning: L10n;

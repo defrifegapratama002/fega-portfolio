@@ -6,9 +6,10 @@ import Magnetic from "@/components/ui/Magnetic";
 import { consultCases, type ConsultCase } from "@/data/consult";
 import { technologies } from "@/data/technologies";
 import { projects } from "@/data/projects";
+import { contacts } from "@/data/brand";
 import { useLang, type Lang } from "@/lib/i18n";
 
-const EMAIL = "defrifegapratama002@gmail.com";
+const EMAIL = contacts.email;
 
 /**
  * Consult — the visitor's problem, routed to the technology areas that
@@ -132,7 +133,7 @@ export default function Consult() {
   return (
     <Section
       id="consult"
-      num="15"
+      num="16"
       label={{ en: "Consult", id: "Konsultasi" }}
       title={{
         en: "What are you dealing with right now?",

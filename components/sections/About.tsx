@@ -18,7 +18,7 @@ export default function About({ portrait }: { portrait: string | null }) {
   return (
     <Section
       id="about"
-      num="13"
+      num="12"
       label={{ en: "About", id: "Tentang" }}
       title={{
         en: "Who is behind the technology?",

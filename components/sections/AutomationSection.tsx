@@ -26,7 +26,7 @@ export default function AutomationSection() {
   return (
     <Section
       id="tech-automation"
-      num="08"
+      num="09"
       label={{ en: "Demonstration — Automation & Systems", id: "Demonstrasi — Otomasi & Sistem" }}
       title={{
         en: "Turn repetitive work into systems.",

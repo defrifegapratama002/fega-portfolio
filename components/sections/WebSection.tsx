@@ -103,7 +103,7 @@ export default function WebSection() {
   return (
     <Section
       id="tech-web"
-      num="06"
+      num="07"
       label={{ en: "Demonstration — Web Development & UI/UX", id: "Demonstrasi — Web Development & UI/UX" }}
       title={{
         en: "You are currently experiencing one of my web development projects.",

@@ -15,7 +15,7 @@ export default function Knowledge() {
   return (
     <Section
       id="knowledge"
-      num="12"
+      num="15"
       label={{ en: "Knowledge I've built", id: "Pengetahuan yang saya bangun" }}
       title={{
         en: "Every piece of knowledge points at a shipped system.",
