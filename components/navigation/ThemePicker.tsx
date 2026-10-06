@@ -52,18 +52,18 @@ export default function ThemePicker({ inline = false }: { inline?: boolean }) {
           setTheme(t);
           setOpen(false);
         }}
-        className={`flex items-center gap-3 rounded-md px-3 py-2 text-left transition-colors ${
+        className={`flex items-center gap-3 px-3 py-2 text-left transition-colors ${
           inline ? "border border-line" : "w-full"
         } ${active ? "bg-panel2 text-fg" : "text-mut hover:bg-panel2 hover:text-fg"}`}
       >
         <Swatch theme={t} />
         <span className="flex flex-col">
-          <span className="font-mono text-xs tracking-widest uppercase">{THEME_META[t].label}</span>
+          <span className="text-sm">{THEME_META[t].label}</span>
           {inline ? null : (
-            <span className="font-mono text-[0.62rem] tracking-wide text-dim">{THEME_META[t].mood[lang]}</span>
+            <span className="text-xs text-dim">{THEME_META[t].mood[lang]}</span>
           )}
         </span>
-        <span className={`ml-auto font-mono text-xs text-accent ${active ? "" : "invisible"}`} aria-hidden="true">
+        <span className={`ml-auto text-xs text-accent ${active ? "" : "invisible"}`} aria-hidden="true">
           ✓
         </span>
       </button>
@@ -86,7 +86,7 @@ export default function ThemePicker({ inline = false }: { inline?: boolean }) {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={lang === "en" ? "Choose theme" : "Pilih tema"}
-        className="flex items-center gap-2 font-mono text-xs tracking-widest text-mut uppercase transition-colors hover:text-fg"
+        className="flex items-center gap-2 text-sm text-mut transition-colors hover:text-fg"
       >
         <Swatch theme={theme} />
         {lang === "en" ? "Theme" : "Tema"}
@@ -97,7 +97,7 @@ export default function ThemePicker({ inline = false }: { inline?: boolean }) {
         <div
           role="menu"
           aria-label={lang === "en" ? "Theme" : "Tema"}
-          className="absolute top-full right-0 z-50 mt-3 w-56 rounded-xl border border-line bg-panel p-1.5 shadow-xl"
+          className="absolute top-full right-0 z-50 mt-3 w-56 border border-line bg-panel p-1 shadow-lg"
         >
           {options}
         </div>

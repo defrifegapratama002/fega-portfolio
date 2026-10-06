@@ -44,7 +44,7 @@ export const chapters: Record<ChapterId, Chapter> = {
   ai: {
     id: "ai",
     num: "01",
-    title: { en: "AI & VISION", id: "AI & VISION" },
+    title: { en: "AI & vision", id: "AI & vision" },
     line: {
       en: "Systems that listen, read, and respond.",
       id: "Sistem yang mendengar, membaca, dan merespons.",
@@ -58,7 +58,7 @@ export const chapters: Record<ChapterId, Chapter> = {
   data: {
     id: "data",
     num: "02",
-    title: { en: "DATA", id: "DATA" },
+    title: { en: "Data", id: "Data" },
     line: {
       en: "Raw data in. Decisions out.",
       id: "Data mentah masuk. Keputusan keluar.",
@@ -72,7 +72,7 @@ export const chapters: Record<ChapterId, Chapter> = {
   web: {
     id: "web",
     num: "03",
-    title: { en: "WEB & MOBILE", id: "WEB & MOBILE" },
+    title: { en: "Web & mobile", id: "Web & mobile" },
     line: {
       en: "Products in the browser — and in your pocket.",
       id: "Produk di browser — dan di saku Anda.",
@@ -86,7 +86,7 @@ export const chapters: Record<ChapterId, Chapter> = {
   automation: {
     id: "automation",
     num: "04",
-    title: { en: "AUTOMATION", id: "OTOMASI" },
+    title: { en: "Automation", id: "Otomasi" },
     line: {
       en: "Manual work, turned into reliable systems.",
       id: "Pekerjaan manual, diubah menjadi sistem yang andal.",

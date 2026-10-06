@@ -1,8 +1,7 @@
 import type { L10n } from "@/lib/i18n";
 
 /**
- * "What I Build" (specification §11) — not a skills list: the kinds of
- * systems Defri builds, grouped by field. `projects` are slugs from
+ * What Defri builds, grouped by field. `projects` are slugs from
  * data/projects.ts; a field may have none yet (personal brand).
  */
 
@@ -29,7 +28,7 @@ export const builds: Build[] = [
     items: [
       { en: "LLM applications", id: "Aplikasi LLM" },
       { en: "AI agents with human approval", id: "Agen AI dengan persetujuan manusia" },
-      { en: "RAG — answers from your own data", id: "RAG — jawaban dari data Anda sendiri" },
+      { en: "RAG, answers from your own data", id: "RAG, jawaban dari data Anda sendiri" },
       { en: "AI automation", id: "Otomasi berbasis AI" },
       { en: "Voice and conversational interfaces", id: "Antarmuka suara dan percakapan" },
     ],
@@ -40,15 +39,15 @@ export const builds: Build[] = [
     key: "software",
     name: same("Software"),
     summary: {
-      en: "Full products, from database to interface — on the web and on the phone.",
-      id: "Produk utuh, dari database sampai antarmuka — di web dan di ponsel.",
+      en: "Full products, from database to interface, on the web and on the phone.",
+      id: "Produk utuh, dari database sampai antarmuka, di web dan di ponsel.",
     },
     items: [
       { en: "Full-stack web applications", id: "Aplikasi web full-stack" },
       { en: "APIs and backend systems", id: "API dan sistem backend" },
       { en: "Dashboards", id: "Dashboard" },
       { en: "Mobile applications", id: "Aplikasi mobile" },
-      { en: "Business systems (CRM / ERP / POS)", id: "Sistem bisnis (CRM / ERP / POS)" },
+      { en: "Business systems (CRM, ERP, POS)", id: "Sistem bisnis (CRM, ERP, POS)" },
     ],
     projects: ["itsfr", "supplierdaging", "zonzon"],
     demo: "tech-web",
@@ -57,8 +56,8 @@ export const builds: Build[] = [
     key: "vision",
     name: same("Computer Vision"),
     summary: {
-      en: "Getting information out of images — so nobody has to read or count by eye.",
-      id: "Mengambil informasi dari gambar — agar tak ada yang perlu membaca atau menghitung dengan mata.",
+      en: "Getting information out of images, so nobody has to read or count by eye.",
+      id: "Mengambil informasi dari gambar, agar tak ada yang perlu membaca atau menghitung dengan mata.",
     },
     items: [
       { en: "OCR and document reading", id: "OCR dan pembacaan dokumen" },
@@ -74,7 +73,7 @@ export const builds: Build[] = [
     name: same("Data"),
     summary: {
       en: "Raw records turned into something a person can decide with.",
-      id: "Catatan mentah diubah menjadi sesuatu yang bisa dipakai orang untuk memutuskan.",
+      id: "Catatan mentah diubah menjadi sesuatu yang bisa dipakai untuk memutuskan.",
     },
     items: [
       { en: "Data collection and cleaning", id: "Pengumpulan dan pembersihan data" },
@@ -119,14 +118,48 @@ export const builds: Build[] = [
   },
 ];
 
-/** Specification §3 — what the brand actually promises, step by step. */
-export const method: L10n[] = [
-  { en: "PROBLEM", id: "MASALAH" },
-  { en: "UNDERSTAND", id: "PAHAMI" },
-  { en: "CHOOSE", id: "PILIH" },
-  { en: "DESIGN", id: "RANCANG" },
-  { en: "BUILD", id: "BANGUN" },
-  { en: "TEST", id: "UJI" },
-  { en: "DEPLOY", id: "RILIS" },
-  { en: "IMPROVE", id: "PERBAIKI" },
+/** How every project is worked, in order. Six steps, one line each. */
+export const steps: { name: L10n; note: L10n }[] = [
+  {
+    name: { en: "Understand", id: "Pahami" },
+    note: {
+      en: "What is actually going wrong, and for whom. Watch the work before changing it.",
+      id: "Apa yang sebenarnya salah, dan bagi siapa. Lihat dulu cara kerjanya sebelum mengubah apa pun.",
+    },
+  },
+  {
+    name: { en: "Analyse", id: "Analisis" },
+    note: {
+      en: "Causes and constraints: budget, internet, devices, the law, the people who will use it.",
+      id: "Penyebab dan batasan: anggaran, internet, perangkat, aturan, orang yang akan memakainya.",
+    },
+  },
+  {
+    name: { en: "Design", id: "Rancang" },
+    note: {
+      en: "The simplest system that solves it. Usually smaller than the first idea.",
+      id: "Sistem paling sederhana yang menyelesaikannya. Biasanya lebih kecil dari ide pertama.",
+    },
+  },
+  {
+    name: { en: "Build", id: "Bangun" },
+    note: {
+      en: "In small releases, to real users, early.",
+      id: "Dalam rilis kecil, ke pengguna nyata, sejak awal.",
+    },
+  },
+  {
+    name: { en: "Test", id: "Uji" },
+    note: {
+      en: "Look for the failure cases on purpose: offline, wrong input, empty quota.",
+      id: "Cari kasus gagalnya dengan sengaja: offline, input salah, kuota habis.",
+    },
+  },
+  {
+    name: { en: "Improve", id: "Perbaiki" },
+    note: {
+      en: "Keep it running. A system counts when it still helps a year later.",
+      id: "Jaga agar tetap jalan. Sistem baru berarti kalau setahun kemudian masih membantu.",
+    },
+  },
 ];

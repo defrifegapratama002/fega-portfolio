@@ -4,105 +4,74 @@ import { useState } from "react";
 import Section from "@/components/ui/Section";
 import { useLang } from "@/lib/i18n";
 
-/**
- * Blueprint §19 — Automation & Systems: "Turn repetitive work into
- * systems." An interactive before/after switch — flip the workflow.
- */
+/** Automation chapter demo: the same workflow, by hand and as a system. */
 export default function AutomationSection() {
   const { lang } = useLang();
   const [automated, setAutomated] = useState(false);
 
-  const before =
-    lang === "en"
-      ? ["PERSON", "SPREADSHEET", "MANUAL WORK", "RESULT"]
-      : ["ORANG", "SPREADSHEET", "KERJA MANUAL", "HASIL"];
-  const after =
-    lang === "en"
-      ? ["INPUT", "AUTOMATION", "DATABASE", "SYSTEM", "RESULT"]
-      : ["INPUT", "OTOMASI", "DATABASE", "SISTEM", "HASIL"];
-
+  const before = lang === "en" ? ["Person", "Spreadsheet", "Manual work", "Result"] : ["Orang", "Spreadsheet", "Kerja manual", "Hasil"];
+  const after = lang === "en" ? ["Input", "Validation", "Database", "Report"] : ["Input", "Validasi", "Database", "Laporan"];
   const steps = automated ? after : before;
 
   return (
     <Section
       id="tech-automation"
-      num="09"
-      label={{ en: "Demonstration — Automation & Systems", id: "Demonstrasi — Otomasi & Sistem" }}
+      label={{ en: "Automation · try it", id: "Otomasi · coba" }}
       title={{
-        en: "Turn repetitive work into systems.",
-        id: "Ubah pekerjaan berulang menjadi sistem.",
-      }}
-      lede={{
-        en: "Not just programming — process improvement. Flip the switch and watch the workflow change shape.",
-        id: "Bukan sekadar pemrograman — perbaikan proses. Geser sakelarnya dan lihat alur kerjanya berubah bentuk.",
+        en: "The same workflow, by hand and as a system.",
+        id: "Alur kerja yang sama, dikerjakan manual dan sebagai sistem.",
       }}
     >
-      <div className="card mt-12 p-7 md:p-9" data-reveal>
-        <div className="flex flex-wrap items-center gap-4">
-          <span
-            className={`font-mono text-xs tracking-widest ${!automated ? "text-fg" : "text-dim"}`}
-          >
-            {lang === "en" ? "MANUAL" : "MANUAL"}
-          </span>
+      <div className="mt-10 max-w-3xl">
+        <div className="flex flex-wrap items-center gap-4 text-sm">
+          <span className={!automated ? "text-fg" : "text-dim"}>{lang === "en" ? "By hand" : "Manual"}</span>
           <button
             type="button"
             role="switch"
             aria-checked={automated}
             aria-label={lang === "en" ? "Toggle automation" : "Aktifkan otomasi"}
             onClick={() => setAutomated((v) => !v)}
-            className={`relative h-8 w-16 rounded-full border transition-colors duration-300 ${
-              automated ? "border-accent bg-accent-dim" : "border-line bg-panel2"
-            }`}
+            className={`relative h-7 w-12 border transition-colors duration-300 ${automated ? "border-accent bg-accent-dim" : "border-line bg-panel2"}`}
+            style={{ borderRadius: "999px" }}
           >
             <span
-              className={`absolute top-1 left-1 h-6 w-6 rounded-full transition-all duration-300 ${
-                automated ? "translate-x-8 bg-accent" : "translate-x-0 bg-dim"
-              }`}
+              className={`absolute top-[3px] left-[3px] h-5 w-5 transition-all duration-300 ${automated ? "translate-x-5 bg-accent" : "translate-x-0 bg-dim"}`}
+              style={{ borderRadius: "999px" }}
               aria-hidden="true"
             />
           </button>
-          <span
-            className={`font-mono text-xs tracking-widest ${automated ? "text-accent" : "text-dim"}`}
-          >
-            {lang === "en" ? "AUTOMATED" : "OTOMATIS"}
-          </span>
+          <span className={automated ? "text-accent" : "text-dim"}>{lang === "en" ? "As a system" : "Sebagai sistem"}</span>
         </div>
 
-        <div className="pipe mt-8" aria-live="polite">
+        <ol className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2" aria-live="polite">
           {steps.map((s, i) => (
-            <span key={s + automated} className="contents">
-              <span
-                className={`pipe-step ${automated ? "is-on" : ""}`}
-                style={!automated ? { borderStyle: "dashed", color: "var(--color-mut)" } : undefined}
-              >
-                {s}
-              </span>
-              {i < steps.length - 1 ? <span className="pipe-arrow">→</span> : null}
-            </span>
+            <li key={s + String(automated)} className="flex items-center gap-3">
+              <span className={`chip ${automated ? "border-accent text-fg" : "border-dashed"}`}>{s}</span>
+              {i < steps.length - 1 ? <span className="text-dim" aria-hidden="true">→</span> : null}
+            </li>
           ))}
-        </div>
+        </ol>
 
-        <p className="prose-mut mt-8 text-sm">
+        <p className="prose-mut mt-6 text-sm md:text-base">
           {automated
             ? lang === "en"
-              ? "Data enters once, at the source. The system validates, records, audits and reports — the same event can never be typed twice, and nothing depends on someone remembering."
-              : "Data masuk sekali, di sumbernya. Sistem memvalidasi, mencatat, mengaudit, dan melaporkan — kejadian yang sama tak mungkin diketik dua kali, dan tak ada yang bergantung pada ingatan seseorang."
+              ? "Data enters once, at the source. The system validates, records, audits and reports. The same event cannot be typed twice, and nothing depends on someone remembering."
+              : "Data masuk sekali, di sumbernya. Sistem memvalidasi, mencatat, mengaudit, dan melaporkan. Kejadian yang sama tidak bisa diketik dua kali, dan tidak ada yang bergantung pada ingatan seseorang."
             : lang === "en"
-              ? "A person carries data between spreadsheets by hand. Every copy is a chance for an error; every report is hours of work; every absence is a bottleneck."
-              : "Seseorang memindahkan data antar-spreadsheet secara manual. Setiap salinan adalah peluang kesalahan; setiap laporan berarti berjam-jam kerja; setiap ketidakhadiran menjadi hambatan."}
+              ? "A person carries data between spreadsheets by hand. Every copy is a chance for an error, every report is hours of work, and every absence is a bottleneck."
+              : "Seseorang memindahkan data antar-spreadsheet secara manual. Setiap salinan adalah peluang kesalahan, setiap laporan berarti berjam-jam kerja, dan setiap ketidakhadiran jadi hambatan."}
         </p>
 
-        <p className="mt-6 font-mono text-[0.65rem] leading-relaxed tracking-wide text-dim">
+        <p className="mt-5 text-sm text-mut">
+          {lang === "en" ? "This is what " : "Inilah yang dilakukan "}
+          <a href="#project-itsfr" className="link">
+            ITSFR Platform
+          </a>
           {lang === "en"
-            ? "REAL EXAMPLE — ITSFR Platform replaced scattered spreadsheets with an ERP used in daily operations: inventory computed from audited movements, never typed; prices that physically cannot leak because they are never stored."
-            : "CONTOH NYATA — ITSFR Platform menggantikan spreadsheet berserakan dengan ERP yang dipakai operasional setiap hari: inventori dihitung dari pergerakan teraudit, tak pernah diketik; harga yang secara fisik tak bisa bocor karena tak pernah disimpan."}
+            ? " did for an export company: inventory computed from audited movements instead of typed, and prices that cannot leak because they are never stored."
+            : " untuk sebuah perusahaan ekspor: inventori dihitung dari pergerakan teraudit alih-alih diketik, dan harga yang tidak bisa bocor karena tidak pernah disimpan."}
         </p>
       </div>
-
-      <p className="mt-8 font-mono text-xs tracking-wide text-dim" data-reveal>
-        {lang === "en" ? "Proven by:" : "Dibuktikan oleh:"}{" "}
-        <span className="text-mut">ITSFR Platform · SupplierDaging</span>
-      </p>
     </Section>
   );
 }

@@ -5,8 +5,7 @@ import { useLang, type L10n } from "@/lib/i18n";
 
 type SectionProps = {
   id: string;
-  num: string;
-  label: L10n;
+  label?: L10n;
   title: L10n;
   lede?: L10n;
   children?: ReactNode;
@@ -14,26 +13,18 @@ type SectionProps = {
 };
 
 /**
- * Consistent section shell: numbered kicker, large display title,
- * optional lede — strong hierarchy and generous whitespace (§33).
+ * Section shell: a small label, a serif heading, an optional lede.
+ * Sections are not numbered; the page is meant to be read, not navigated
+ * like a file tree.
  */
-export default function Section({ id, num, label, title, lede, children, className = "" }: SectionProps) {
+export default function Section({ id, label, title, lede, children, className = "" }: SectionProps) {
   const { t } = useLang();
 
   return (
-    <section id={id} className={`mx-auto max-w-6xl px-6 py-28 md:py-36 ${className}`}>
-      {/* Even sections carry the second accent — two colour "sides", poster-style */}
-      <p className={`kicker ${Number(num) % 2 === 0 ? "kicker-2" : ""}`} data-reveal>
-        {num} · {t(label)}
-      </p>
-      <h2 className="h-display mt-4 max-w-3xl text-3xl md:text-5xl" data-reveal>
-        {t(title)}
-      </h2>
-      {lede ? (
-        <p className="prose-mut mt-6 text-base md:text-lg" data-reveal>
-          {t(lede)}
-        </p>
-      ) : null}
+    <section id={id} className={`mx-auto max-w-5xl px-5 py-20 sm:px-6 md:py-28 ${className}`}>
+      {label ? <p className="label">{t(label)}</p> : null}
+      <h2 className="h-display mt-3 max-w-2xl text-3xl md:text-[2.6rem]">{t(title)}</h2>
+      {lede ? <p className="prose-mut mt-5 text-base md:text-lg">{t(lede)}</p> : null}
       {children}
     </section>
   );

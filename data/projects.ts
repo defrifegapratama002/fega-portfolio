@@ -1,12 +1,11 @@
 import type { L10n } from "@/lib/i18n";
 
 /**
- * Data-driven project architecture (blueprint §45), extended with the
- * problem → approach → technology → solution → result → lesson structure
- * every project must answer (blueprint §20, §23).
+ * Projects. Each one answers the same questions: what the problem was,
+ * how it was approached, what was built, what came out of it.
  *
- * Status labels are honest (blueprint §47): production / shipped /
- * prototype / personal / experimental — as things really are.
+ * Status labels say what is true: production / shipped / prototype /
+ * personal / experimental. Numbers are the real ones or are left out.
  */
 
 export type ProjectStatus =
@@ -23,30 +22,27 @@ export type Project = {
   category: L10n;
   status: ProjectStatus;
   statusLabel: L10n;
-  /** One-line logline shown on the card before it is opened. */
+  /** One line shown before the detail is opened. */
   logline: L10n;
   problem: L10n;
   approach: L10n;
   technologies: string[];
   solution: L10n;
   result: L10n;
-  lesson: L10n;
-  /** Compact visual pipeline for the case study (blueprint flow diagrams). */
-  pipeline: string[];
-  /** Ecosystem domains this project proves (keys from data/technologies.ts). */
+  /** Field keys from data/technologies.ts. */
   domains: string[];
   featured: boolean;
-  /** Public links (specification §33) — only when they really exist. */
+  /** Public links, only when they really exist. */
   demoUrl?: string;
   sourceUrl?: string;
 };
 
 export const STATUS_LABELS: Record<ProjectStatus, L10n> = {
-  production: { en: "In production — used daily", id: "Produksi — dipakai setiap hari" },
-  shipped: { en: "Shipped release", id: "Rilis rampung" },
+  production: { en: "In production, used daily", id: "Produksi, dipakai setiap hari" },
+  shipped: { en: "Shipped", id: "Sudah rilis" },
   prototype: { en: "Prototype", id: "Prototipe" },
-  personal: { en: "Personal project", id: "Project pribadi" },
-  experimental: { en: "Experimental project", id: "Project eksperimental" },
+  personal: { en: "Personal project", id: "Proyek pribadi" },
+  experimental: { en: "Experiment", id: "Eksperimen" },
 };
 
 export const projects: Project[] = [
@@ -54,38 +50,33 @@ export const projects: Project[] = [
     slug: "speakenglish",
     title: "AI English Speaking Tutor",
     year: "2026",
-    category: { en: "AI × Mobile — Android", id: "AI × Mobile — Android" },
+    category: { en: "Android app · AI", id: "Aplikasi Android · AI" },
     status: "shipped",
     statusLabel: {
-      en: "Signed release — sold directly to users",
-      id: "Release ter-sign — dijual langsung ke pengguna",
+      en: "Signed release, sold directly to users",
+      id: "Rilis ter-sign, dijual langsung ke pengguna",
     },
     logline: {
-      en: "An AI tutor that listens, understands, corrects, and talks back.",
-      id: "Tutor AI yang mendengar, memahami, mengoreksi, dan membalas bicara.",
+      en: "An English speaking tutor on a phone. It listens, corrects the grammar, and answers out loud.",
+      id: "Tutor bicara bahasa Inggris di ponsel. Ia mendengar, mengoreksi tata bahasa, dan menjawab dengan suara.",
     },
     problem: {
-      en: "Learners need far more opportunities to practice speaking naturally — and immediate feedback when they make mistakes. A human tutor is expensive and not always available.",
-      id: "Pembelajar butuh jauh lebih banyak kesempatan berlatih bicara secara natural — dan umpan balik seketika saat salah. Tutor manusia mahal dan tidak selalu ada.",
+      en: "People learning English need a lot of speaking practice and quick feedback on their mistakes. A human tutor costs money and is not available at eleven at night.",
+      id: "Orang yang belajar bahasa Inggris butuh banyak latihan bicara dan koreksi cepat atas kesalahannya. Tutor manusia mahal dan tidak selalu ada jam sebelas malam.",
     },
     approach: {
-      en: "Build the whole speaking loop on a phone: speech in, understanding, structured grammar correction, spoken response out. Keep inference cost at zero by pooling free-tier LLM providers behind one interface.",
-      id: "Bangun seluruh loop berbicara di ponsel: suara masuk, pemahaman, koreksi grammar terstruktur, respons suara keluar. Biaya inferensi nol dengan menggabungkan provider LLM tier gratis di balik satu interface.",
+      en: "Run the whole loop on the phone: speech in, understanding, structured grammar correction, spoken answer out. Keep the inference cost at zero by pooling several free-tier LLM providers behind one interface.",
+      id: "Seluruh alurnya dijalankan di ponsel: suara masuk, dipahami, koreksi tata bahasa terstruktur, jawaban keluar sebagai suara. Biaya inferensi dijaga nol dengan menggabungkan beberapa provider LLM tier gratis di balik satu antarmuka.",
     },
     technologies: ["Kotlin", "Jetpack Compose", "Speech Recognition", "LLM", "Text-to-Speech", "Room", "Supabase"],
     solution: {
-      en: "Eight LLM providers with streaming, key rotation and automatic failover — when one runs dry mid-conversation, the next answers. Device-bound HMAC licensing with a tamper guard and a Supabase backend. Eleven conversation scenarios with a barge-in voice loop.",
-      id: "Delapan provider LLM dengan streaming, rotasi kunci, dan failover otomatis — saat satu kehabisan kuota di tengah percakapan, berikutnya menjawab. Lisensi HMAC terikat perangkat dengan tamper guard dan backend Supabase. Sebelas skenario percakapan dengan loop suara barge-in.",
+      en: "Eight LLM providers with streaming, key rotation and automatic failover, so when one runs out of quota mid-conversation the next one answers. Device-bound HMAC licensing with a tamper guard and a Supabase backend. Eleven conversation scenarios and a voice loop you can interrupt.",
+      id: "Delapan provider LLM dengan streaming, rotasi kunci, dan failover otomatis, jadi saat satu kehabisan kuota di tengah percakapan, berikutnya yang menjawab. Lisensi HMAC terikat perangkat dengan tamper guard dan backend Supabase. Sebelas skenario percakapan dan loop suara yang bisa disela.",
     },
     result: {
-      en: "A signed APK sold directly via WhatsApp with activation codes — real users, real revenue, $0 inference cost.",
-      id: "APK ter-sign dijual langsung via WhatsApp dengan kode aktivasi — pengguna nyata, pendapatan nyata, biaya inferensi $0.",
+      en: "A signed APK sold through WhatsApp with activation codes. Real users, real revenue, no inference bill.",
+      id: "APK ter-sign yang dijual lewat WhatsApp dengan kode aktivasi. Pengguna nyata, pemasukan nyata, tanpa tagihan inferensi.",
     },
-    lesson: {
-      en: "Reliability is a product feature. The failover layer — not the model — is what made the app sellable.",
-      id: "Keandalan adalah fitur produk. Lapisan failover — bukan modelnya — yang membuat aplikasi ini layak dijual.",
-    },
-    pipeline: ["USER", "MICROPHONE", "SPEECH RECOGNITION", "AI", "RESPONSE", "VOICE"],
     domains: ["ai", "mobile"],
     featured: true,
   },
@@ -93,74 +84,64 @@ export const projects: Project[] = [
     slug: "itsfr",
     title: "ITSFR Platform",
     year: "2026",
-    category: { en: "CRM/ERP — export operations", id: "CRM/ERP — operasional ekspor" },
+    category: { en: "CRM/ERP · export company", id: "CRM/ERP · perusahaan ekspor" },
     status: "production",
     statusLabel: {
-      en: "In production — used in daily operations",
-      id: "Produksi — dipakai operasional setiap hari",
+      en: "In production, used in daily operations",
+      id: "Produksi, dipakai operasional setiap hari",
     },
     logline: {
-      en: "The operating system of an export business: leads in, containers out.",
-      id: "Sistem operasi sebuah bisnis ekspor: lead masuk, kontainer keluar.",
+      en: "The system an export company runs on: leads, orders, production, warehouse, containers.",
+      id: "Sistem yang menjalankan sebuah perusahaan ekspor: lead, pesanan, produksi, gudang, kontainer.",
     },
     problem: {
-      en: "An export company ran its pipeline, production, warehouse and shipping across scattered spreadsheets — and its most sensitive asset, pricing, could leak with a single forwarded file.",
-      id: "Sebuah perusahaan ekspor menjalankan pipeline, produksi, gudang, dan pengiriman lewat spreadsheet berserakan — dan aset paling sensitifnya, harga, bisa bocor lewat satu file yang diteruskan.",
+      en: "An export company ran its sales pipeline, production, warehouse and shipping across scattered spreadsheets. Its most sensitive asset, pricing, could leak with one forwarded file.",
+      id: "Sebuah perusahaan ekspor menjalankan pipeline penjualan, produksi, gudang, dan pengiriman lewat spreadsheet yang berserakan. Aset paling sensitifnya, harga, bisa bocor lewat satu file yang diteruskan.",
     },
     approach: {
-      en: "Treat trade secrets and real operations as design inputs, not obstacles. Model the real flow — lead → order → production → warehouse → container — and design the database so it physically cannot leak what it never stores.",
-      id: "Perlakukan rahasia dagang dan operasional nyata sebagai input desain, bukan penghalang. Modelkan alur nyata — lead → order → produksi → gudang → kontainer — dan rancang database agar secara fisik tak bisa membocorkan yang tak pernah ia simpan.",
+      en: "Model the real flow, from lead to order to production to warehouse to container, and design the database so it cannot leak what it never stores.",
+      id: "Modelkan alur yang sebenarnya, dari lead ke pesanan ke produksi ke gudang ke kontainer, dan rancang database agar tidak bisa membocorkan apa yang tidak pernah ia simpan.",
     },
     technologies: ["Laravel", "Filament", "MySQL", "PHP"],
     solution: {
-      en: "Prices are typed at print time, held in session, attached only to the PDF — never persisted. Inventory is computed from audited stock movements, never typed. FEFO lots, container-load math, a 360° customer view over 1,229 companies in 117 countries.",
-      id: "Harga diketik saat mencetak, disimpan di session, menempel hanya pada PDF — tak pernah dipersistenkan. Inventori dihitung dari pergerakan stok teraudit, tak pernah diketik. Lot FEFO, matematika muatan kontainer, tampilan pelanggan 360° atas 1.229 perusahaan di 117 negara.",
+      en: "Prices are typed at print time, held in session and attached only to the PDF, never saved. Inventory is computed from audited stock movements instead of typed in. FEFO lots, container load calculation, and a customer view across 1,229 companies in 117 countries.",
+      id: "Harga diketik saat mencetak, disimpan di session, dan menempel hanya di PDF, tidak pernah disimpan. Inventori dihitung dari pergerakan stok yang teraudit, bukan diketik. Lot FEFO, perhitungan muatan kontainer, dan tampilan pelanggan atas 1.229 perusahaan di 117 negara.",
     },
     result: {
-      en: "13 resources, 16 custom pages, ~18k lines of code — running the company's daily operations in production.",
-      id: "13 resource, 16 halaman custom, ~18 ribu baris kode — menjalankan operasi harian perusahaan di produksi.",
+      en: "13 resources, 16 custom pages, around 18k lines of code, in production for the company's daily work.",
+      id: "13 resource, 16 halaman custom, sekitar 18 ribu baris kode, dipakai produksi untuk kerja harian perusahaan.",
     },
-    lesson: {
-      en: "The safest data is data you never store. Security by architecture beats security by policy.",
-      id: "Data teraman adalah data yang tak pernah disimpan. Keamanan lewat arsitektur mengalahkan keamanan lewat aturan.",
-    },
-    pipeline: ["LEAD", "ORDER", "PRODUCTION", "WAREHOUSE", "CONTAINER", "INSIGHT"],
     domains: ["web", "automation", "data-analytics"],
     featured: true,
   },
   {
     slug: "manga-ocr",
-    title: "Manga OCR / Translation / TTS",
+    title: "Manga OCR, Translation, TTS",
     year: "2025",
-    category: { en: "Computer Vision × NLP", id: "Computer Vision × NLP" },
+    category: { en: "Computer vision · NLP", id: "Computer vision · NLP" },
     status: "personal",
     statusLabel: STATUS_LABELS.personal,
     logline: {
-      en: "Point it at a manga page — it reads, translates, and speaks.",
-      id: "Arahkan ke halaman manga — ia membaca, menerjemahkan, dan bersuara.",
+      en: "Point it at a manga page. It reads the text, translates it, and reads it aloud.",
+      id: "Arahkan ke halaman manga. Ia membaca teksnya, menerjemahkan, lalu membacakannya.",
     },
     problem: {
-      en: "Reading manga in Japanese means constantly stopping to look up text locked inside images — dictionaries can't see pictures.",
-      id: "Membaca manga berbahasa Jepang berarti terus berhenti untuk mencari teks yang terkunci di dalam gambar — kamus tak bisa melihat gambar.",
+      en: "Reading manga in Japanese means stopping constantly to look up text that lives inside an image. A dictionary cannot see pictures.",
+      id: "Membaca manga berbahasa Jepang berarti terus berhenti untuk mencari teks yang ada di dalam gambar. Kamus tidak bisa melihat gambar.",
     },
     approach: {
-      en: "Chain vision and language into one pipeline: detect text regions in the page image, run OCR, translate the extracted text, then synthesize speech — so the page becomes readable and audible.",
-      id: "Rangkai vision dan bahasa dalam satu pipeline: deteksi area teks pada gambar halaman, jalankan OCR, terjemahkan teks hasil ekstraksi, lalu sintesis suara — halaman jadi terbaca dan terdengar.",
+      en: "Chain the steps: detect text regions on the page, run OCR, translate the extracted text, then synthesize speech.",
+      id: "Rangkai langkahnya: deteksi area teks di halaman, jalankan OCR, terjemahkan teks hasilnya, lalu sintesis suara.",
     },
     technologies: ["Python", "OCR", "Computer Vision", "Translation", "Text-to-Speech"],
     solution: {
-      en: "A working image → OCR → text → translation → speech pipeline that turns raw manga panels into translated, spoken text.",
-      id: "Pipeline gambar → OCR → teks → terjemahan → suara yang mengubah panel manga mentah menjadi teks terjemahan yang diucapkan.",
+      en: "A working pipeline in Python: image, OCR, text, translation, speech.",
+      id: "Pipeline yang berjalan di Python: gambar, OCR, teks, terjemahan, suara.",
     },
     result: {
-      en: "A personal tool that demonstrates the full vision-to-speech chain end to end.",
-      id: "Alat pribadi yang mendemonstrasikan rantai lengkap vision-ke-suara dari ujung ke ujung.",
+      en: "A personal tool I actually use. It demonstrates the full chain from image to voice.",
+      id: "Alat pribadi yang benar-benar saya pakai. Ia menunjukkan rantai lengkap dari gambar ke suara.",
     },
-    lesson: {
-      en: "Most real AI value comes from chaining simple capabilities well, not from one heroic model.",
-      id: "Nilai AI yang nyata kebanyakan lahir dari merangkai kemampuan sederhana dengan baik, bukan dari satu model heroik.",
-    },
-    pipeline: ["MANGA IMAGE", "OCR", "TEXT", "TRANSLATION", "TEXT-TO-SPEECH", "VOICE"],
     domains: ["vision", "ai"],
     featured: true,
   },
@@ -168,38 +149,33 @@ export const projects: Project[] = [
     slug: "supplierdaging",
     title: "SupplierDaging",
     year: "2026",
-    category: { en: "Mobile — offline-first back office", id: "Mobile — back office offline-first" },
+    category: { en: "Flutter app · offline back office", id: "Aplikasi Flutter · back office offline" },
     status: "shipped",
     statusLabel: {
-      en: "Feature-complete MVP — signed split-ABI releases",
-      id: "MVP rampung fitur — release split-ABI ter-sign",
+      en: "Feature-complete MVP, signed split-ABI releases",
+      id: "MVP rampung fitur, rilis split-ABI ter-sign",
     },
     logline: {
-      en: "A meat distributor's entire back office — POS to thermal receipts — offline, in one APK.",
-      id: "Seluruh back office distributor daging — POS sampai struk thermal — offline, dalam satu APK.",
+      en: "A meat distributor's back office, from point of sale to thermal receipts, in one offline APK.",
+      id: "Back office distributor daging, dari kasir sampai struk thermal, dalam satu APK offline.",
     },
     problem: {
-      en: "A meat distributor ran sales, stock, receivables and expiry tracking by hand — with unreliable internet, perishable goods, and money that must never be off by a rounding error.",
-      id: "Distributor daging menjalankan penjualan, stok, piutang, dan pelacakan kedaluwarsa secara manual — dengan internet tak stabil, barang mudah rusak, dan uang yang tak boleh meleset karena pembulatan.",
+      en: "A meat distributor tracked sales, stock, receivables and expiry dates by hand. Internet was unreliable, the goods were perishable, and the money could not be off by a rounding error.",
+      id: "Distributor daging mencatat penjualan, stok, piutang, dan tanggal kedaluwarsa secara manual. Internet tidak stabil, barangnya mudah rusak, dan uangnya tidak boleh meleset karena pembulatan.",
     },
     approach: {
-      en: "Offline-first by design: the database lives on the device. Money is integer rupiah, weight is integer grams — floats never touch the books. Every sale is one atomic transaction.",
-      id: "Offline-first sejak desain: database hidup di perangkat. Uang adalah rupiah bulat, berat adalah gram bulat — float tak pernah menyentuh pembukuan. Setiap penjualan adalah satu transaksi atomik.",
+      en: "Offline first: the database lives on the device. Money is integer rupiah, weight is integer grams, no floats in the books. Each sale is one atomic transaction.",
+      id: "Offline dulu: database hidup di perangkat. Uang dalam rupiah bulat, berat dalam gram bulat, tidak ada float di pembukuan. Setiap penjualan adalah satu transaksi atomik.",
     },
     technologies: ["Flutter", "Dart", "Drift (SQLite)", "Riverpod", "Bluetooth ESC/POS"],
     solution: {
-      en: "One sale commits stock issue, receivable and audit trail in a single database transaction; perishables leave the warehouse first-expired-first-out. Bluetooth thermal printing, PDF/CSV reports, and a written 26-page design system.",
-      id: "Satu penjualan mencatat keluar stok, piutang, dan jejak audit dalam satu transaksi database; barang mudah rusak keluar gudang first-expired-first-out. Cetak thermal Bluetooth, laporan PDF/CSV, dan design system tertulis 26 halaman.",
+      en: "One sale commits the stock issue, the receivable and the audit trail in a single database transaction. Perishables leave the warehouse first-expired-first-out. Bluetooth thermal printing, PDF and CSV reports, and a written 26-page design system.",
+      id: "Satu penjualan mencatat keluar stok, piutang, dan jejak audit dalam satu transaksi database. Barang mudah rusak keluar gudang first-expired-first-out. Cetak thermal Bluetooth, laporan PDF dan CSV, dan design system tertulis 26 halaman.",
     },
     result: {
-      en: "17 tables, 34.5k lines of code, signed split-ABI releases — the whole business in one offline APK.",
-      id: "17 tabel, 34,5 ribu baris kode, release split-ABI ter-sign — seluruh bisnis dalam satu APK offline.",
+      en: "17 tables, 34.5k lines of code, signed split-ABI releases. The whole business in one offline APK.",
+      id: "17 tabel, 34,5 ribu baris kode, rilis split-ABI ter-sign. Seluruh bisnis dalam satu APK offline.",
     },
-    lesson: {
-      en: "Constraints (offline, perishable, exact money) are the spec. Respect them and the architecture designs itself.",
-      id: "Batasan (offline, mudah rusak, uang presisi) adalah spesifikasinya. Hormati itu dan arsitekturnya merancang dirinya sendiri.",
-    },
-    pipeline: ["INPUT", "POS", "DATABASE", "STOCK / FEFO", "RECEIPT", "REPORT"],
     domains: ["mobile", "automation", "data-analytics"],
     featured: true,
   },
@@ -207,35 +183,30 @@ export const projects: Project[] = [
     slug: "tourism-data",
     title: "Tourism Data Intelligence",
     year: "2025",
-    category: { en: "Data Analytics", id: "Data Analytics" },
+    category: { en: "Data analytics", id: "Analitik data" },
     status: "experimental",
     statusLabel: STATUS_LABELS.experimental,
     logline: {
-      en: "Raw tourism data collected, cleaned, analyzed — turned into decisions.",
-      id: "Data pariwisata mentah dikumpulkan, dibersihkan, dianalisis — menjadi keputusan.",
+      en: "Tourism data collected, cleaned and analysed, with written insights at the end.",
+      id: "Data pariwisata dikumpulkan, dibersihkan, dan dianalisis, dengan insight tertulis di akhirnya.",
     },
     problem: {
-      en: "Tourism data exists in scattered, messy sources — useful signals about visitors and trends stay invisible without collection and analysis.",
-      id: "Data pariwisata tersebar di sumber yang berantakan — sinyal berharga tentang pengunjung dan tren tetap tak terlihat tanpa pengumpulan dan analisis.",
+      en: "Tourism data sits in scattered, messy sources. Signals about visitors and trends stay invisible until someone collects and cleans them.",
+      id: "Data pariwisata tersebar di sumber yang berantakan. Sinyal tentang pengunjung dan tren tetap tak terlihat sampai ada yang mengumpulkan dan membersihkannya.",
     },
     approach: {
-      en: "Build the classic analytics pipeline honestly: collect from sources, clean, analyze with pandas, visualize, and write down the insights a decision-maker could act on.",
-      id: "Bangun pipeline analitik klasik dengan jujur: kumpulkan dari sumber, bersihkan, analisis dengan pandas, visualisasikan, dan tuliskan insight yang bisa ditindaklanjuti pengambil keputusan.",
+      en: "The standard analytics pipeline, done properly: collect, clean, analyse with pandas, visualise, and write down what a decision-maker could act on.",
+      id: "Pipeline analitik standar, dikerjakan dengan benar: kumpulkan, bersihkan, analisis dengan pandas, visualisasikan, dan tuliskan apa yang bisa ditindaklanjuti pengambil keputusan.",
     },
     technologies: ["Python", "pandas", "Data Collection", "Data Visualization"],
     solution: {
-      en: "A reproducible collection → cleaning → analysis → visualization workflow over real tourism data.",
-      id: "Alur kerja pengumpulan → pembersihan → analisis → visualisasi yang dapat direproduksi atas data pariwisata nyata.",
+      en: "A reproducible collection, cleaning, analysis and visualisation workflow over real tourism data.",
+      id: "Alur kerja pengumpulan, pembersihan, analisis, dan visualisasi yang bisa diulang atas data pariwisata nyata.",
     },
     result: {
-      en: "Explorable visualizations and written insights — the full raw-data-to-decision path, demonstrated.",
-      id: "Visualisasi yang dapat dieksplorasi dan insight tertulis — jalur lengkap data-mentah-ke-keputusan, didemonstrasikan.",
+      en: "Explorable charts and written insights. Most of the work was cleaning.",
+      id: "Grafik yang bisa dijelajahi dan insight tertulis. Sebagian besar kerjanya adalah pembersihan.",
     },
-    lesson: {
-      en: "Data becomes valuable only when it helps someone make a better decision. Cleaning is 80% of the work.",
-      id: "Data baru bernilai saat membantu seseorang mengambil keputusan lebih baik. Pembersihan adalah 80% pekerjaannya.",
-    },
-    pipeline: ["DATA SOURCES", "COLLECTION", "CLEANING", "ANALYSIS", "VISUALIZATION", "INSIGHT"],
     domains: ["data-analytics", "data-science"],
     featured: true,
   },
@@ -243,35 +214,30 @@ export const projects: Project[] = [
     slug: "sentiment",
     title: "Sentiment Analysis",
     year: "2025",
-    category: { en: "Data Science × NLP", id: "Data Science × NLP" },
+    category: { en: "Data science · NLP", id: "Data science · NLP" },
     status: "experimental",
     statusLabel: STATUS_LABELS.experimental,
     logline: {
-      en: "Teaching a model to read feeling from raw text.",
-      id: "Mengajari model membaca perasaan dari teks mentah.",
+      en: "A classifier that reads the mood of thousands of written opinions.",
+      id: "Classifier yang membaca suasana hati dari ribuan opini tertulis.",
     },
     problem: {
-      en: "Thousands of text opinions are impossible to read one by one — yet the overall sentiment is exactly what a decision-maker needs.",
-      id: "Ribuan opini teks mustahil dibaca satu per satu — padahal sentimen keseluruhannya justru yang dibutuhkan pengambil keputusan.",
+      en: "Thousands of written opinions cannot be read one by one, but the overall sentiment is exactly what a decision-maker wants to know.",
+      id: "Ribuan opini tertulis tidak mungkin dibaca satu per satu, padahal sentimen keseluruhannya justru yang ingin diketahui pengambil keputusan.",
     },
     approach: {
-      en: "The standard NLP path, done properly: preprocess and normalize the text, extract features, train and evaluate a classification model, then analyze where and why it fails.",
-      id: "Jalur NLP standar, dikerjakan dengan benar: praproses dan normalisasi teks, ekstraksi fitur, latih dan evaluasi model klasifikasi, lalu analisis di mana dan mengapa ia gagal.",
+      en: "Preprocess and normalise the text, extract features, train and evaluate a classifier, then look at where and why it fails.",
+      id: "Praproses dan normalisasi teks, ekstraksi fitur, latih dan evaluasi classifier, lalu lihat di mana dan mengapa ia gagal.",
     },
     technologies: ["Python", "NLP", "Machine Learning", "scikit-learn"],
     solution: {
-      en: "A text → preprocessing → NLP → model → sentiment pipeline with honest evaluation of its accuracy and failure cases.",
-      id: "Pipeline teks → praproses → NLP → model → sentimen dengan evaluasi jujur atas akurasi dan kasus gagalnya.",
+      en: "A text-to-sentiment pipeline with scikit-learn, evaluated on accuracy and on its failure cases.",
+      id: "Pipeline teks-ke-sentimen dengan scikit-learn, dievaluasi pada akurasi dan pada kasus gagalnya.",
     },
     result: {
-      en: "A working classifier and — more importantly — a documented understanding of the full NLP workflow.",
-      id: "Classifier yang bekerja dan — lebih penting — pemahaman terdokumentasi atas alur kerja NLP lengkap.",
+      en: "A working classifier and a documented understanding of the whole NLP workflow.",
+      id: "Classifier yang bekerja dan pemahaman terdokumentasi atas seluruh alur kerja NLP.",
     },
-    lesson: {
-      en: "A model's errors teach more than its accuracy score. Evaluation is where data science actually happens.",
-      id: "Kesalahan model mengajarkan lebih banyak daripada skor akurasinya. Evaluasi adalah tempat data science sesungguhnya terjadi.",
-    },
-    pipeline: ["TEXT", "PREPROCESSING", "NLP", "MODEL", "SENTIMENT", "ANALYSIS"],
     domains: ["data-science", "ai"],
     featured: true,
   },
@@ -279,84 +245,74 @@ export const projects: Project[] = [
     slug: "zonzon",
     title: "ZONZON × zonzon.shop",
     year: "2026",
-    category: { en: "D2C brand world + cinematic commerce — Japan", id: "Dunia brand D2C + commerce sinematik — Jepang" },
+    category: { en: "Web · D2C brand and shop, Japan", id: "Web · brand D2C dan toko, Jepang" },
     status: "shipped",
     statusLabel: {
-      en: "Pre-launch — checkout honestly stubbed",
-      id: "Pra-rilis — checkout jujur ditandai belum aktif",
+      en: "Pre-launch; checkout is stubbed and says so",
+      id: "Pra-rilis; checkout belum aktif dan ditandai begitu",
     },
     logline: {
-      en: "A wooden inhaler for Japan — sold by a website that explains it like a documentary.",
-      id: "Inhaler kayu untuk Jepang — dijual oleh website yang menjelaskannya seperti dokumenter.",
+      en: "A wooden inhaler for the Japanese market, sold through a website that tells its story like a documentary.",
+      id: "Inhaler kayu untuk pasar Jepang, dijual lewat website yang menceritakannya seperti dokumenter.",
     },
     problem: {
-      en: "A physical product entering the Japanese market needs trust before transactions — and its story can't be told by a template store under 薬機法 advertising law.",
-      id: "Produk fisik yang masuk pasar Jepang butuh kepercayaan sebelum transaksi — dan kisahnya tak bisa diceritakan template toko biasa di bawah hukum iklan 薬機法.",
+      en: "A physical product entering Japan needs trust before transactions. Its story cannot be told by a template store, and every claim has to comply with 薬機法 advertising law.",
+      id: "Produk fisik yang masuk pasar Jepang butuh kepercayaan sebelum transaksi. Kisahnya tidak bisa diceritakan template toko biasa, dan setiap klaim harus mematuhi hukum iklan 薬機法.",
     },
     approach: {
-      en: "Build the brand as a film: nine scroll-scrubbed chapters where the shop is the movie. Compliance is a design input — every claim written to satisfy 薬機法.",
-      id: "Bangun brand sebagai film: sembilan babak scroll-scrub di mana tokonya adalah filmnya. Kepatuhan adalah input desain — setiap klaim ditulis memenuhi 薬機法.",
+      en: "Build the brand as a film: nine scroll-driven chapters, with the shop inside the story. Compliance is a design input; every claim is written to satisfy 薬機法.",
+      id: "Bangun brand sebagai film: sembilan babak yang digerakkan scroll, dengan toko di dalam ceritanya. Kepatuhan adalah input desain; setiap klaim ditulis agar memenuhi 薬機法.",
     },
     technologies: ["Next.js", "React", "Three.js / R3F", "GSAP", "Tailwind CSS", "TanStack Start", "Cloudflare Workers"],
     solution: {
-      en: "A 755-line zero-library scroll-scrub video engine with blob-fetched instant seeking; a 3D product built from lathe-profiled geometry with walnut grain painted by code at runtime — 260 bezier strokes, drag to rotate.",
-      id: "Engine scroll-scrub video 755 baris tanpa library dengan seeking instan via blob; produk 3D dari geometri profil lathe dengan serat walnut yang dilukis kode saat runtime — 260 goresan bezier, drag untuk memutar.",
+      en: "A 755-line scroll-scrub video engine without libraries, with blob-fetched instant seeking. A 3D product built from lathe-profiled geometry with walnut grain painted by code at runtime: 260 bezier strokes, drag to rotate.",
+      id: "Engine video scroll-scrub 755 baris tanpa library, dengan seeking instan lewat blob. Produk 3D dari geometri profil lathe dengan serat walnut yang dilukis kode saat runtime: 260 goresan bezier, drag untuk memutar.",
     },
     result: {
-      en: "14 routes, a 113-frame canvas hero, aroma-reactive theming, mobile encodes — feature-complete brand + shop, CI green.",
-      id: "14 rute, hero canvas 113 frame, theming reaktif-aroma, encode mobile — brand + toko rampung fitur, CI hijau.",
+      en: "14 routes, a 113-frame canvas hero, aroma-reactive theming, mobile encodes. Brand and shop are feature-complete, CI green.",
+      id: "14 rute, hero canvas 113 frame, theming reaktif-aroma, encode mobile. Brand dan toko rampung fitur, CI hijau.",
     },
-    lesson: {
-      en: "Motion is storytelling. A scroll bar can be a film reel if every frame earns its place.",
-      id: "Motion adalah storytelling. Scroll bar bisa menjadi rol film jika setiap frame layak berada di sana.",
-    },
-    pipeline: ["STORY", "9 CHAPTERS", "SCROLL ENGINE", "3D PRODUCT", "SHOP", "CUSTOMER"],
     domains: ["web", "mobile"],
     featured: true,
   },
   {
     slug: "portfolio",
-    title: "Interactive Technology Portfolio",
+    title: "This site",
     year: "2026",
-    category: { en: "Web — the site you are on", id: "Web — situs yang sedang Anda buka" },
+    category: { en: "Web · the page you are on", id: "Web · halaman yang sedang Anda buka" },
     status: "shipped",
     statusLabel: {
-      en: "Live — you are experiencing it right now",
-      id: "Live — sedang Anda alami saat ini",
+      en: "Live, open source",
+      id: "Live, open source",
     },
     logline: {
-      en: "The meta-project: a portfolio that demonstrates skills instead of listing them.",
-      id: "Meta-project: portfolio yang mendemonstrasikan skill alih-alih mendaftarnya.",
+      en: "A static Next.js page with scroll-driven chapter scenes and small demos you can run in the browser.",
+      id: "Halaman Next.js statis dengan adegan bab yang mengikuti scroll dan demo kecil yang bisa dijalankan di browser.",
     },
     problem: {
-      en: "Traditional portfolios describe skills without demonstrating them. \"I know 3D / motion / AI\" is a claim, not evidence.",
-      id: "Portfolio tradisional mendeskripsikan skill tanpa mendemonstrasikannya. \"Saya bisa 3D / motion / AI\" adalah klaim, bukan bukti.",
+      en: "A list of skills proves nothing. I wanted a page where the demos run in the visitor's browser and every project says plainly what state it is in.",
+      id: "Daftar skill tidak membuktikan apa-apa. Saya ingin halaman yang demonya jalan di browser pengunjung, dan setiap proyek menyatakan apa adanya statusnya.",
     },
     approach: {
-      en: "Don't just tell — demonstrate. Every section of this site turns a skill into an experience: the hero is real-time 3D, the motion is scroll-driven storytelling, the demos run in your browser.",
-      id: "Jangan hanya bercerita — demonstrasikan. Setiap seksi situs ini mengubah skill menjadi pengalaman: hero-nya 3D real-time, motion-nya storytelling berbasis scroll, demonya berjalan di browser Anda.",
+      en: "One page, static export, no tracking. Content lives in data files. The chapter scenes are hand-coded SVG driven by scroll position, and four colour themes share one set of tokens.",
+      id: "Satu halaman, ekspor statis, tanpa pelacakan. Konten hidup di file data. Adegan babnya SVG yang ditulis tangan dan digerakkan posisi scroll, dan empat tema warna memakai satu set token.",
     },
-    technologies: ["Next.js", "React", "TypeScript", "Three.js / React Three Fiber", "GSAP", "Tailwind CSS"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     solution: {
-      en: "An interactive single-journey site: a 3D digital core, an explorable technology ecosystem, live in-browser demonstrations, and case studies structured as problem → solution.",
-      id: "Situs satu-perjalanan interaktif: digital core 3D, ekosistem teknologi yang dapat dijelajahi, demonstrasi live di browser, dan studi kasus terstruktur masalah → solusi.",
+      en: "Next.js 15 static export, React 19, Tailwind 4. Scroll-scrubbed chapter scenes without an animation library, bilingual copy, reduced-motion support.",
+      id: "Next.js 15 ekspor statis, React 19, Tailwind 4. Adegan bab scroll-scrub tanpa library animasi, copy dwibahasa, dukungan reduced-motion.",
     },
     result: {
-      en: "You are reading the result. Static-exported, accessible, reduced-motion aware, and open source on GitHub.",
-      id: "Anda sedang membaca hasilnya. Diekspor statis, aksesibel, menghormati reduced-motion, dan open source di GitHub.",
+      en: "You are reading it. Source on GitHub.",
+      id: "Anda sedang membacanya. Kode sumbernya di GitHub.",
     },
-    lesson: {
-      en: "A portfolio is a product. The user experience is the résumé.",
-      id: "Portfolio adalah produk. Pengalaman penggunanya adalah CV-nya.",
-    },
-    pipeline: ["SKILL", "EXPERIENCE", "DEMONSTRATION", "PROOF"],
     domains: ["web"],
     featured: true,
     sourceUrl: "https://github.com/defrifegapratama002/fega-portfolio",
   },
 ];
 
-/** Compact index of the remaining shipped systems (full filmography). */
+/** The remaining shipped systems, in one table. */
 export type MiniProject = {
   year: string;
   title: string;
@@ -369,8 +325,8 @@ export const moreProjects: MiniProject[] = [
     year: "2026",
     title: "GalonHarmoni",
     what: {
-      en: "4-role water-depot PWA — 30 RLS policies, GPS delivery proof",
-      id: "PWA depot air 4 peran — 30 kebijakan RLS, bukti antar GPS",
+      en: "Water-depot PWA for 4 roles, 30 RLS policies, GPS delivery proof",
+      id: "PWA depot air untuk 4 peran, 30 kebijakan RLS, bukti antar GPS",
     },
     stack: "Next.js · Supabase",
   },
@@ -387,8 +343,8 @@ export const moreProjects: MiniProject[] = [
     year: "2026",
     title: "Secure DMS",
     what: {
-      en: "Client build — enterprise document management, RBAC, versioning",
-      id: "Garapan klien — manajemen dokumen enterprise, RBAC, versioning",
+      en: "Client project: document management, RBAC, versioning",
+      id: "Garapan klien: manajemen dokumen, RBAC, versioning",
     },
     stack: "Express · Prisma · Postgres",
   },
@@ -396,8 +352,8 @@ export const moreProjects: MiniProject[] = [
     year: "2026",
     title: "SpeakJapanese",
     what: {
-      en: "The MVP before SpeakEnglish — custom furigana renderer",
-      id: "MVP sebelum SpeakEnglish — renderer furigana custom",
+      en: "The MVP before SpeakEnglish, with a custom furigana renderer",
+      id: "MVP sebelum SpeakEnglish, dengan renderer furigana custom",
     },
     stack: "Kotlin · Compose",
   },

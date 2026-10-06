@@ -2,18 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useLang, type L10n } from "@/lib/i18n";
-import { PALETTE_EVENT } from "@/components/ui/CommandPalette";
 import ThemePicker from "@/components/navigation/ThemePicker";
+import { contacts } from "@/data/brand";
 
 const LINKS: { href: string; label: L10n }[] = [
   { href: "#projects", label: { en: "Work", id: "Karya" } },
   { href: "#lab", label: { en: "Lab", id: "Lab" } },
-  { href: "#ecosystem", label: { en: "Technology", id: "Teknologi" } },
   { href: "#about", label: { en: "About", id: "Tentang" } },
   { href: "#contact", label: { en: "Contact", id: "Kontak" } },
 ];
 
-/** Light floating navigation (blueprint §37). */
 export default function Nav() {
   const { lang, toggle, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
@@ -26,108 +24,73 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const langButton = (
+    <button
+      type="button"
+      onClick={toggle}
+      className="text-sm text-mut transition-colors hover:text-fg"
+      aria-label={lang === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
+    >
+      {lang === "en" ? "ID" : "EN"}
+    </button>
+  );
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "border-b border-line bg-bg/85 backdrop-blur-md"
-          : "border-b border-transparent"
+        scrolled || open ? "border-b border-line bg-bg/90 backdrop-blur-md" : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6" aria-label="Main">
-        <a href="#top" className="h-display text-sm tracking-widest" onClick={() => setOpen(false)}>
-          DEFRI<span className="text-accent">·</span>FEGA
+      <nav className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 sm:px-6" aria-label="Main">
+        <a href="#top" className="h-display text-lg" onClick={() => setOpen(false)}>
+          Defri Fega
         </a>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="font-mono text-xs tracking-[0.14em] text-mut uppercase transition-colors hover:text-fg"
-            >
+            <a key={l.href} href={l.href} className="text-sm text-mut transition-colors hover:text-fg">
               {t(l.label)}
             </a>
           ))}
-          <a href="#contact" className="btn btn-solid !px-4 !py-2 text-[0.7rem]">
-            {lang === "en" ? "LET'S BUILD" : "AYO BANGUN"}
+          <a href={`mailto:${contacts.email}`} className="link text-sm">
+            {contacts.email}
           </a>
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new Event(PALETTE_EVENT))}
-            className="kbd hidden cursor-pointer transition-colors hover:border-accent2 hover:text-fg lg:block"
-            aria-label={lang === "en" ? "Open command palette" : "Buka palet perintah"}
-          >
-            Ctrl K
-          </button>
           <ThemePicker />
-          <button
-            type="button"
-            onClick={toggle}
-            className="font-mono text-xs tracking-widest text-mut transition-colors hover:text-accent"
-            aria-label={lang === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
-          >
-            {lang === "en" ? "ID" : "EN"}
-          </button>
+          {langButton}
         </div>
 
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-5 md:hidden">
+          {langButton}
           <button
             type="button"
-            onClick={toggle}
-            className="font-mono text-xs tracking-widest text-mut"
-            aria-label={lang === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
-          >
-            {lang === "en" ? "ID" : "EN"}
-          </button>
-          <button
-            type="button"
-            className="font-mono text-xs tracking-widest text-fg"
+            className="text-sm text-fg"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? "CLOSE ✕" : "MENU ☰"}
+            {open ? (lang === "en" ? "Close" : "Tutup") : "Menu"}
           </button>
         </div>
       </nav>
 
       {open ? (
-        <div id="mobile-menu" className="border-t border-line px-6 py-4 md:hidden">
+        <div id="mobile-menu" className="border-t border-line px-5 py-5 md:hidden">
           <ul className="flex flex-col gap-4">
             {LINKS.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="font-mono text-sm tracking-[0.14em] text-mut uppercase"
-                  onClick={() => setOpen(false)}
-                >
+                <a href={l.href} className="h-display text-2xl" onClick={() => setOpen(false)}>
                   {t(l.label)}
                 </a>
               </li>
             ))}
             <li>
-              <button
-                type="button"
-                className="font-mono text-sm tracking-[0.14em] text-accent2 uppercase"
-                onClick={() => {
-                  setOpen(false);
-                  window.dispatchEvent(new Event(PALETTE_EVENT));
-                }}
-              >
-                &gt; {lang === "en" ? "Search / commands" : "Cari / perintah"}
-              </button>
-            </li>
-            <li>
-              <p className="mb-2 font-mono text-[0.65rem] tracking-widest text-dim uppercase">
-                {lang === "en" ? "Theme" : "Tema"}
-              </p>
-              <ThemePicker inline />
-            </li>
-            <li>
-              <a href="#contact" className="btn btn-solid" onClick={() => setOpen(false)}>
-                {lang === "en" ? "LET'S BUILD" : "AYO BANGUN"}
+              <a href={`mailto:${contacts.email}`} className="link text-sm">
+                {contacts.email}
               </a>
+            </li>
+            <li className="pt-2">
+              <p className="label mb-2">{lang === "en" ? "Theme" : "Tema"}</p>
+              <ThemePicker inline />
             </li>
           </ul>
         </div>

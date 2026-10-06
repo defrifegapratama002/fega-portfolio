@@ -6,7 +6,7 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://defrifegapratama002.github.io/fega-portfolio"
 ).replace(/\/$/, "");
 
-export const SITE_TITLE = "Defri Fega Pratama — Problem Solver & Software Engineer";
+export const SITE_TITLE = "Defri Fega Pratama · Problem Solver, Software Engineer";
 
 export const SITE_DESCRIPTION =
-  "Portfolio of Defri Fega Pratama — a problem solver and software engineer building AI, software, automation, computer vision, data and IoT systems for real-world problems.";
+  "Defri Fega Pratama builds software for real problems: a CRM/ERP that runs an export company's daily operations, an AI English speaking tutor sold to real users, an offline back office for a meat distributor. AI, data, web, mobile, automation, IoT.";

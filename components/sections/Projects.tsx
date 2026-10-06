@@ -2,27 +2,23 @@
 
 import { useEffect, useState } from "react";
 import Section from "@/components/ui/Section";
-import Pipeline from "@/components/ui/Pipeline";
 import { projects, moreProjects, type Project } from "@/data/projects";
 import { useLang, type L10n } from "@/lib/i18n";
 
 /**
- * Blueprint §23 — "Problems I've Turned Into Solutions."
- * Every project answers problem → approach → technology → solution →
- * result → lesson, with honest status labels (§47). Case study in place
- * (§46), no screenshot gallery. Cards are editor windows: path, status
- * and stack are readable before anything is opened.
+ * Work. Each project is a row: year and title on the left, what it is
+ * and what state it is in on the right. "Detail" opens the problem,
+ * approach, solution and result. No screenshots exist yet, so none are
+ * faked.
  */
 
-const FIELDS: { key: "problem" | "approach" | "solution" | "result" | "lesson"; label: L10n }[] = [
-  { key: "problem", label: { en: "The problem", id: "Masalahnya" } },
-  { key: "approach", label: { en: "My approach", id: "Pendekatan saya" } },
-  { key: "solution", label: { en: "The solution", id: "Solusinya" } },
-  { key: "result", label: { en: "The result", id: "Hasilnya" } },
-  { key: "lesson", label: { en: "The lesson", id: "Pelajarannya" } },
+const FIELDS: { key: "problem" | "approach" | "solution" | "result"; label: L10n }[] = [
+  { key: "problem", label: { en: "Problem", id: "Masalah" } },
+  { key: "approach", label: { en: "Approach", id: "Pendekatan" } },
+  { key: "solution", label: { en: "What was built", id: "Yang dibangun" } },
+  { key: "result", label: { en: "Result", id: "Hasil" } },
 ];
 
-/** Filter tabs → ecosystem domain keys (data/technologies.ts). */
 const FILTERS: { key: string; label: L10n; domains: string[] }[] = [
   { key: "all", label: { en: "All", id: "Semua" }, domains: [] },
   { key: "ai", label: { en: "AI", id: "AI" }, domains: ["ai", "vision"] },
@@ -40,11 +36,7 @@ function matches(project: Project, filterKey: string): boolean {
   return project.domains.some((d) => filter.domains.includes(d));
 }
 
-function isLive(project: Project): boolean {
-  return project.status === "production" || project.status === "shipped";
-}
-
-function CaseStudy({
+function Row({
   project,
   open,
   hidden,
@@ -56,95 +48,56 @@ function CaseStudy({
   onToggle: () => void;
 }) {
   const { lang, t } = useLang();
-  const live = isLive(project);
+  const live = project.status === "production" || project.status === "shipped";
 
   return (
     <article
       id={`project-${project.slug}`}
       hidden={hidden}
-      className={`win scroll-mt-24 transition-colors hover:border-accent-dim ${open ? "lg:col-span-2" : ""}`}
-      data-reveal
+      className="grid scroll-mt-20 gap-x-10 gap-y-3 border-b border-line py-7 md:grid-cols-[8rem_1fr]"
     >
-      <div className="win-bar">
-        <span className="win-dots" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </span>
-        <span className="truncate">~/work/{project.slug}</span>
-        <span className={`ml-auto flex items-center gap-1.5 whitespace-nowrap ${live ? "text-accent" : "text-mut"}`}>
-          <span
-            className={`inline-block h-1.5 w-1.5 rounded-full ${live ? "bg-accent" : "border border-dim"}`}
-            aria-hidden="true"
-          />
-          {project.status}
-        </span>
+      <div>
+        <p className="mono text-dim">{project.year}</p>
+        <p className="mt-1 text-sm text-mut">{t(project.category)}</p>
       </div>
 
-      <div className="p-6 md:p-7">
-        <p className="font-mono text-[0.65rem] tracking-widest text-dim uppercase">
-          {project.year} · {t(project.category)}
-        </p>
+      <div className="min-w-0">
+        <h3 className="h-display text-2xl md:text-[1.75rem]">{project.title}</h3>
+        <p className="prose-mut mt-2">{t(project.logline)}</p>
+        <p className={`mt-3 text-sm ${live ? "text-accent" : "text-dim"}`}>{t(project.statusLabel)}</p>
+        <p className="mono mt-3 text-dim">{project.technologies.join(" · ")}</p>
 
-        <h3 className="h-display mt-3 text-2xl md:text-[1.7rem]">{project.title}</h3>
-        <p className="prose-mut mt-2 text-sm md:text-base">{t(project.logline)}</p>
-        <p className={`mt-3 font-mono text-[0.68rem] tracking-wide ${live ? "text-accent" : "text-mut"}`}>
-          {t(project.statusLabel)}
-        </p>
-
-        <ul className="mt-5 flex flex-wrap gap-1.5" aria-label={lang === "en" ? "Technology" : "Teknologi"}>
-          {project.technologies.map((tech) => (
-            <li key={tech} className="chip !rounded-md !px-2 !py-1 !text-[0.65rem]">
-              {tech}
-            </li>
-          ))}
-        </ul>
-
-        <button
-          type="button"
-          className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-widest text-accent2 uppercase hover:underline"
-          aria-expanded={open}
-          onClick={onToggle}
-        >
-          <span aria-hidden="true">{open ? "▾" : "▸"}</span>
-          {open
-            ? lang === "en" ? "Close case study" : "Tutup studi kasus"
-            : lang === "en" ? "Open case study" : "Buka studi kasus"}
+        <button type="button" className="link mt-4 text-sm" aria-expanded={open} onClick={onToggle}>
+          {open ? (lang === "en" ? "Close" : "Tutup") : lang === "en" ? "Detail" : "Detail"}
         </button>
-      </div>
 
-      <div
-        className="grid transition-[grid-template-rows] duration-500 ease-out"
-        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
-      >
-        <div className="overflow-hidden" inert={!open}>
-          <div className="border-t border-line p-6 md:p-7">
-            <Pipeline steps={project.pipeline} className="mb-8" />
-
-            <dl className="grid gap-6 md:grid-cols-2">
+        <div
+          className="grid transition-[grid-template-rows] duration-400 ease-out"
+          style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+        >
+          <div className="overflow-hidden" inert={!open}>
+            <dl className="mt-6 grid gap-6 border-t border-line pt-6 md:grid-cols-2">
               {FIELDS.map((f) => (
-                <div key={f.key} className={f.key === "lesson" ? "md:col-span-2" : ""}>
-                  <dt className="font-mono text-[0.65rem] tracking-widest text-accent uppercase">
-                    {t(f.label)}
-                  </dt>
+                <div key={f.key}>
+                  <dt className="label">{t(f.label)}</dt>
                   <dd className="prose-mut mt-2 text-sm">{t(project[f.key])}</dd>
                 </div>
               ))}
             </dl>
 
             {project.demoUrl || project.sourceUrl ? (
-              <div className="mt-8 flex flex-wrap gap-3">
+              <p className="mt-6 flex flex-wrap gap-5 text-sm">
                 {project.demoUrl ? (
-                  <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-solid !px-4 !py-2 text-[0.7rem]">
-                    {lang === "en" ? "OPEN DEMO" : "BUKA DEMO"} <span aria-hidden="true">↗</span>
+                  <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="link">
+                    {lang === "en" ? "Open demo" : "Buka demo"}
                   </a>
                 ) : null}
                 {project.sourceUrl ? (
-                  <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="btn btn-line !px-4 !py-2 text-[0.7rem]">
-                    {lang === "en" ? "SOURCE CODE" : "KODE SUMBER"} <span aria-hidden="true">↗</span>
+                  <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="link">
+                    {lang === "en" ? "Source code" : "Kode sumber"}
                   </a>
                 ) : null}
-              </div>
+              </p>
             ) : null}
           </div>
         </div>
@@ -159,8 +112,8 @@ export default function Projects() {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const [focusSlug, setFocusSlug] = useState<string | null>(null);
 
-  // Links to #project-<slug> (Consult, command palette, shared URLs) must
-  // always land: clear the filter, open the case study, then scroll to it.
+  // Links to #project-<slug> (Consult, shared URLs) must always land:
+  // clear the filter, open the detail, then scroll to it.
   useEffect(() => {
     const focus = (slug: string) => {
       if (!featured.some((p) => p.slug === slug)) return;
@@ -192,48 +145,35 @@ export default function Projects() {
     setFocusSlug(null);
   }, [focusSlug]);
 
-  const shown = featured.filter((p) => matches(p, filter)).length;
-
   return (
     <Section
       id="projects"
-      num="02"
-      label={{ en: "The proof", id: "Buktinya" }}
+      label={{ en: "Work", id: "Karya" }}
       title={{
-        en: "Problems I've solved.",
-        id: "Masalah yang sudah saya selesaikan.",
+        en: "Eight projects, each with what it was for and what state it is in.",
+        id: "Delapan proyek, masing-masing dengan tujuannya dan statusnya sekarang.",
       }}
       lede={{
-        en: "Not a screenshot gallery — case studies. Every project answers the same six questions, and every status label is honest.",
-        id: "Bukan galeri tangkapan layar — studi kasus. Setiap project menjawab enam pertanyaan yang sama, dan setiap label status jujur.",
+        en: "Two run a business every day. One is sold to users. The rest are personal tools and experiments, labelled as such.",
+        id: "Dua di antaranya menjalankan bisnis setiap hari. Satu dijual ke pengguna. Sisanya alat pribadi dan eksperimen, dan ditandai begitu.",
       }}
     >
       <div
-        className="mt-12 flex flex-wrap items-center gap-2"
+        className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-line pb-3"
         role="group"
-        aria-label={lang === "en" ? "Filter projects" : "Saring project"}
-        data-reveal
+        aria-label={lang === "en" ? "Filter projects" : "Saring proyek"}
       >
         {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            type="button"
-            className="tab"
-            aria-pressed={filter === f.key}
-            onClick={() => setFilter(f.key)}
-          >
+          <button key={f.key} type="button" className="tab" aria-pressed={filter === f.key} onClick={() => setFilter(f.key)}>
             {t(f.label)}
             <span className="tab-count">{featured.filter((p) => matches(p, f.key)).length}</span>
           </button>
         ))}
-        <p className="ml-auto font-mono text-[0.65rem] tracking-wide text-dim" aria-live="polite">
-          {shown} / {featured.length} {lang === "en" ? "case studies" : "studi kasus"}
-        </p>
       </div>
 
-      <div className="mt-6 grid items-start gap-5 lg:grid-cols-2">
+      <div>
         {featured.map((p) => (
-          <CaseStudy
+          <Row
             key={p.slug}
             project={p}
             open={openSlug === p.slug}
@@ -243,36 +183,17 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* The rest of the shipped systems — a terminal listing */}
-      <div className="win win-dark mt-16" data-reveal>
-        <div className="win-bar">
-          <span className="win-dots" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </span>
-          <span>{lang === "en" ? "also built" : "juga dibangun"}</span>
-        </div>
-        <div className="scroll-x px-4 py-4 md:px-5">
-          <p className="font-mono text-xs">
-            <span className="tok-kw">$</span> ls ~/work --more
-          </p>
-          <table className="mt-3 w-full min-w-[640px] text-left font-mono text-xs">
-            <thead>
-              <tr className="tok-com text-[0.62rem] tracking-widest uppercase">
-                <th className="py-2 pr-4 font-normal">{lang === "en" ? "Year" : "Tahun"}</th>
-                <th className="py-2 pr-4 font-normal">{lang === "en" ? "System" : "Sistem"}</th>
-                <th className="py-2 pr-4 font-normal">{lang === "en" ? "What it is" : "Apa ini"}</th>
-                <th className="py-2 font-normal">Stack</th>
-              </tr>
-            </thead>
+      <div className="mt-16">
+        <p className="label">{lang === "en" ? "Also built" : "Juga dibangun"}</p>
+        <div className="scroll-x mt-4">
+          <table className="w-full min-w-[560px] text-left text-sm">
             <tbody>
               {moreProjects.map((m) => (
-                <tr key={m.title}>
-                  <td className="tok-com py-2 pr-4 align-top whitespace-nowrap">{m.year}</td>
-                  <td className="tok-kw py-2 pr-4 align-top whitespace-nowrap">{m.title}</td>
-                  <td className="py-2 pr-4 align-top">{t(m.what)}</td>
-                  <td className="tok-prop py-2 align-top">{m.stack}</td>
+                <tr key={m.title} className="border-t border-line">
+                  <td className="mono py-3 pr-5 align-top whitespace-nowrap text-dim">{m.year}</td>
+                  <td className="py-3 pr-5 align-top font-medium whitespace-nowrap">{m.title}</td>
+                  <td className="py-3 pr-5 align-top text-mut">{t(m.what)}</td>
+                  <td className="mono py-3 align-top whitespace-nowrap text-dim">{m.stack}</td>
                 </tr>
               ))}
             </tbody>

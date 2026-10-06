@@ -4,7 +4,7 @@ Taruh file di folder ini. Tidak perlu ubah kode — nama file menentukan tempatn
 
 | Nama file        | Tampil di                          | Isi yang disarankan                                  |
 | ---------------- | ---------------------------------- | ---------------------------------------------------- |
-| `hero.mp4`       | Hero (menggantikan core 3D)        | Gambaran umum: Anda + teknologi yang Anda bangun     |
+| `hero.mp4`       | Hero (di belakang teks)            | Gambaran umum: Anda + teknologi yang Anda bangun     |
 | `ai.mp4`         | Bab 01 — AI & Vision               | Suara → teks → respons AI; OCR membaca gambar        |
 | `data.mp4`       | Bab 02 — Data                      | Data mentah → grafik → insight                       |
 | `web.mp4`        | Bab 03 — Web & Mobile              | Rekaman layar aplikasi/website Anda yang sebenarnya  |

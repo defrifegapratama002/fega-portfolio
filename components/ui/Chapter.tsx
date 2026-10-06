@@ -41,17 +41,17 @@ export default function Chapter({ id, media }: { id: ChapterId; media: BackdropM
 
       <div className="chapter-caption relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 md:pb-20">
         <div className="md:max-w-[40%]">
-          <p className="font-mono text-[0.72rem] tracking-[0.22em] uppercase opacity-70">
-            {"// "}chapter {chapter.num}
+          <p className="text-xs tracking-[0.14em] uppercase opacity-70">
+            {lang === "en" ? "Chapter" : "Bab"} {chapter.num}
           </p>
-          <h2 className="h-display mt-4 text-5xl leading-none sm:text-6xl lg:text-7xl">{t(chapter.title)}</h2>
+          <h2 className="h-display mt-3 text-5xl sm:text-6xl lg:text-7xl">{t(chapter.title)}</h2>
           <p className="mt-5 text-lg opacity-85 md:text-xl">{t(chapter.line)}</p>
-          <p className="mt-4 font-mono text-[0.68rem] tracking-wide opacity-60">{chapter.fields.join(" · ")}</p>
+          <p className="mt-4 text-sm opacity-60">{chapter.fields.join(" · ")}</p>
 
           {!hasMedia && chapter.cases.length > 1 ? (
             <div className="mt-7">
-              <p className="font-mono text-[0.65rem] tracking-[0.18em] uppercase opacity-60">
-                {lang === "en" ? "Example in everyday life" : "Contoh penerapan sehari-hari"}
+              <p className="text-xs opacity-60">
+                {lang === "en" ? "An example from everyday life:" : "Contoh dari keseharian:"}
               </p>
               <div
                 className="mt-3 flex flex-wrap gap-2"

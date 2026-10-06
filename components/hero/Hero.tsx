@@ -1,131 +1,63 @@
 "use client";
 
-import { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { useLang } from "@/lib/i18n";
-import dynamic from "next/dynamic";
-import Magnetic from "@/components/ui/Magnetic";
-import CodeCard from "@/components/hero/CodeCard";
+import Gonjong from "@/components/ui/Gonjong";
 import ScrollBackdrop from "@/components/ui/ScrollBackdrop";
+import { brand, contacts } from "@/data/brand";
 import type { BackdropMedia } from "@/lib/backdrops";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-// Three.js is the heaviest thing on the page: load it after the text is up.
-const DigitalCore = dynamic(() => import("@/components/3d/DigitalCore"), { ssr: false });
-
-/** Hero (blueprint §6–7): core statement + 3D digital core + the editor window. */
+/**
+ * Hero: a name, one sentence, one paragraph, two links. The only graphic
+ * is the gonjong, the roofline of a Minangkabau rumah gadang. If footage
+ * exists in public/backdrops/hero.* it plays behind the text, scrubbed
+ * by scroll.
+ */
 export default function Hero({ media }: { media: BackdropMedia }) {
-  const { lang } = useLang();
-  const root = useRef<HTMLElement>(null);
+  const { lang, t } = useLang();
   const hasMedia = Boolean(media.video || media.poster);
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Content recedes as the camera moves into the core (§7, §17).
-        gsap.to(".hero-content", {
-          yPercent: -12,
-          opacity: 0.15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root.current,
-            start: "top top",
-            end: "bottom 40%",
-            scrub: 0.4,
-          },
-        });
-
-        // The file "writes itself", line by line.
-        gsap.from(".code-line", {
-          opacity: 0,
-          x: -8,
-          duration: 0.35,
-          ease: "power2.out",
-          stagger: 0.09,
-          delay: 0.7,
-        });
-      });
-    },
-    { scope: root },
-  );
-
   return (
-    <section ref={root} className="relative flex min-h-svh items-center overflow-hidden">
+    <section className="relative overflow-hidden">
       {hasMedia ? (
-        // Scroll-scrubbed footage replaces the core once public/backdrops/hero.* exists
-        <ScrollBackdrop media={media} mode="hero" className="absolute inset-0" />
-      ) : (
-        // 3D digital core — one WebGL canvas for the whole site (§39)
-        <DigitalCore className="absolute inset-y-0 right-0 h-full w-full opacity-60 md:w-3/5 md:opacity-100" />
-      )}
-      <div
-        className={`pointer-events-none absolute inset-0 bg-gradient-to-r from-bg to-transparent ${
-          hasMedia ? "via-bg/85" : "via-bg/70"
-        }`}
-        aria-hidden="true"
-      />
-      {/* Japanese watermark — background only, shown by the "hijau" theme (CSS) */}
+        <>
+          <ScrollBackdrop media={media} mode="hero" className="absolute inset-0" />
+          <div className="absolute inset-0 bg-bg/80" aria-hidden="true" />
+        </>
+      ) : null}
+      {/* Japanese watermark, background only, shown by the "hijau" theme (CSS) */}
       <div className="jp-mark" aria-hidden="true">
         和
       </div>
 
-      <div className="hero-content relative z-10 mx-auto grid w-full max-w-6xl items-end gap-12 px-6 pt-28 pb-16 lg:grid-cols-[1.25fr_0.75fr]">
+      <div className="relative z-10 mx-auto grid max-w-5xl gap-10 px-5 pt-32 pb-20 sm:px-6 md:grid-cols-[1fr_auto] md:items-end md:pt-40 md:pb-28">
         <div className="min-w-0">
-          <p className="kicker" data-reveal>
-            Defri Fega Pratama — Problem Solver · Software Engineer
+          <p className="text-sm text-mut">
+            {brand.name} · {brand.role}
+            <span className="hidden sm:inline"> · {brand.roots}, Indonesia</span>
           </p>
 
-          <h1 className="h-display mt-6 text-[2.5rem] leading-[1.06] sm:text-6xl lg:text-[4.1rem]" data-reveal>
-            {lang === "en" ? (
-              <>
-                I BUILD TECHNOLOGY
-                <br />
-                TO SOLVE <span className="mark-accent">REAL PROBLEMS.</span>
-              </>
-            ) : (
-              <>
-                SAYA MEMBANGUN TEKNOLOGI
-                <br />
-                UNTUK MENYELESAIKAN <span className="mark-accent">MASALAH NYATA.</span>
-              </>
-            )}
-          </h1>
+          <h1 className="h-display mt-6 text-[2.4rem] sm:text-5xl md:text-[3.6rem]">{t(brand.headline)}</h1>
 
-          <p className="prose-mut mt-8 text-lg" data-reveal>
-            {lang === "en"
-              ? "A problem solver and software engineer — turning complex problems into precise, creative, and modern solutions."
-              : "Problem solver dan software engineer — mengubah masalah kompleks menjadi solusi yang tepat, kreatif, dan modern."}
-          </p>
+          <p className="prose-mut mt-7 text-lg">{t(brand.intro)}</p>
 
-          <p className="mt-6 font-mono text-xs tracking-[0.3em] text-dim uppercase" data-reveal>
-            AI · Data · Software · Automation · IoT
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center gap-4" data-reveal>
-            <Magnetic>
-              <a href="#projects" className="btn btn-solid">
-                {lang === "en" ? "SEE MY WORK" : "LIHAT KARYA SAYA"}
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a href="#contact" className="btn btn-line">
-                {lang === "en" ? "LET'S SOLVE A PROBLEM" : "AYO SELESAIKAN MASALAH"}
-              </a>
-            </Magnetic>
+          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a href="#projects" className="btn btn-solid">
+              {lang === "en" ? "See the work" : "Lihat karya"}
+            </a>
+            <a href={`mailto:${contacts.email}`} className="link text-sm">
+              {lang === "en" ? "or write to me" : "atau tulis email"}
+            </a>
           </div>
         </div>
 
-        <div className="min-w-0" data-reveal>
-          <CodeCard />
-          <p className="mt-4 hidden font-mono text-[0.68rem] tracking-wide text-dim lg:block">
-            {lang === "en" ? "Press" : "Tekan"} <kbd className="kbd">Ctrl</kbd> <kbd className="kbd">K</kbd>{" "}
-            {lang === "en" ? "to navigate like a developer" : "untuk navigasi ala developer"}
-          </p>
-        </div>
+        <figure className="hidden w-[300px] shrink-0 md:block lg:w-[340px]">
+          <Gonjong className="w-full text-fg" />
+          <figcaption className="mt-3 text-right text-xs text-dim">
+            {lang === "en"
+              ? "Gonjong, the roofline of a rumah gadang. I am Minangkabau."
+              : "Gonjong, atap rumah gadang. Saya orang Minangkabau."}
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

@@ -16,7 +16,6 @@ export default function Experience() {
   return (
     <Section
       id="experience"
-      num="XP"
       label={{ en: "Experience", id: "Pengalaman" }}
       title={{
         en: "Real problems, met at work.",
@@ -28,29 +27,28 @@ export default function Experience() {
           <li
             key={e.period + e.role.en}
             className="grid gap-x-10 gap-y-4 border-b border-line py-8 md:grid-cols-[14rem_1fr]"
-            data-reveal
           >
             <div>
-              <p className="font-mono text-xs tracking-wide text-accent">{e.period}</p>
+              <p className="mono text-accent">{e.period}</p>
               <h3 className="h-display mt-2 text-xl">{t(e.role)}</h3>
               <p className="mt-1 text-sm text-mut">{t(e.place)}</p>
             </div>
             <dl className="grid gap-5">
               <div>
-                <dt className="font-mono text-[0.65rem] tracking-widest text-dim uppercase">
+                <dt className="label">
                   {lang === "en" ? "The problem" : "Masalahnya"}
                 </dt>
                 <dd className="prose-mut mt-1 text-sm md:text-base">{t(e.problem)}</dd>
               </div>
               <div>
-                <dt className="font-mono text-[0.65rem] tracking-widest text-dim uppercase">
+                <dt className="label">
                   {lang === "en" ? "What I built" : "Yang saya bangun"}
                 </dt>
                 <dd className="mt-2">
                   <ul className="flex flex-col gap-1.5">
                     {e.built.map((b) => (
                       <li key={b.en} className="flex gap-3 text-sm text-mut md:text-base">
-                        <span className="font-mono text-accent" aria-hidden="true">
+                        <span className="text-accent" aria-hidden="true">
                           +
                         </span>
                         {t(b)}
@@ -61,7 +59,7 @@ export default function Experience() {
               </div>
               {e.outcome ? (
                 <div>
-                  <dt className="font-mono text-[0.65rem] tracking-widest text-dim uppercase">
+                  <dt className="label">
                     {lang === "en" ? "Outcome" : "Hasilnya"}
                   </dt>
                   <dd className="prose-mut mt-1 text-sm md:text-base">{t(e.outcome)}</dd>
